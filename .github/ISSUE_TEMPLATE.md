@@ -4,6 +4,7 @@ about: 汇报在使用过程中遇到的问题
 title: "你的问题"
 labels: help wanted
 assignees: ''
+
 ---
 <!--首先，欢迎大家在 OctocatPress 项目的 issue 区提出自己在使用过程中出现的问题！
 在提问前，首先应遵守良好的GitHub社区规范，然后使用标准的 *GFM* 语法填写下面的问题信息。其中带 * 的为必填项。
