@@ -17,7 +17,6 @@ assignees: ''
 **额外的信息**
 > 请在此处描述其他的内容
 
-~~dshdhsj~~
 - [ ] 我已仔细阅读[CONTRIBUTING](CONTRIBUTING.md)中的相关内容。
 - [ ] 我已仔细阅读[README](../README.md)中的相关内容。
 
