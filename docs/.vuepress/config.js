@@ -1,6 +1,6 @@
 module.exports = {
   title: 'OctocatPress',
-  description: 'kaiyuanzuzhi',
+  description: '开源聚合平台',
   base: '/',
   head: [
     ['link', {
@@ -86,14 +86,22 @@ module.exports = {
       items: [{
         text: '概要',
         link: '/4-Github/'
-      }, 
+      },
       {
         text: 'GitHub操作指南',
         link: '/4-Github/4-1-Github'
-      }, 
+      },
       {
         text: 'Git操作指南',
         link: '/4-Github/4-2-Git'
+      },
+      {
+        text: 'Mardown语法指南',
+        link: '/4-Github/4-3-Mardown'
+      },
+      {
+        text: 'README文件书写',
+        link: '/4-Github/4-4-README'
       },
       {
         text: '帮助完善',
@@ -154,12 +162,16 @@ module.exports = {
       ]
     },
     {
+      text: '体验与参考',
+      link: '/5-Experience/'
+    },
+    {
       text: '反馈',
-      link: 'https://github.com/spencerwooo/dowww/issues/new/choose'
+      link: 'https://github.com/octocatpress/octocatpress.github.io/issues/new/choose'
     },
     {
       text: 'GitHub',
-      link: 'https://github.com/spencerwooo/dowww'
+      link: 'https://github.com/octocatpress/octocatpress.github.io'
     },
     ],
     sidebar: {
@@ -181,6 +193,8 @@ module.exports = {
         '',
         '4-1-Github',
         '4-2-Git',
+        '4-3-Markdown',
+        '4-4-README',
         'HelpNeeded'
       ],
       '/5-Web/': [
@@ -198,8 +212,10 @@ module.exports = {
       '6-3-EmbeddedSystem',
       'HelpNeeded'
       ],
+      '/7-Experience/': [''],
       '/': ['']
     },
     lastUpdated: 'Last Updated'
   }
 }
+

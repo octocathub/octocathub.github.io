@@ -4,14 +4,20 @@ heroImage: /hero.png
 actionText: 入坑指南 →
 actionLink: /1-Preparations/
 features:
-- title: 🍳
-  details: Windows 开发，解决那令人烦恼的非 Unix 终端环境。
-- title: 💡
-  details: Windows Subsystem for Linux，近似原生 Unix 的体验，又有着 Windows 强大的生产力。
-- title: 🎉
-  details: 与 Visual Studio Code 联合，打造最为健壮的 Windows 开发环境。
-footer: 2019 ©bingyu. Released under the CC BY-NC-SA 4.0 International License.
+- title: 🐱‍🚀
+  details: 开源的精神
+- title: 🐱‍🏍
+  details: OctocatPress因你而精彩
+- title: 🐱‍💻
+  details: 共享的宗旨
+footer: 2019 © OctocatPress. Released under the CC BY-NC-SA 4.0 International License.
 ---
+<div align="center">
+<a href="https://spencerwoo.com/dowww/#%E5%89%8D%E8%A8%80"><img src="https://img.shields.io/opencollective/backers/dowww.svg?colorB=brightgreen&style=flat-squaref" align="middle" /></a>
+<a href="https://spencerwoo.com/dowww/#sponsoring-%E8%B5%9E%E5%8A%A9"><img src="https://img.shields.io/opencollective/backers/dowww.svg?colorB=brightgreen&style=flat-square" align="middle" /></a>
+<img src="https://img.shields.io/badge/Windows-♥-FFE411.svg?logo=windows&style=flat-square" align="middle" />
+<a href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img src="https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-03A9F4.svg?style=flat-square" align="middle" /></a>
+</div>
 
 [![Backers on Open Collective](https://img.shields.io/opencollective/backers/dowww.svg?colorB=brightgreen&style=flat-square)](#backers-支持者)
 [![Sponsors on Open Collective](https://img.shields.io/opencollective/sponsors/dowww.svg?colorB=brightgreen&style=flat-square)](#sponsors-赞助商)
@@ -124,3 +130,4 @@ This work is licensed under a <a rel="license" href="http://creativecommons.org/
 Authored and maintained by Spencer Woo.
 
 [@Blog](https://spencerwoo.com/) · [ⒿJike](https://web.okjike.com/user/4DDA0425-FB41-4188-89E4-952CA15E3C5E/post) · [@GitHub](https://github.com/spencerwooo)
+
