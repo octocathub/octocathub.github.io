@@ -1,22 +1,27 @@
 {
-  "name": "dev-on-win-with-wsl",
+  "name": "octocatpress",
   "version": "2.0.0",
-  "description": "Dev on Windows with WSL",
+  "description": "octocatpress",
   "scripts": {
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
     "postinstall": "opencollective-postinstall"
   },
   "repository": "https://github.com/otocatpress",
-  "author": "spencerwooo <spencerwoo98@foxmail.com>",
+  "author": "bingyu <xzhxpx@qq.com>",
   "license": "CC-BY-NC-SA-4.0",
   "dependencies": {
+    "leancloud-storage": "^3.11.1",
+    "opencollective": "^1.0.3",
     "opencollective-postinstall": "^2.0.1",
-    "vuepress": "^0.14.8",
-    "opencollective": "^1.0.3"
+    "valine": "^1.3.4",
+    "vuepress": "^0.14.8"
   },
   "collective": {
     "type": "opencollective",
     "url": "https://opencollective.com/dowww"
+  },
+  "devDependencies": {
+    "@vuepress/plugin-back-to-top": "^1.0.0-alpha.0"
   }
 }

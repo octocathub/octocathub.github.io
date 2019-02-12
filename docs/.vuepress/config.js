@@ -162,10 +162,6 @@ module.exports = {
       ]
     },
     {
-      text: '体验与参考',
-      link: '/5-Experience/'
-    },
-    {
       text: '反馈',
       link: 'https://github.com/octocatpress/octocatpress.github.io/issues/new/choose'
     },
@@ -212,7 +208,6 @@ module.exports = {
       '6-3-EmbeddedSystem',
       'HelpNeeded'
       ],
-      '/7-Experience/': [''],
       '/': ['']
     },
     lastUpdated: 'Last Updated'
