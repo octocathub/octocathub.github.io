@@ -1,5 +1,5 @@
 module.exports = {
-  title: 'OctocatPress',
+  title: 'OctocatHub',
   description: '开源聚合平台',
   base: '/',
   head: [
@@ -163,11 +163,11 @@ module.exports = {
     },
     {
       text: '反馈',
-      link: 'https://github.com/octocatpress/octocatpress.github.io/issues/new/choose'
+      link: 'https://github.com/octocathub/octocathub.github.io/issues/new/choose'
     },
     {
       text: 'GitHub',
-      link: 'https://github.com/octocatpress/octocatpress.github.io'
+      link: 'https://github.com/octocathub/octocathub.github.io'
     },
     ],
     sidebar: {
@@ -197,8 +197,8 @@ module.exports = {
         '',
         '5-1-HTML',
         '5-2-CSS',
-	      '5-3-JS',
-	      '5-4-Electron',
+	'5-3-JS',
+	'5-4-Electron',
         'HelpNeeded'
       ],
       '/6-Mcu/': [
@@ -208,7 +208,7 @@ module.exports = {
       '6-3-EmbeddedSystem',
       'HelpNeeded'
       ],
-      '/': ['']
+      '/': [''],
     },
     lastUpdated: 'Last Updated'
   }
