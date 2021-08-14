@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Linux设置nginx开机自启动 | OctocatHub</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/favicon.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/octicons/build/font/octicons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/octicons/build/build.css">
+    <link rel="apple-touch-icon" href="/favicon.png">
+    <meta name="description" content="开源聚合平台">
+    <meta name="theme-color" content="#00ABE9">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="msapplication-TileImage" content="/favicon.png">
+    <meta name="msapplication-TileColor" content="#06BDFF">
+    
+    <link rel="preload" href="/assets/css/1.styles.64c025f6.css" as="style"><link rel="preload" href="/assets/js/app.ea672127.js" as="script"><link rel="preload" href="/assets/js/10.ddb7db68.js" as="script"><link rel="preload" href="/assets/js/69.5952d4b2.js" as="script"><link rel="prefetch" href="/assets/js/100.379b1944.js"><link rel="prefetch" href="/assets/js/101.164e8edd.js"><link rel="prefetch" href="/assets/js/102.35fe97db.js"><link rel="prefetch" href="/assets/js/103.a0004e8c.js"><link rel="prefetch" href="/assets/js/104.8340a366.js"><link rel="prefetch" href="/assets/js/105.f8f077ac.js"><link rel="prefetch" href="/assets/js/106.0b10877d.js"><link rel="prefetch" href="/assets/js/107.e1d2d9ef.js"><link rel="prefetch" href="/assets/js/108.9ca7c4c6.js"><link rel="prefetch" href="/assets/js/109.3dc90fa6.js"><link rel="prefetch" href="/assets/js/11.9e7b35b6.js"><link rel="prefetch" href="/assets/js/110.a2cd6020.js"><link rel="prefetch" href="/assets/js/111.8808c1b7.js"><link rel="prefetch" href="/assets/js/112.eeff0106.js"><link rel="prefetch" href="/assets/js/113.53ed352d.js"><link rel="prefetch" href="/assets/js/114.084b5002.js"><link rel="prefetch" href="/assets/js/115.dac88c6a.js"><link rel="prefetch" href="/assets/js/116.530f5c00.js"><link rel="prefetch" href="/assets/js/117.7ae33167.js"><link rel="prefetch" href="/assets/js/118.c7b327dd.js"><link rel="prefetch" href="/assets/js/119.dda61e1a.js"><link rel="prefetch" href="/assets/js/12.74aac40f.js"><link rel="prefetch" href="/assets/js/120.71227bec.js"><link rel="prefetch" href="/assets/js/121.9c0935b6.js"><link rel="prefetch" href="/assets/js/13.9eefaab9.js"><link rel="prefetch" href="/assets/js/14.8fa62269.js"><link rel="prefetch" href="/assets/js/15.29949cea.js"><link rel="prefetch" href="/assets/js/16.6a2648ca.js"><link rel="prefetch" href="/assets/js/17.d7056871.js"><link rel="prefetch" href="/assets/js/18.7cafa5e7.js"><link rel="prefetch" href="/assets/js/19.7d6f5c79.js"><link rel="prefetch" href="/assets/js/2.19110f2b.js"><link rel="prefetch" href="/assets/js/20.cbb74308.js"><link rel="prefetch" href="/assets/js/21.446bbd67.js"><link rel="prefetch" href="/assets/js/22.a2dcb4e1.js"><link rel="prefetch" href="/assets/js/23.85c3cf38.js"><link rel="prefetch" href="/assets/js/24.61674ebf.js"><link rel="prefetch" href="/assets/js/25.fd97ed99.js"><link rel="prefetch" href="/assets/js/26.ac8928b7.js"><link rel="prefetch" href="/assets/js/27.0fe0e83c.js"><link rel="prefetch" href="/assets/js/28.c14b5e15.js"><link rel="prefetch" href="/assets/js/29.57ad016d.js"><link rel="prefetch" href="/assets/js/3.5eb7d73d.js"><link rel="prefetch" href="/assets/js/30.cd11ba9a.js"><link rel="prefetch" href="/assets/js/31.b54bf627.js"><link rel="prefetch" href="/assets/js/32.4c135019.js"><link rel="prefetch" href="/assets/js/33.f4a8c444.js"><link rel="prefetch" href="/assets/js/34.c05070e8.js"><link rel="prefetch" href="/assets/js/35.9c400432.js"><link rel="prefetch" href="/assets/js/36.a3a174c9.js"><link rel="prefetch" href="/assets/js/37.c2250e3a.js"><link rel="prefetch" href="/assets/js/38.901ae51c.js"><link rel="prefetch" href="/assets/js/39.73b50ba8.js"><link rel="prefetch" href="/assets/js/4.df8f54f6.js"><link rel="prefetch" href="/assets/js/40.a7742900.js"><link rel="prefetch" href="/assets/js/41.9efd29f2.js"><link rel="prefetch" href="/assets/js/42.6d2c13d2.js"><link rel="prefetch" href="/assets/js/43.0f9c5a8e.js"><link rel="prefetch" href="/assets/js/44.e1411cd4.js"><link rel="prefetch" href="/assets/js/45.b1b410a6.js"><link rel="prefetch" href="/assets/js/46.4df784b3.js"><link rel="prefetch" href="/assets/js/47.32f82021.js"><link rel="prefetch" href="/assets/js/48.7aae92c3.js"><link rel="prefetch" href="/assets/js/49.3b6b29ed.js"><link rel="prefetch" href="/assets/js/5.49f66526.js"><link rel="prefetch" href="/assets/js/50.0de5c918.js"><link rel="prefetch" href="/assets/js/51.bc867a6f.js"><link rel="prefetch" href="/assets/js/52.9d56e772.js"><link rel="prefetch" href="/assets/js/53.ddbbdb99.js"><link rel="prefetch" href="/assets/js/54.895de962.js"><link rel="prefetch" href="/assets/js/55.23710010.js"><link rel="prefetch" href="/assets/js/56.053fbd45.js"><link rel="prefetch" href="/assets/js/57.f26c7e94.js"><link rel="prefetch" href="/assets/js/58.7aff3808.js"><link rel="prefetch" href="/assets/js/59.988d6b79.js"><link rel="prefetch" href="/assets/js/6.8acb4134.js"><link rel="prefetch" href="/assets/js/60.c3cbd582.js"><link rel="prefetch" href="/assets/js/61.3827f1cb.js"><link rel="prefetch" href="/assets/js/62.b03c94e9.js"><link rel="prefetch" href="/assets/js/63.8f0e86ac.js"><link rel="prefetch" href="/assets/js/64.4beb5196.js"><link rel="prefetch" href="/assets/js/65.35a4f8b0.js"><link rel="prefetch" href="/assets/js/66.f034ce8e.js"><link rel="prefetch" href="/assets/js/67.c96e9084.js"><link rel="prefetch" href="/assets/js/68.aa4619e7.js"><link rel="prefetch" href="/assets/js/7.e84870c1.js"><link rel="prefetch" href="/assets/js/70.e59a81e5.js"><link rel="prefetch" href="/assets/js/71.43e6ac9d.js"><link rel="prefetch" href="/assets/js/72.8af335a9.js"><link rel="prefetch" href="/assets/js/73.b7195cfa.js"><link rel="prefetch" href="/assets/js/74.23abd102.js"><link rel="prefetch" href="/assets/js/75.bbab0550.js"><link rel="prefetch" href="/assets/js/76.2ddb70e2.js"><link rel="prefetch" href="/assets/js/77.fc503da6.js"><link rel="prefetch" href="/assets/js/78.afcb2d28.js"><link rel="prefetch" href="/assets/js/79.d5caa14e.js"><link rel="prefetch" href="/assets/js/8.21e39907.js"><link rel="prefetch" href="/assets/js/80.f397670f.js"><link rel="prefetch" href="/assets/js/81.490cf71c.js"><link rel="prefetch" href="/assets/js/82.2d64e9cc.js"><link rel="prefetch" href="/assets/js/83.1ecc4e42.js"><link rel="prefetch" href="/assets/js/84.614cc5c6.js"><link rel="prefetch" href="/assets/js/85.0bb5a59b.js"><link rel="prefetch" href="/assets/js/86.924b81a8.js"><link rel="prefetch" href="/assets/js/87.3d03f397.js"><link rel="prefetch" href="/assets/js/88.08aecf3b.js"><link rel="prefetch" href="/assets/js/89.b5d07a59.js"><link rel="prefetch" href="/assets/js/9.de8637ae.js"><link rel="prefetch" href="/assets/js/90.8cee085d.js"><link rel="prefetch" href="/assets/js/91.1310f20a.js"><link rel="prefetch" href="/assets/js/92.19b8b1fd.js"><link rel="prefetch" href="/assets/js/93.dfd3ef85.js"><link rel="prefetch" href="/assets/js/94.7da5aa29.js"><link rel="prefetch" href="/assets/js/95.f11a0b77.js"><link rel="prefetch" href="/assets/js/96.3af19be1.js"><link rel="prefetch" href="/assets/js/97.c8acc6e5.js"><link rel="prefetch" href="/assets/js/98.6bb421b8.js"><link rel="prefetch" href="/assets/js/99.58b0efb7.js">
+    <link rel="stylesheet" href="/assets/css/1.styles.64c025f6.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="content__default"><h1 id="linux设置nginx开机自启动"><a href="#linux设置nginx开机自启动" class="header-anchor">#</a> Linux设置nginx开机自启动</h1> <p>首先，在linux系统的/etc/init.d/目录下创建nginx文件，使用如下命令：</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">vi</span> /etc/init.d/nginx
+</code></pre></div><p>nginx脚本内容：</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token shebang important">#!/bin/sh</span>
+<span class="token comment">#</span>
+<span class="token comment"># nginx - this script starts and stops the nginx daemon</span>
+<span class="token comment">#</span>
+<span class="token comment"># chkconfig:   - 85 15</span>
+<span class="token comment"># description:  NGINX is an HTTP(S) server, HTTP(S) reverse </span>
+<span class="token comment">#               proxy and IMAP/POP3 proxy server</span>
+<span class="token comment"># processname: nginx</span>
+<span class="token comment"># config:      /etc/nginx/nginx.conf</span>
+<span class="token comment"># config:      /etc/sysconfig/nginx</span>
+<span class="token comment"># pidfile:     /var/run/nginx.pid</span>
+<span class="token comment"># Source function library.</span>
+<span class="token builtin class-name">.</span> /etc/rc.d/init.d/functions
+<span class="token comment"># Source networking configuration.</span>
+<span class="token builtin class-name">.</span> /etc/sysconfig/network
+<span class="token comment"># Check that networking is up.</span>
+<span class="token punctuation">[</span> <span class="token string">&quot;<span class="token variable">$NETWORKING</span>&quot;</span> <span class="token operator">=</span> <span class="token string">&quot;no&quot;</span> <span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">exit</span> <span class="token number">0</span>
+<span class="token assign-left variable">nginx</span><span class="token operator">=</span><span class="token string">&quot;/usr/bin/nginx&quot;</span>
+<span class="token assign-left variable">prog</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">basename</span> $nginx<span class="token variable">)</span></span>
+<span class="token assign-left variable">NGINX_CONF_FILE</span><span class="token operator">=</span><span class="token string">&quot;/opt/nginx/conf/nginx.conf&quot;</span>
+<span class="token punctuation">[</span> -f /etc/sysconfig/nginx <span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">.</span> /etc/sysconfig/nginx
+<span class="token assign-left variable">lockfile</span><span class="token operator">=</span>/var/lock/subsys/nginx
+<span class="token function-name function">make_dirs</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token comment"># make required directories</span>
+   <span class="token assign-left variable">user</span><span class="token operator">=</span><span class="token variable"><span class="token variable">`</span>$nginx -V <span class="token operator"><span class="token file-descriptor important">2</span>&gt;</span><span class="token file-descriptor important">&amp;1</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">&quot;configure arguments:&quot;</span> <span class="token operator">|</span> <span class="token function">sed</span> <span class="token string">'s/[^*]*--user=\([^ ]*\).*/<span class="token entity" title="\1">\1</span>/g'</span> -<span class="token variable">`</span></span>
+   <span class="token keyword">if</span> <span class="token punctuation">[</span> -z <span class="token string">&quot;<span class="token variable"><span class="token variable">`</span><span class="token function">grep</span> $user /etc/passwd<span class="token variable">`</span></span>&quot;</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+       <span class="token function">useradd</span> -M -s /bin/nologin <span class="token variable">$user</span>
+   <span class="token keyword">fi</span>
+   <span class="token assign-left variable">options</span><span class="token operator">=</span><span class="token variable"><span class="token variable">`</span>$nginx -V <span class="token operator"><span class="token file-descriptor important">2</span>&gt;</span><span class="token file-descriptor important">&amp;1</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">'configure arguments:'</span><span class="token variable">`</span></span>
+   <span class="token keyword">for</span> <span class="token for-or-select variable">opt</span> <span class="token keyword">in</span> <span class="token variable">$options</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
+       <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable"><span class="token variable">`</span><span class="token builtin class-name">echo</span> $opt <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">'.*-temp-path'</span><span class="token variable">`</span></span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+           <span class="token assign-left variable">value</span><span class="token operator">=</span><span class="token variable"><span class="token variable">`</span><span class="token builtin class-name">echo</span> $opt <span class="token operator">|</span> <span class="token function">cut</span> -d <span class="token string">&quot;=&quot;</span> -f <span class="token number">2</span><span class="token variable">`</span></span>
+           <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token operator">!</span> -d <span class="token string">&quot;<span class="token variable">$value</span>&quot;</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+               <span class="token comment"># echo &quot;creating&quot; $value</span>
+               <span class="token function">mkdir</span> -p <span class="token variable">$value</span> <span class="token operator">&amp;&amp;</span> <span class="token function">chown</span> -R <span class="token variable">$user</span> <span class="token variable">$value</span>
+           <span class="token keyword">fi</span>
+       <span class="token keyword">fi</span>
+   <span class="token keyword">done</span>
+<span class="token punctuation">}</span>
+<span class="token function-name function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">[</span> -x <span class="token variable">$nginx</span> <span class="token punctuation">]</span> <span class="token operator">||</span> <span class="token builtin class-name">exit</span> <span class="token number">5</span>
+    <span class="token punctuation">[</span> -f <span class="token variable">$NGINX_CONF_FILE</span> <span class="token punctuation">]</span> <span class="token operator">||</span> <span class="token builtin class-name">exit</span> <span class="token number">6</span>
+    make_dirs
+    <span class="token builtin class-name">echo</span> -n $<span class="token string">&quot;Starting <span class="token variable">$prog</span>: &quot;</span>
+    daemon <span class="token variable">$nginx</span> -c <span class="token variable">$NGINX_CONF_FILE</span>
+    <span class="token assign-left variable">retval</span><span class="token operator">=</span><span class="token variable">$?</span>
+    <span class="token builtin class-name">echo</span>
+    <span class="token punctuation">[</span> <span class="token variable">$retval</span> -eq <span class="token number">0</span> <span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token function">touch</span> <span class="token variable">$lockfile</span>
+    <span class="token builtin class-name">return</span> <span class="token variable">$retval</span>
+<span class="token punctuation">}</span>
+<span class="token function-name function">stop</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token builtin class-name">echo</span> -n $<span class="token string">&quot;Stopping <span class="token variable">$prog</span>: &quot;</span>
+    killproc <span class="token variable">$prog</span> -QUIT
+    <span class="token assign-left variable">retval</span><span class="token operator">=</span><span class="token variable">$?</span>
+    <span class="token builtin class-name">echo</span>
+    <span class="token punctuation">[</span> <span class="token variable">$retval</span> -eq <span class="token number">0</span> <span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token function">rm</span> -f <span class="token variable">$lockfile</span>
+    <span class="token builtin class-name">return</span> <span class="token variable">$retval</span>
+<span class="token punctuation">}</span>
+<span class="token function-name function">restart</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    configtest <span class="token operator">||</span> <span class="token builtin class-name">return</span> <span class="token variable">$?</span>
+    stop
+    <span class="token function">sleep</span> <span class="token number">1</span>
+    start
+<span class="token punctuation">}</span>
+<span class="token function-name function">reload</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    configtest <span class="token operator">||</span> <span class="token builtin class-name">return</span> <span class="token variable">$?</span>
+    <span class="token builtin class-name">echo</span> -n $<span class="token string">&quot;Reloading <span class="token variable">$prog</span>: &quot;</span>
+    killproc <span class="token variable">$nginx</span> -HUP
+    <span class="token assign-left variable">RETVAL</span><span class="token operator">=</span><span class="token variable">$?</span>
+    <span class="token builtin class-name">echo</span>
+<span class="token punctuation">}</span>
+<span class="token function-name function">force_reload</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    restart
+<span class="token punctuation">}</span>
+<span class="token function-name function">configtest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token variable">$nginx</span> -t -c <span class="token variable">$NGINX_CONF_FILE</span>
+<span class="token punctuation">}</span>
+<span class="token function-name function">rh_status</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    status <span class="token variable">$prog</span>
+<span class="token punctuation">}</span>
+<span class="token function-name function">rh_status_q</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    rh_status <span class="token operator">&gt;</span>/dev/null <span class="token operator"><span class="token file-descriptor important">2</span>&gt;</span><span class="token file-descriptor important">&amp;1</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">case</span> <span class="token string">&quot;<span class="token variable">$1</span>&quot;</span> <span class="token keyword">in</span>
+    start<span class="token punctuation">)</span>
+        rh_status_q <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">exit</span> <span class="token number">0</span>
+        <span class="token variable">$1</span>
+        <span class="token punctuation">;</span><span class="token punctuation">;</span>
+    stop<span class="token punctuation">)</span>
+        rh_status_q <span class="token operator">||</span> <span class="token builtin class-name">exit</span> <span class="token number">0</span>
+        <span class="token variable">$1</span>
+        <span class="token punctuation">;</span><span class="token punctuation">;</span>
+    restart<span class="token operator">|</span>configtest<span class="token punctuation">)</span>
+        <span class="token variable">$1</span>
+        <span class="token punctuation">;</span><span class="token punctuation">;</span>
+    reload<span class="token punctuation">)</span>
+        rh_status_q <span class="token operator">||</span> <span class="token builtin class-name">exit</span> <span class="token number">7</span>
+        <span class="token variable">$1</span>
+        <span class="token punctuation">;</span><span class="token punctuation">;</span>
+    force-reload<span class="token punctuation">)</span>
+        force_reload
+        <span class="token punctuation">;</span><span class="token punctuation">;</span>
+    status<span class="token punctuation">)</span>
+        rh_status
+        <span class="token punctuation">;</span><span class="token punctuation">;</span>
+    condrestart<span class="token operator">|</span>try-restart<span class="token punctuation">)</span>
+        rh_status_q <span class="token operator">||</span> <span class="token builtin class-name">exit</span> <span class="token number">0</span>
+            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+    *<span class="token punctuation">)</span>
+        <span class="token builtin class-name">echo</span> $<span class="token string">&quot;Usage: <span class="token variable">$0</span> {start|stop|status|restart|condrestart|try-restart|reload|force-reload|configtest}&quot;</span>
+        <span class="token builtin class-name">exit</span> <span class="token number">2</span>
+<span class="token keyword">esac</span>
+
+</code></pre></div><div class="custom-block warning"><p class="custom-block-title">WARNING</p> <p>注意
+自定义编译安装的nginx，需要根据您的安装路径修改下面这两项配置：
+nginx=”/usr/sbin/nginx” 修改成nginx执行程序的路径。
+NGINX_CONF_FILE=”/etc/nginx/nginx.conf” 修改成配置文件的路径。</p></div> <p>保存脚本文件后设置文件的执行权限：</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">chmod</span> a+x /etc/init.d/nginx
+</code></pre></div><p>然后，就可以通过该脚本对nginx服务进行管理了：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>/etc/init.d/nginx start
+/etc/init.d/nginx stop
+</code></pre></div><p>使用chkconfig进行管理，先将nginx服务加入chkconfig管理列表：</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">chkconfig</span> --add /etc/init.d/nginx
+</code></pre></div><p>加完这个之后，就可以使用service对nginx进行启动，重启等操作了。</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">service</span> nginx start
+<span class="token function">service</span> nginx stop
+</code></pre></div><p>设置终端模式开机启动：</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">chkconfig</span> nginx on
+</code></pre></div><p>问题解决：
+service nginx start 命令执行后，出现问题界面一直卡着，不能正常结束，必须使用Ctrl+C 才能结束，而且ps -ef|grep nginx 也确实有进程。经过多方查找是因为 pid 指定存在问题导致。网上说可以修改 上面的脚本文件，但我没找地方修改。我通过修改nginx配置文件，明确指定pid路径解决。</p></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.ea672127.js" defer></script><script src="/assets/js/10.ddb7db68.js" defer></script><script src="/assets/js/69.5952d4b2.js" defer></script>
+  </body>
+</html>

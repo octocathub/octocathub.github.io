@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Systemd 进程管理 | OctocatHub</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/favicon.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/octicons/build/font/octicons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/octicons/build/build.css">
+    <link rel="apple-touch-icon" href="/favicon.png">
+    <meta name="description" content="开源聚合平台">
+    <meta name="theme-color" content="#00ABE9">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="msapplication-TileImage" content="/favicon.png">
+    <meta name="msapplication-TileColor" content="#06BDFF">
+    
+    <link rel="preload" href="/assets/css/1.styles.64c025f6.css" as="style"><link rel="preload" href="/assets/js/app.ea672127.js" as="script"><link rel="preload" href="/assets/js/10.ddb7db68.js" as="script"><link rel="preload" href="/assets/js/71.43e6ac9d.js" as="script"><link rel="prefetch" href="/assets/js/100.379b1944.js"><link rel="prefetch" href="/assets/js/101.164e8edd.js"><link rel="prefetch" href="/assets/js/102.35fe97db.js"><link rel="prefetch" href="/assets/js/103.a0004e8c.js"><link rel="prefetch" href="/assets/js/104.8340a366.js"><link rel="prefetch" href="/assets/js/105.f8f077ac.js"><link rel="prefetch" href="/assets/js/106.0b10877d.js"><link rel="prefetch" href="/assets/js/107.e1d2d9ef.js"><link rel="prefetch" href="/assets/js/108.9ca7c4c6.js"><link rel="prefetch" href="/assets/js/109.3dc90fa6.js"><link rel="prefetch" href="/assets/js/11.9e7b35b6.js"><link rel="prefetch" href="/assets/js/110.a2cd6020.js"><link rel="prefetch" href="/assets/js/111.8808c1b7.js"><link rel="prefetch" href="/assets/js/112.eeff0106.js"><link rel="prefetch" href="/assets/js/113.53ed352d.js"><link rel="prefetch" href="/assets/js/114.084b5002.js"><link rel="prefetch" href="/assets/js/115.dac88c6a.js"><link rel="prefetch" href="/assets/js/116.530f5c00.js"><link rel="prefetch" href="/assets/js/117.7ae33167.js"><link rel="prefetch" href="/assets/js/118.c7b327dd.js"><link rel="prefetch" href="/assets/js/119.dda61e1a.js"><link rel="prefetch" href="/assets/js/12.74aac40f.js"><link rel="prefetch" href="/assets/js/120.71227bec.js"><link rel="prefetch" href="/assets/js/121.9c0935b6.js"><link rel="prefetch" href="/assets/js/13.9eefaab9.js"><link rel="prefetch" href="/assets/js/14.8fa62269.js"><link rel="prefetch" href="/assets/js/15.29949cea.js"><link rel="prefetch" href="/assets/js/16.6a2648ca.js"><link rel="prefetch" href="/assets/js/17.d7056871.js"><link rel="prefetch" href="/assets/js/18.7cafa5e7.js"><link rel="prefetch" href="/assets/js/19.7d6f5c79.js"><link rel="prefetch" href="/assets/js/2.19110f2b.js"><link rel="prefetch" href="/assets/js/20.cbb74308.js"><link rel="prefetch" href="/assets/js/21.446bbd67.js"><link rel="prefetch" href="/assets/js/22.a2dcb4e1.js"><link rel="prefetch" href="/assets/js/23.85c3cf38.js"><link rel="prefetch" href="/assets/js/24.61674ebf.js"><link rel="prefetch" href="/assets/js/25.fd97ed99.js"><link rel="prefetch" href="/assets/js/26.ac8928b7.js"><link rel="prefetch" href="/assets/js/27.0fe0e83c.js"><link rel="prefetch" href="/assets/js/28.c14b5e15.js"><link rel="prefetch" href="/assets/js/29.57ad016d.js"><link rel="prefetch" href="/assets/js/3.5eb7d73d.js"><link rel="prefetch" href="/assets/js/30.cd11ba9a.js"><link rel="prefetch" href="/assets/js/31.b54bf627.js"><link rel="prefetch" href="/assets/js/32.4c135019.js"><link rel="prefetch" href="/assets/js/33.f4a8c444.js"><link rel="prefetch" href="/assets/js/34.c05070e8.js"><link rel="prefetch" href="/assets/js/35.9c400432.js"><link rel="prefetch" href="/assets/js/36.a3a174c9.js"><link rel="prefetch" href="/assets/js/37.c2250e3a.js"><link rel="prefetch" href="/assets/js/38.901ae51c.js"><link rel="prefetch" href="/assets/js/39.73b50ba8.js"><link rel="prefetch" href="/assets/js/4.df8f54f6.js"><link rel="prefetch" href="/assets/js/40.a7742900.js"><link rel="prefetch" href="/assets/js/41.9efd29f2.js"><link rel="prefetch" href="/assets/js/42.6d2c13d2.js"><link rel="prefetch" href="/assets/js/43.0f9c5a8e.js"><link rel="prefetch" href="/assets/js/44.e1411cd4.js"><link rel="prefetch" href="/assets/js/45.b1b410a6.js"><link rel="prefetch" href="/assets/js/46.4df784b3.js"><link rel="prefetch" href="/assets/js/47.32f82021.js"><link rel="prefetch" href="/assets/js/48.7aae92c3.js"><link rel="prefetch" href="/assets/js/49.3b6b29ed.js"><link rel="prefetch" href="/assets/js/5.49f66526.js"><link rel="prefetch" href="/assets/js/50.0de5c918.js"><link rel="prefetch" href="/assets/js/51.bc867a6f.js"><link rel="prefetch" href="/assets/js/52.9d56e772.js"><link rel="prefetch" href="/assets/js/53.ddbbdb99.js"><link rel="prefetch" href="/assets/js/54.895de962.js"><link rel="prefetch" href="/assets/js/55.23710010.js"><link rel="prefetch" href="/assets/js/56.053fbd45.js"><link rel="prefetch" href="/assets/js/57.f26c7e94.js"><link rel="prefetch" href="/assets/js/58.7aff3808.js"><link rel="prefetch" href="/assets/js/59.988d6b79.js"><link rel="prefetch" href="/assets/js/6.8acb4134.js"><link rel="prefetch" href="/assets/js/60.c3cbd582.js"><link rel="prefetch" href="/assets/js/61.3827f1cb.js"><link rel="prefetch" href="/assets/js/62.b03c94e9.js"><link rel="prefetch" href="/assets/js/63.8f0e86ac.js"><link rel="prefetch" href="/assets/js/64.4beb5196.js"><link rel="prefetch" href="/assets/js/65.35a4f8b0.js"><link rel="prefetch" href="/assets/js/66.f034ce8e.js"><link rel="prefetch" href="/assets/js/67.c96e9084.js"><link rel="prefetch" href="/assets/js/68.aa4619e7.js"><link rel="prefetch" href="/assets/js/69.5952d4b2.js"><link rel="prefetch" href="/assets/js/7.e84870c1.js"><link rel="prefetch" href="/assets/js/70.e59a81e5.js"><link rel="prefetch" href="/assets/js/72.8af335a9.js"><link rel="prefetch" href="/assets/js/73.b7195cfa.js"><link rel="prefetch" href="/assets/js/74.23abd102.js"><link rel="prefetch" href="/assets/js/75.bbab0550.js"><link rel="prefetch" href="/assets/js/76.2ddb70e2.js"><link rel="prefetch" href="/assets/js/77.fc503da6.js"><link rel="prefetch" href="/assets/js/78.afcb2d28.js"><link rel="prefetch" href="/assets/js/79.d5caa14e.js"><link rel="prefetch" href="/assets/js/8.21e39907.js"><link rel="prefetch" href="/assets/js/80.f397670f.js"><link rel="prefetch" href="/assets/js/81.490cf71c.js"><link rel="prefetch" href="/assets/js/82.2d64e9cc.js"><link rel="prefetch" href="/assets/js/83.1ecc4e42.js"><link rel="prefetch" href="/assets/js/84.614cc5c6.js"><link rel="prefetch" href="/assets/js/85.0bb5a59b.js"><link rel="prefetch" href="/assets/js/86.924b81a8.js"><link rel="prefetch" href="/assets/js/87.3d03f397.js"><link rel="prefetch" href="/assets/js/88.08aecf3b.js"><link rel="prefetch" href="/assets/js/89.b5d07a59.js"><link rel="prefetch" href="/assets/js/9.de8637ae.js"><link rel="prefetch" href="/assets/js/90.8cee085d.js"><link rel="prefetch" href="/assets/js/91.1310f20a.js"><link rel="prefetch" href="/assets/js/92.19b8b1fd.js"><link rel="prefetch" href="/assets/js/93.dfd3ef85.js"><link rel="prefetch" href="/assets/js/94.7da5aa29.js"><link rel="prefetch" href="/assets/js/95.f11a0b77.js"><link rel="prefetch" href="/assets/js/96.3af19be1.js"><link rel="prefetch" href="/assets/js/97.c8acc6e5.js"><link rel="prefetch" href="/assets/js/98.6bb421b8.js"><link rel="prefetch" href="/assets/js/99.58b0efb7.js">
+    <link rel="stylesheet" href="/assets/css/1.styles.64c025f6.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="content__default"><h1 id="systemd-进程管理"><a href="#systemd-进程管理" class="header-anchor">#</a> Systemd 进程管理</h1> <h2 id="systemd-介绍"><a href="#systemd-介绍" class="header-anchor">#</a> systemd 介绍</h2> <p>systemd是目前Linux系统上主要的系统守护进程管理工具，由于init一方面对于进程的管理是串行化的，容易出现阻塞情况，另一方面init也仅仅是执行启动脚本，并不能对服务本身进行更多的管理。所以从CentOS 7开始也由systemd取代了init作为默认的系统进程管理工具。</p> <p>systemd所管理的所有系统资源都称作Unit，通过systemd命令集可以方便的对这些Unit进行管理。比如systemctl、hostnamectl、timedatectl、localctl等命令，这些命令虽然改写了init时代用户的命令使用习惯（不再使用chkconfig、service等命令），但确实也提供了很大的便捷性。
+systemd 特点
+最新系统都采用systemd管理（RedHat7，CentOS7，Ubuntu15…）
+CentOS7 支持开机并行启动服务，显著提高开机启动效率
+CentOS7关机只关闭正在运行的服务，而CentOS6，全部都关闭一次。
+CentOS7服务的启动与停止不再使用脚本进行管理，也就是/etc/init.d下不在有脚本。
+CentOS7使用systemd解决原有模式缺陷，比如原有service不会关闭程序产生的子进程。
+systemd 语法
+systemctl [command]      [unit]（配置的应用名称）</p> <p>command可选项
+· start：启动指定的unit          systemctl start nginx
+· stop：关闭指定的unit           systemctl stop nginx
+· restart：重启指定unit          systemctl restart nginx
+· reload：重载指定unit           systemctl reload nginx
+· enable：系统开机时自动启动指定unit，前提是配置文件中有相关配置 systemctl enable nginx
+· disable：开机时不自动运行指定unit   systemctl disable nginx
+· status：查看指定unit当前运行状态 systemctl status nginx
+systemd 配置文件说明
+每一个 Unit 都需要有一个配置文件用于告知 systemd 对于服务的管理方式
+配置文件存放于 /usr/lib/systemd/system/，设置开机启动后会在 /etc/systemd/system 目录建立软链接文件
+每个Unit的配置文件配置默认后缀名为.service
+在 /usr/lib/systemd/system/ 目录中分为 system 和 user 两个目录，一般将开机不登陆就能运行的程序存在系统服务里，也就是 /usr/lib/systemd/system
+配置文件使用方括号分成了多个部分，并且区分大小写
+systemd 相关文件
+实战一
+源码编译安装nginx 实现systemd管理控制
+安装nginx编译环境
+yum  -y install gcc gcc-c++    openssl-devel pcre-devel gd-devel  iproute net-tools telnet wget curl
+wget http://nginx.org/download/nginx-1.15.5.tar.gz
+tar zxf nginx-1.15.5.tar.gz &amp;&amp;
+cd nginx-1.15.5
+./configure --prefix=/usr/local/nginx <br>
+--with-http_ssl_module <br>
+--with-http_stub_status_module
+make -j 4 &amp;&amp; make install
+通用方式启动nginx</p> <p>/usr/local/nginx/sbin/nginx  #启动
+/usr/local/nginx/sbin/nginx  -s reload  #重启
+/usr/local/nginx/sbin/nginx -s   quit   #关闭nginx
+systemd 管理控制启动模式</p> <p>vim      /usr/lib/systemd/system/nginx.service</p> <p>[Unit]
+Description=nginx
+After=network.target</p> <p>[Service]
+Type=forking
+ExecStart=/usr/local/nginx/sbin/nginx
+ExecReload=/usr/local/nginx/sbin/nginx -s reload
+ExecStop=/usr/local/nginx/sbin/nginx -s quit
+PrivateTmp=true</p> <p>[Install]
+WantedBy=multi-user.target
+参数详解</p> <p>systemctl restart nginx
+systemctl enable  nginx
+systemctl stop  nginx
+图片</p> <p>实战二
+二进制安装tomcat 实现systemd管理控制</p> <p>安装java环境，我已经将安装包打包到我得服务器上，也可以去官网下载</p> <p>wget  120.78.77.38/file/jdk-8u231-linux-x64.rpm
+wget  120.78.77.38/file/apache-tomcat-9.0.27.tar.gz
+图片
+rpm -ivh  jdk-8u231-linux-x64.rpm    #rpm直接安装jdk
+配置环境变量</p> <p>vim    /etc/profile</p> <p>export JAVA_HOME=/usr/java/jdk1.8.0_231-amd64
+export JRE_HOME=${JAVA_HOME}/jre<br>
+export CLASSPATH=.😒{JAVA_HOME}/lib:${JRE_HOME}/lib<br>
+export JAVA_PATH=${JAVA_HOME}/bin:${JRE_HOME}/bin
+export  PATH=${JAVA_HOME}/bin:$PATH
+source   /etc/profile
+java -version   #检测环境
+图片</p> <p>安装tomcat</p> <p>tar  -xf  apache-tomcat-9.0.27<br>
+mv  apache-tomcat-9.0.27  /usr/local/tomcat
+启动tomcat
+sh    /usr/local/tomcat/bin/startup.sh   #启动
+sh   /usr/local/tomcat/bin/shutdown.sh #关闭
+systemd管理控制启动</p> <p>vim      /usr/lib/systemd/system/tomcat.service</p> <p>[Unit]
+Description=tomcat server
+Wants=network-online.target
+After=network.target</p> <p>[Service]
+Type=forking
+Environment=&quot;JAVA_HOME=/usr/java/jdk1.8.0_231-amd64&quot;
+Environment=&quot;PATH=$JAVA_HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin&quot;
+Environment=&quot;CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar&quot;
+ExecStart=/usr/local/tomcat/bin/startup.sh
+ExecStop=/usr/local/tomcat/bin/shutdown.sh
+Restart=on-failure</p> <p>[Install]
+WantedBy=multi-user.target
+systemctl restart tomcat  #启动
+systemctl enable tomcat   #配置自启
+systemctl stop  tomcat   #停止服务
+systemctl status  tomcat  #检测状态
+以上两个实战nginx和tomcat程序中自带了启动停止脚本，如果启动得程序没有自带脚本则需要自己编写一个类似得启动停止脚本
+实战三
+部署jar程序 实现systemd管理控制
+实际得项目中会有一些jar程序需要启动 如果手动启动则需要输入一大串命令 停止则需要杀掉进程来停止，很麻烦
+举一个实际启动得例子切换到jar目录下
+java -jar decode.jar -Dconfig=/usr/local/abc/application.properties
+编写一个启动脚本</p> <p>vim  demo.sh</p> <p>#!/bin/bash</p> <h1 id=""><a href="#" class="header-anchor">#</a></h1> <p>source /etc/profile
+jarName=&quot;abc-web.jar&quot;
+workDir=&quot;/usr/local/abc&quot;</p> <p>start(){
+cd ${workDir} &amp;&amp; java -jar ${jarName} --spring.profiles.active=prod --server.port=9630 &gt;uams.log 2&gt;&amp;1 &amp;
+}</p> <p>stop(){
+ps -ef | grep -qP &quot;(?&lt;=-jar)\s+${jarName}&quot; &amp;&amp; kill $(ps -ef | grep -P &quot;(?&lt;=-jar)\s+${jarName}&quot; | awk '{print $2}')
+}</p> <p>case $1 in
+start)
+start
+;;
+stop)
+stop
+;;
+restart)
+stop
+start
+;;
+esac
+编写 systemd 配置文件
+vim  /usr/lib/systemd/system/abc.service</p> <p>[Unit]
+Description=uams server
+Wants=network-online.target
+After=network.target</p> <p>[Service]
+Type=forking
+WorkingDirectory=/usr/local/abc/
+ExecStart=/bin/bash uams.sh start
+ExecStop=/bin/bash uams.sh stop
+ExecReload=/bin/bash uams.sh restart
+Restart=on-failure</p> <p>[Install]
+WantedBy=multi-user.target
+启动abc服务</p> <p>systemctl restart abc  #启动
+systemctl enable abc   #配置自启
+systemctl stop  abc   #停止服务
+systemctl status  abc  #检测状态</p></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.ea672127.js" defer></script><script src="/assets/js/10.ddb7db68.js" defer></script><script src="/assets/js/71.43e6ac9d.js" defer></script>
+  </body>
+</html>

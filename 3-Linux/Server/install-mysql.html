@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>安装MySQL8 | OctocatHub</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/favicon.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/octicons/build/font/octicons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/octicons/build/build.css">
+    <link rel="apple-touch-icon" href="/favicon.png">
+    <meta name="description" content="开源聚合平台">
+    <meta name="theme-color" content="#00ABE9">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="msapplication-TileImage" content="/favicon.png">
+    <meta name="msapplication-TileColor" content="#06BDFF">
+    
+    <link rel="preload" href="/assets/css/1.styles.64c025f6.css" as="style"><link rel="preload" href="/assets/js/app.ea672127.js" as="script"><link rel="preload" href="/assets/js/10.ddb7db68.js" as="script"><link rel="preload" href="/assets/js/61.3827f1cb.js" as="script"><link rel="prefetch" href="/assets/js/100.379b1944.js"><link rel="prefetch" href="/assets/js/101.164e8edd.js"><link rel="prefetch" href="/assets/js/102.35fe97db.js"><link rel="prefetch" href="/assets/js/103.a0004e8c.js"><link rel="prefetch" href="/assets/js/104.8340a366.js"><link rel="prefetch" href="/assets/js/105.f8f077ac.js"><link rel="prefetch" href="/assets/js/106.0b10877d.js"><link rel="prefetch" href="/assets/js/107.e1d2d9ef.js"><link rel="prefetch" href="/assets/js/108.9ca7c4c6.js"><link rel="prefetch" href="/assets/js/109.3dc90fa6.js"><link rel="prefetch" href="/assets/js/11.9e7b35b6.js"><link rel="prefetch" href="/assets/js/110.a2cd6020.js"><link rel="prefetch" href="/assets/js/111.8808c1b7.js"><link rel="prefetch" href="/assets/js/112.eeff0106.js"><link rel="prefetch" href="/assets/js/113.53ed352d.js"><link rel="prefetch" href="/assets/js/114.084b5002.js"><link rel="prefetch" href="/assets/js/115.dac88c6a.js"><link rel="prefetch" href="/assets/js/116.530f5c00.js"><link rel="prefetch" href="/assets/js/117.7ae33167.js"><link rel="prefetch" href="/assets/js/118.c7b327dd.js"><link rel="prefetch" href="/assets/js/119.dda61e1a.js"><link rel="prefetch" href="/assets/js/12.74aac40f.js"><link rel="prefetch" href="/assets/js/120.71227bec.js"><link rel="prefetch" href="/assets/js/121.9c0935b6.js"><link rel="prefetch" href="/assets/js/13.9eefaab9.js"><link rel="prefetch" href="/assets/js/14.8fa62269.js"><link rel="prefetch" href="/assets/js/15.29949cea.js"><link rel="prefetch" href="/assets/js/16.6a2648ca.js"><link rel="prefetch" href="/assets/js/17.d7056871.js"><link rel="prefetch" href="/assets/js/18.7cafa5e7.js"><link rel="prefetch" href="/assets/js/19.7d6f5c79.js"><link rel="prefetch" href="/assets/js/2.19110f2b.js"><link rel="prefetch" href="/assets/js/20.cbb74308.js"><link rel="prefetch" href="/assets/js/21.446bbd67.js"><link rel="prefetch" href="/assets/js/22.a2dcb4e1.js"><link rel="prefetch" href="/assets/js/23.85c3cf38.js"><link rel="prefetch" href="/assets/js/24.61674ebf.js"><link rel="prefetch" href="/assets/js/25.fd97ed99.js"><link rel="prefetch" href="/assets/js/26.ac8928b7.js"><link rel="prefetch" href="/assets/js/27.0fe0e83c.js"><link rel="prefetch" href="/assets/js/28.c14b5e15.js"><link rel="prefetch" href="/assets/js/29.57ad016d.js"><link rel="prefetch" href="/assets/js/3.5eb7d73d.js"><link rel="prefetch" href="/assets/js/30.cd11ba9a.js"><link rel="prefetch" href="/assets/js/31.b54bf627.js"><link rel="prefetch" href="/assets/js/32.4c135019.js"><link rel="prefetch" href="/assets/js/33.f4a8c444.js"><link rel="prefetch" href="/assets/js/34.c05070e8.js"><link rel="prefetch" href="/assets/js/35.9c400432.js"><link rel="prefetch" href="/assets/js/36.a3a174c9.js"><link rel="prefetch" href="/assets/js/37.c2250e3a.js"><link rel="prefetch" href="/assets/js/38.901ae51c.js"><link rel="prefetch" href="/assets/js/39.73b50ba8.js"><link rel="prefetch" href="/assets/js/4.df8f54f6.js"><link rel="prefetch" href="/assets/js/40.a7742900.js"><link rel="prefetch" href="/assets/js/41.9efd29f2.js"><link rel="prefetch" href="/assets/js/42.6d2c13d2.js"><link rel="prefetch" href="/assets/js/43.0f9c5a8e.js"><link rel="prefetch" href="/assets/js/44.e1411cd4.js"><link rel="prefetch" href="/assets/js/45.b1b410a6.js"><link rel="prefetch" href="/assets/js/46.4df784b3.js"><link rel="prefetch" href="/assets/js/47.32f82021.js"><link rel="prefetch" href="/assets/js/48.7aae92c3.js"><link rel="prefetch" href="/assets/js/49.3b6b29ed.js"><link rel="prefetch" href="/assets/js/5.49f66526.js"><link rel="prefetch" href="/assets/js/50.0de5c918.js"><link rel="prefetch" href="/assets/js/51.bc867a6f.js"><link rel="prefetch" href="/assets/js/52.9d56e772.js"><link rel="prefetch" href="/assets/js/53.ddbbdb99.js"><link rel="prefetch" href="/assets/js/54.895de962.js"><link rel="prefetch" href="/assets/js/55.23710010.js"><link rel="prefetch" href="/assets/js/56.053fbd45.js"><link rel="prefetch" href="/assets/js/57.f26c7e94.js"><link rel="prefetch" href="/assets/js/58.7aff3808.js"><link rel="prefetch" href="/assets/js/59.988d6b79.js"><link rel="prefetch" href="/assets/js/6.8acb4134.js"><link rel="prefetch" href="/assets/js/60.c3cbd582.js"><link rel="prefetch" href="/assets/js/62.b03c94e9.js"><link rel="prefetch" href="/assets/js/63.8f0e86ac.js"><link rel="prefetch" href="/assets/js/64.4beb5196.js"><link rel="prefetch" href="/assets/js/65.35a4f8b0.js"><link rel="prefetch" href="/assets/js/66.f034ce8e.js"><link rel="prefetch" href="/assets/js/67.c96e9084.js"><link rel="prefetch" href="/assets/js/68.aa4619e7.js"><link rel="prefetch" href="/assets/js/69.5952d4b2.js"><link rel="prefetch" href="/assets/js/7.e84870c1.js"><link rel="prefetch" href="/assets/js/70.e59a81e5.js"><link rel="prefetch" href="/assets/js/71.43e6ac9d.js"><link rel="prefetch" href="/assets/js/72.8af335a9.js"><link rel="prefetch" href="/assets/js/73.b7195cfa.js"><link rel="prefetch" href="/assets/js/74.23abd102.js"><link rel="prefetch" href="/assets/js/75.bbab0550.js"><link rel="prefetch" href="/assets/js/76.2ddb70e2.js"><link rel="prefetch" href="/assets/js/77.fc503da6.js"><link rel="prefetch" href="/assets/js/78.afcb2d28.js"><link rel="prefetch" href="/assets/js/79.d5caa14e.js"><link rel="prefetch" href="/assets/js/8.21e39907.js"><link rel="prefetch" href="/assets/js/80.f397670f.js"><link rel="prefetch" href="/assets/js/81.490cf71c.js"><link rel="prefetch" href="/assets/js/82.2d64e9cc.js"><link rel="prefetch" href="/assets/js/83.1ecc4e42.js"><link rel="prefetch" href="/assets/js/84.614cc5c6.js"><link rel="prefetch" href="/assets/js/85.0bb5a59b.js"><link rel="prefetch" href="/assets/js/86.924b81a8.js"><link rel="prefetch" href="/assets/js/87.3d03f397.js"><link rel="prefetch" href="/assets/js/88.08aecf3b.js"><link rel="prefetch" href="/assets/js/89.b5d07a59.js"><link rel="prefetch" href="/assets/js/9.de8637ae.js"><link rel="prefetch" href="/assets/js/90.8cee085d.js"><link rel="prefetch" href="/assets/js/91.1310f20a.js"><link rel="prefetch" href="/assets/js/92.19b8b1fd.js"><link rel="prefetch" href="/assets/js/93.dfd3ef85.js"><link rel="prefetch" href="/assets/js/94.7da5aa29.js"><link rel="prefetch" href="/assets/js/95.f11a0b77.js"><link rel="prefetch" href="/assets/js/96.3af19be1.js"><link rel="prefetch" href="/assets/js/97.c8acc6e5.js"><link rel="prefetch" href="/assets/js/98.6bb421b8.js"><link rel="prefetch" href="/assets/js/99.58b0efb7.js">
+    <link rel="stylesheet" href="/assets/css/1.styles.64c025f6.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="content__default"><h1 id="安装mysql8"><a href="#安装mysql8" class="header-anchor">#</a> 安装MySQL8</h1> <h2 id="安装mysql软件包"><a href="#安装mysql软件包" class="header-anchor">#</a> 安装MySQL软件包</h2> <p>下载并安装MySQL官方的 Yum Repository,Mysql版本8.0.20</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">wget</span> -i -c http://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm
+</code></pre></div><p>下载后直接yum安装</p> <div class="language-bash extra-class"><pre class="language-bash"><code>yum -y <span class="token function">install</span> mysql80-community-release-el7-3.noarch.rpm
+</code></pre></div><p>安装MySQL服务器</p> <div class="language-bash extra-class"><pre class="language-bash"><code>yum -y <span class="token function">install</span> mysql-community-server
+
+<span class="token punctuation">[</span>root@CentOS Linux<span class="token punctuation">]</span><span class="token comment"># yum -y install mysql-community-server</span>
+Loaded plugins: fastestmirror, langpacks
+Loading mirror speeds from cached hostfile
+ * base: mirror.lzu.edu.cn
+ * extras: mirror.lzu.edu.cn
+ * updates: mirror.lzu.edu.cn
+mysql-connectors-community            <span class="token operator">|</span> <span class="token number">2.5</span> kB 00:00:00  
+mysql-tools-community             <span class="token operator">|</span> <span class="token number">2.5</span> kB 00:00:00  
+mysql80-community              <span class="token operator">|</span> <span class="token number">2.5</span> kB 00:00:00  
+<span class="token punctuation">(</span><span class="token number">1</span>/3<span class="token punctuation">)</span>: mysql-connectors-community/x86_64/primary_db      <span class="token operator">|</span> <span class="token number">57</span> kB 00:00:00  
+mysql-tools-community/x86_64/p FAILED           B 00:51:07 ETA 
+http://repo.mysql.com/yum/mysql-tools-community/el/7/x86_64/repodata/12bd1e8730cd532791529877bf5e7babbbb02879-primary.sqlite.bz2: <span class="token punctuation">[</span>Errno <span class="token number">12</span><span class="token punctuation">]</span> Timeout on http://repo.mysql.com/yum/mysql-tools-community/el/7/x86_64/repodata/12bd1e8730cd532791529877bf5e7babbbb02879-primary.sqlite.bz2: <span class="token punctuation">(</span><span class="token number">28</span>, <span class="token string">'Operation too slow. Less than 1000 bytes/sec transferred the last 30 seconds'</span><span class="token punctuation">)</span>
+Trying other mirror.
+<span class="token punctuation">(</span><span class="token number">2</span>/3<span class="token punctuation">)</span>: mysql-tools-community/x86_64/primary_db       <span class="token operator">|</span> <span class="token number">72</span> kB 00:00:00  
+mysql80-community/x86_64/prima FAILED           B 00:00:15 ETA 
+http://repo.mysql.com/yum/mysql-8.0-community/el/7/x86_64/repodata/833c637b3989c2dd5a079a045177d2f1c96e9c1e-primary.sqlite.bz2: <span class="token punctuation">[</span>Errno <span class="token number">12</span><span class="token punctuation">]</span> Timeout on http://repo.mysql.com/yum/mysql-8.0-community/el/7/x86_64/repodata/833c637b3989c2dd5a079a045177d2f1c96e9c1e-primary.sqlite.bz2: <span class="token punctuation">(</span><span class="token number">28</span>, <span class="token string">'Operation too slow. Less than 1000 bytes/sec transferred the last 30 seconds'</span><span class="token punctuation">)</span>
+Trying other mirror.
+<span class="token punctuation">(</span><span class="token number">3</span>/3<span class="token punctuation">)</span>: mysql80-community/x86_64/primary_db        <span class="token operator">|</span> <span class="token number">107</span> kB 00:00:00  
+Resolving Dependencies
+--<span class="token operator">&gt;</span> Running transaction check
+---<span class="token operator">&gt;</span> Package mysql-community-server.x86_64 <span class="token number">0</span>:8.0.20-1.el7 will be installed
+--<span class="token operator">&gt;</span> Processing Dependency: mysql-community-common<span class="token punctuation">(</span>x86-64<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">8.0</span>.20-1.el7 <span class="token keyword">for</span> package: mysql-community-server-8.0.20-1.el7.x86_64
+--<span class="token operator">&gt;</span> Processing Dependency: mysql-community-client<span class="token punctuation">(</span>x86-64<span class="token punctuation">)</span> <span class="token operator">&gt;</span><span class="token operator">=</span> <span class="token number">8.0</span>.11 <span class="token keyword">for</span> package: mysql-community-server-8.0.20-1.el7.x86_64
+--<span class="token operator">&gt;</span> Running transaction check
+---<span class="token operator">&gt;</span> Package mysql-community-client.x86_64 <span class="token number">0</span>:8.0.20-1.el7 will be installed
+--<span class="token operator">&gt;</span> Processing Dependency: mysql-community-libs<span class="token punctuation">(</span>x86-64<span class="token punctuation">)</span> <span class="token operator">&gt;</span><span class="token operator">=</span> <span class="token number">8.0</span>.11 <span class="token keyword">for</span> package: mysql-community-client-8.0.20-1.el7.x86_64
+---<span class="token operator">&gt;</span> Package mysql-community-common.x86_64 <span class="token number">0</span>:8.0.20-1.el7 will be installed
+--<span class="token operator">&gt;</span> Running transaction check
+---<span class="token operator">&gt;</span> Package mariadb-libs.x86_64 <span class="token number">1</span>:5.5.65-1.el7 will be obsoleted
+--<span class="token operator">&gt;</span> Processing Dependency: libmysqlclient.so.18<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">(</span>64bit<span class="token punctuation">)</span> <span class="token keyword">for</span> package: <span class="token number">2</span>:postfix-2.10.1-9.el7.x86_64
+--<span class="token operator">&gt;</span> Processing Dependency: libmysqlclient.so.18<span class="token punctuation">(</span>libmysqlclient_18<span class="token punctuation">)</span><span class="token punctuation">(</span>64bit<span class="token punctuation">)</span> <span class="token keyword">for</span> package: <span class="token number">2</span>:postfix-2.10.1-9.el7.x86_64
+---<span class="token operator">&gt;</span> Package mysql-community-libs.x86_64 <span class="token number">0</span>:8.0.20-1.el7 will be obsoleting
+--<span class="token operator">&gt;</span> Running transaction check
+---<span class="token operator">&gt;</span> Package mysql-community-libs-compat.x86_64 <span class="token number">0</span>:8.0.20-1.el7 will be obsoleting
+--<span class="token operator">&gt;</span> Finished Dependency Resolution
+  
+Dependencies Resolved
+  
+<span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">=</span>
+ Package       Arch  Version    Repository    Size
+<span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">=</span>
+Installing:
+ mysql-community-libs    x86_64  <span class="token number">8.0</span>.20-1.el7  mysql80-community  <span class="token number">4.5</span> M
+  replacing mariadb-libs.x86_64 <span class="token number">1</span>:5.5.65-1.el7
+ mysql-community-libs-compat  x86_64  <span class="token number">8.0</span>.20-1.el7  mysql80-community  <span class="token number">1.2</span> M
+  replacing mariadb-libs.x86_64 <span class="token number">1</span>:5.5.65-1.el7
+ mysql-community-server   x86_64  <span class="token number">8.0</span>.20-1.el7  mysql80-community  <span class="token number">488</span> M
+Installing <span class="token keyword">for</span> dependencies:
+ mysql-community-client   x86_64  <span class="token number">8.0</span>.20-1.el7  mysql80-community  <span class="token number">47</span> M
+ mysql-community-common   x86_64  <span class="token number">8.0</span>.20-1.el7  mysql80-community  <span class="token number">609</span> k
+  
+Transaction Summary
+<span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">=</span>
+Install <span class="token number">3</span> Packages <span class="token punctuation">(</span>+2 Dependent packages<span class="token punctuation">)</span>
+  
+Total download size: <span class="token number">541</span> M
+Is this ok <span class="token punctuation">[</span>y/d/N<span class="token punctuation">]</span>: y
+Downloading packages:
+warning: /var/cache/yum/x86_64/7/mysql80-community/packages/mysql-community-common-8.0.20-1.el7.x86_64.rpm: Header V3 DSA/SHA1 Signature, key ID 5072e1f5: NOKEY
+Public key <span class="token keyword">for</span> mysql-community-common-8.0.20-1.el7.x86_64.rpm is not installed
+<span class="token punctuation">(</span><span class="token number">1</span>/5<span class="token punctuation">)</span>: mysql-community-common-8.0.20-1.el7.x86_64.rpm     <span class="token operator">|</span> <span class="token number">609</span> kB 00:00:00  
+<span class="token punctuation">(</span><span class="token number">2</span>/5<span class="token punctuation">)</span>: mysql-community-libs-8.0.20-1.el7.x86_64.rpm      <span class="token operator">|</span> <span class="token number">4.5</span> MB 00:00:13  
+<span class="token punctuation">(</span><span class="token number">3</span>/5<span class="token punctuation">)</span>: mysql-community-libs-compat-8.0.20-1.el7.x86_64.rpm    <span class="token operator">|</span> <span class="token number">1.2</span> MB 00:00:04  
+mysql-community-client-8.0.20- FAILED           B 00:22:23 ETA 
+http://repo.mysql.com/yum/mysql-8.0-community/el/7/x86_64/mysql-community-client-8.0.20-1.el7.x86_64.rpm: <span class="token punctuation">[</span>Errno <span class="token number">12</span><span class="token punctuation">]</span> Timeout on http://repo.mysql.com/yum/mysql-8.0-community/el/7/x86_64/mysql-community-client-8.0.20-1.el7.x86_64.rpm: <span class="token punctuation">(</span><span class="token number">28</span>, <span class="token string">'Operation too slow. Less than 1000 bytes/sec transferred the last 30 seconds'</span><span class="token punctuation">)</span>
+Trying other mirror.
+<span class="token punctuation">(</span><span class="token number">4</span>/5<span class="token punctuation">)</span>: mysql-community-server-8.0.20-1.el7.x86_64.rpm     <span class="token operator">|</span> <span class="token number">488</span> MB 00:22:18  
+<span class="token punctuation">(</span><span class="token number">5</span>/5<span class="token punctuation">)</span>: mysql-community-client-8.0.20-1.el7.x86_64.rpm     <span class="token operator">|</span> <span class="token number">47</span> MB 00:01:57  
+-----------------------------------------------------------------------------------------------
+Total               <span class="token number">376</span> kB/s <span class="token operator">|</span> <span class="token number">541</span> MB 00:24:34  
+Retrieving key from file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql
+Importing GPG key 0x5072E1F5:
+ Userid  <span class="token builtin class-name">:</span> <span class="token string">&quot;MySQL Release Engineering &lt;mysql-build@oss.oracle.com&gt;&quot;</span>
+ Fingerprint: a4a9 <span class="token number">4068</span> 76fc bd3c <span class="token number">4567</span> 70c8 8c71 8d3b <span class="token number">5072</span> e1f5
+ Package <span class="token builtin class-name">:</span> mysql80-community-release-el7-3.noarch <span class="token punctuation">(</span>installed<span class="token punctuation">)</span>
+ From  <span class="token builtin class-name">:</span> /etc/pki/rpm-gpg/RPM-GPG-KEY-mysql
+Is this ok <span class="token punctuation">[</span>y/N<span class="token punctuation">]</span>: y 
+Running transaction check
+Running transaction <span class="token builtin class-name">test</span>
+Transaction <span class="token builtin class-name">test</span> succeeded
+Running transaction
+Warning: RPMDB altered outside of yum.
+ Installing <span class="token builtin class-name">:</span> mysql-community-common-8.0.20-1.el7.x86_64         <span class="token number">1</span>/6 
+ Installing <span class="token builtin class-name">:</span> mysql-community-libs-8.0.20-1.el7.x86_64         <span class="token number">2</span>/6 
+ Installing <span class="token builtin class-name">:</span> mysql-community-client-8.0.20-1.el7.x86_64         <span class="token number">3</span>/6 
+ Installing <span class="token builtin class-name">:</span> mysql-community-server-8.0.20-1.el7.x86_64         <span class="token number">4</span>/6 
+ Installing <span class="token builtin class-name">:</span> mysql-community-libs-compat-8.0.20-1.el7.x86_64        <span class="token number">5</span>/6 
+ Erasing <span class="token builtin class-name">:</span> <span class="token number">1</span>:mariadb-libs-5.5.65-1.el7.x86_64           <span class="token number">6</span>/6 
+ Verifying <span class="token builtin class-name">:</span> mysql-community-libs-compat-8.0.20-1.el7.x86_64        <span class="token number">1</span>/6 
+ Verifying <span class="token builtin class-name">:</span> mysql-community-common-8.0.20-1.el7.x86_64         <span class="token number">2</span>/6 
+ Verifying <span class="token builtin class-name">:</span> mysql-community-server-8.0.20-1.el7.x86_64         <span class="token number">3</span>/6 
+ Verifying <span class="token builtin class-name">:</span> mysql-community-client-8.0.20-1.el7.x86_64         <span class="token number">4</span>/6 
+ Verifying <span class="token builtin class-name">:</span> mysql-community-libs-8.0.20-1.el7.x86_64         <span class="token number">5</span>/6 
+ Verifying <span class="token builtin class-name">:</span> <span class="token number">1</span>:mariadb-libs-5.5.65-1.el7.x86_64           <span class="token number">6</span>/6 
+  
+Installed:
+ mysql-community-libs.x86_64 <span class="token number">0</span>:8.0.20-1.el7             
+ mysql-community-libs-compat.x86_64 <span class="token number">0</span>:8.0.20-1.el7           
+ mysql-community-server.x86_64 <span class="token number">0</span>:8.0.20-1.el7             
+  
+Dependency Installed:
+ mysql-community-client.x86_64 <span class="token number">0</span>:8.0.20-1.el7 mysql-community-common.x86_64 <span class="token number">0</span>:8.0.20-1.el7 
+  
+Replaced:
+ mariadb-libs.x86_64 <span class="token number">1</span>:5.5.65-1.el7 
+  
+Complete<span class="token operator">!</span>
+</code></pre></div><h2 id="配置mysql数据库"><a href="#配置mysql数据库" class="header-anchor">#</a> 配置mysql数据库</h2> <p>启动mysql</p> <div class="language-bash extra-class"><pre class="language-bash"><code>systemctl start mysqld.service
+</code></pre></div><p>查看mysql运行状态</p> <div class="language-bash extra-class"><pre class="language-bash"><code>systemctl status mysqld.service
+
+● mysqld.service - MySQL Server
+ Loaded: loaded <span class="token punctuation">(</span>/usr/lib/systemd/system/mysqld.service<span class="token punctuation">;</span> enabled<span class="token punctuation">;</span> vendor preset: disabled<span class="token punctuation">)</span>
+ Active: active <span class="token punctuation">(</span>running<span class="token punctuation">)</span> since Wed <span class="token number">2020</span>-05-13 <span class="token number">23</span>:57:41 HKT<span class="token punctuation">;</span> 18s ago
+  Docs: man:mysqld<span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span>
+   http://dev.mysql.com/doc/refman/en/using-systemd.html
+ Process: <span class="token number">9563</span> <span class="token assign-left variable">ExecStartPre</span><span class="token operator">=</span>/usr/bin/mysqld_pre_systemd <span class="token punctuation">(</span>code<span class="token operator">=</span>exited, <span class="token assign-left variable">status</span><span class="token operator">=</span><span class="token number">0</span>/SUCCESS<span class="token punctuation">)</span>
+ Main PID: <span class="token number">9649</span> <span class="token punctuation">(</span>mysqld<span class="token punctuation">)</span>
+ Status: <span class="token string">&quot;Server is operational&quot;</span>
+ Tasks: <span class="token number">39</span>
+ CGroup: /system.slice/mysqld.service
+   └─9649 /usr/sbin/mysqld
+  
+May <span class="token number">13</span> <span class="token number">23</span>:57:34 CentOS.highning.com systemd<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>: Starting MySQL Server<span class="token punctuation">..</span>.
+May <span class="token number">13</span> <span class="token number">23</span>:57:41 CentOS.highning.com systemd<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>: Started MySQL Server.
+</code></pre></div><p>此时你并不能登陆mysql，虽然已经有了mysql的默认用户名。</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">grep</span> <span class="token string">&quot;password&quot;</span> /var/log/mysqld.log
+
+<span class="token number">2021</span>-07-18T22:51:37.815353Z <span class="token number">6</span> <span class="token punctuation">[</span>Note<span class="token punctuation">]</span> <span class="token punctuation">[</span>MY-010454<span class="token punctuation">]</span> <span class="token punctuation">[</span>Server<span class="token punctuation">]</span> A temporary password is generated <span class="token keyword">for</span> root@localhost: <span class="token number">9</span>*CxxNRWHqmL
+</code></pre></div><p>进入数据库：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>mysql -u root -p  
+</code></pre></div><p>输入上面查询到的密码，但此时不能操作数据库，必须修改密码之后才能操作数据库。</p> <div class="language-bash extra-class"><pre class="language-bash"><code>ALTER <span class="token environment constant">USER</span> <span class="token string">'root'</span>@<span class="token string">'localhost'</span> IDENTIFIED BY <span class="token string">'new password'</span><span class="token punctuation">;</span>
+</code></pre></div><p>其中 <code>new password</code>替换成你要设置的密码，注意：密码设置必须要大小写字母+数字+特殊符号(,/';:等),不然会因为mysql的密码强度策略而导致重置密码不成功。</p> <blockquote><p>当然这个策略是可以修改的.</p></blockquote> <h2 id="开启mysql的远程访问"><a href="#开启mysql的远程访问" class="header-anchor">#</a> 开启mysql的远程访问</h2> <p>执行以下命令开启远程访问限制（注意：下面命令开启的IP是 192.168.0.1，如要开启所有的，用%代替IP）,mysql8.0和以前的版本不一样，不能用原来的命令同时授权和创建用户：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>create user <span class="token string">'root'</span>@<span class="token string">'192.168.0.1'</span> identified by <span class="token string">'password'</span><span class="token punctuation">;</span>
+grant all privileges on *.* to <span class="token string">'root'</span>@<span class="token string">'192.168.0.1'</span> with grant option<span class="token punctuation">;</span>
+</code></pre></div><p>再输入以下两行命令</p> <div class="language-bash extra-class"><pre class="language-bash"><code>flush privileges<span class="token punctuation">;</span>
+<span class="token builtin class-name">exit</span>
+</code></pre></div><h2 id="为firewalld添加开放端口"><a href="#为firewalld添加开放端口" class="header-anchor">#</a> 为firewalld添加开放端口</h2> <p>添加mysql端口3306和Tomcat端口8080</p> <div class="language-bash extra-class"><pre class="language-bash"><code>firewall-cmd --zone<span class="token operator">=</span>public --add-port<span class="token operator">=</span><span class="token number">3306</span>/tcp --permanent
+ 
+firewall-cmd --zone<span class="token operator">=</span>public --add-port<span class="token operator">=</span><span class="token number">8080</span>/tcp --permanent
+</code></pre></div><p>重新载入</p> <div class="language-bash extra-class"><pre class="language-bash"><code>firewall-cmd --reload
+</code></pre></div><p>最后用mysql命令登录</p> <div class="language-bash extra-class"><pre class="language-bash"><code>mysql -h <span class="token number">192.168</span>.88.88 -P <span class="token number">3306</span> -u root -p
+Enter password: ********
+Welcome to the MySQL monitor. Commands end with <span class="token punctuation">;</span> or <span class="token punctuation">\</span>g.
+Your MySQL connection <span class="token function">id</span> is <span class="token number">10</span>
+Server version: <span class="token number">8.0</span>.20 MySQL Community Server - GPL
+  
+Copyright <span class="token punctuation">(</span>c<span class="token punctuation">)</span> <span class="token number">2000</span>, <span class="token number">2020</span>, Oracle and/or its affiliates. All rights reserved.
+  
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+  
+Type <span class="token string">'help;'</span> or <span class="token string">'\h'</span> <span class="token keyword">for</span> help. Type <span class="token string">'<span class="token entity" title="\c">\c</span>'</span> to <span class="token function">clear</span> the current input statement.
+  
+mysql<span class="token operator">&gt;</span> show databases<span class="token punctuation">;</span>
++--------------------+
+<span class="token operator">|</span> Database   <span class="token operator">|</span>
++--------------------+
+<span class="token operator">|</span> information_schema <span class="token operator">|</span>
+<span class="token operator">|</span> mysql    <span class="token operator">|</span>
+<span class="token operator">|</span> performance_schema <span class="token operator">|</span>
+<span class="token operator">|</span> sys    <span class="token operator">|</span>
++--------------------+
+<span class="token number">4</span> rows <span class="token keyword">in</span> <span class="token builtin class-name">set</span> <span class="token punctuation">(</span><span class="token number">0.00</span> sec<span class="token punctuation">)</span>
+  
+</code></pre></div></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.ea672127.js" defer></script><script src="/assets/js/10.ddb7db68.js" defer></script><script src="/assets/js/61.3827f1cb.js" defer></script>
+  </body>
+</html>
