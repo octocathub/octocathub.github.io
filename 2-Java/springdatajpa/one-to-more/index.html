@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>使用springdatajpa-一对多操作 | OctocatHub</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/favicon.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/octicons/build/font/octicons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/octicons/build/build.css">
+    <link rel="apple-touch-icon" href="/favicon.png">
+    <meta name="description" content="开源聚合平台">
+    <meta name="theme-color" content="#00ABE9">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="msapplication-TileImage" content="/favicon.png">
+    <meta name="msapplication-TileColor" content="#06BDFF">
+    
+    <link rel="preload" href="/assets/css/0.styles.8a26cf74.css" as="style"><link rel="preload" href="/assets/js/app.5dedda2e.js" as="script"><link rel="preload" href="/assets/js/5.cf21ebe8.js" as="script"><link rel="preload" href="/assets/js/53.ea693f17.js" as="script"><link rel="preload" href="/assets/js/8.6ede2873.js" as="script"><link rel="prefetch" href="/assets/js/10.5ae6459c.js"><link rel="prefetch" href="/assets/js/100.3e203520.js"><link rel="prefetch" href="/assets/js/101.0c130ed9.js"><link rel="prefetch" href="/assets/js/102.ea30d825.js"><link rel="prefetch" href="/assets/js/103.d3e55935.js"><link rel="prefetch" href="/assets/js/104.214150ac.js"><link rel="prefetch" href="/assets/js/105.cd01d9e5.js"><link rel="prefetch" href="/assets/js/106.755e122a.js"><link rel="prefetch" href="/assets/js/107.03b5cadb.js"><link rel="prefetch" href="/assets/js/108.a3db430c.js"><link rel="prefetch" href="/assets/js/109.e23390e7.js"><link rel="prefetch" href="/assets/js/11.8e6ef6ce.js"><link rel="prefetch" href="/assets/js/110.9e7f2dba.js"><link rel="prefetch" href="/assets/js/111.5b34986f.js"><link rel="prefetch" href="/assets/js/112.456b2790.js"><link rel="prefetch" href="/assets/js/113.ee70ce85.js"><link rel="prefetch" href="/assets/js/114.8bfb4e87.js"><link rel="prefetch" href="/assets/js/115.802992ea.js"><link rel="prefetch" href="/assets/js/116.eba62060.js"><link rel="prefetch" href="/assets/js/117.a1861e9d.js"><link rel="prefetch" href="/assets/js/118.a2538ec4.js"><link rel="prefetch" href="/assets/js/119.5b958bab.js"><link rel="prefetch" href="/assets/js/12.fb4c7ad2.js"><link rel="prefetch" href="/assets/js/120.14230487.js"><link rel="prefetch" href="/assets/js/121.3152bdce.js"><link rel="prefetch" href="/assets/js/122.e063a254.js"><link rel="prefetch" href="/assets/js/123.a4f84dc6.js"><link rel="prefetch" href="/assets/js/124.0a11a7ba.js"><link rel="prefetch" href="/assets/js/125.9d89ee68.js"><link rel="prefetch" href="/assets/js/126.e8170112.js"><link rel="prefetch" href="/assets/js/127.da6afe8c.js"><link rel="prefetch" href="/assets/js/128.c023be3a.js"><link rel="prefetch" href="/assets/js/129.406309e8.js"><link rel="prefetch" href="/assets/js/13.0f6d0f1c.js"><link rel="prefetch" href="/assets/js/130.d7e0f6ee.js"><link rel="prefetch" href="/assets/js/131.d583b2ab.js"><link rel="prefetch" href="/assets/js/132.2cddc99b.js"><link rel="prefetch" href="/assets/js/133.7fad7715.js"><link rel="prefetch" href="/assets/js/134.83b8d5f3.js"><link rel="prefetch" href="/assets/js/135.5fd378dc.js"><link rel="prefetch" href="/assets/js/136.9eab2146.js"><link rel="prefetch" href="/assets/js/137.b8d02573.js"><link rel="prefetch" href="/assets/js/138.ec9d2593.js"><link rel="prefetch" href="/assets/js/139.142a397c.js"><link rel="prefetch" href="/assets/js/14.fa4b2286.js"><link rel="prefetch" href="/assets/js/140.a3b8b8fa.js"><link rel="prefetch" href="/assets/js/141.dfef7511.js"><link rel="prefetch" href="/assets/js/142.f497a6fa.js"><link rel="prefetch" href="/assets/js/143.476e4817.js"><link rel="prefetch" href="/assets/js/144.5bc5c5bf.js"><link rel="prefetch" href="/assets/js/145.985fcd9f.js"><link rel="prefetch" href="/assets/js/146.9969ced2.js"><link rel="prefetch" href="/assets/js/15.39f36e35.js"><link rel="prefetch" href="/assets/js/16.c2d49c99.js"><link rel="prefetch" href="/assets/js/17.ad9e41fd.js"><link rel="prefetch" href="/assets/js/18.1d69f381.js"><link rel="prefetch" href="/assets/js/19.7dbbdd4a.js"><link rel="prefetch" href="/assets/js/20.776eb5bc.js"><link rel="prefetch" href="/assets/js/21.7a28ec30.js"><link rel="prefetch" href="/assets/js/22.f006e461.js"><link rel="prefetch" href="/assets/js/23.a6f2d133.js"><link rel="prefetch" href="/assets/js/24.636ddd3d.js"><link rel="prefetch" href="/assets/js/25.7ef51238.js"><link rel="prefetch" href="/assets/js/26.81461d46.js"><link rel="prefetch" href="/assets/js/27.aae00c47.js"><link rel="prefetch" href="/assets/js/28.23af6660.js"><link rel="prefetch" href="/assets/js/29.5ece4eb3.js"><link rel="prefetch" href="/assets/js/30.2b4a9ad1.js"><link rel="prefetch" href="/assets/js/31.5f517ad8.js"><link rel="prefetch" href="/assets/js/32.5374f86d.js"><link rel="prefetch" href="/assets/js/33.e1fafc0a.js"><link rel="prefetch" href="/assets/js/34.eb20351c.js"><link rel="prefetch" href="/assets/js/35.063e1ec7.js"><link rel="prefetch" href="/assets/js/36.ab9bb622.js"><link rel="prefetch" href="/assets/js/37.316383ec.js"><link rel="prefetch" href="/assets/js/38.31de6297.js"><link rel="prefetch" href="/assets/js/39.d39c0b5e.js"><link rel="prefetch" href="/assets/js/40.93e5f474.js"><link rel="prefetch" href="/assets/js/41.bc4ed09c.js"><link rel="prefetch" href="/assets/js/42.7905dc4b.js"><link rel="prefetch" href="/assets/js/43.2ff44470.js"><link rel="prefetch" href="/assets/js/44.c597382b.js"><link rel="prefetch" href="/assets/js/45.be541276.js"><link rel="prefetch" href="/assets/js/46.b8d02695.js"><link rel="prefetch" href="/assets/js/47.339c6329.js"><link rel="prefetch" href="/assets/js/48.d8aa071d.js"><link rel="prefetch" href="/assets/js/49.2aed2449.js"><link rel="prefetch" href="/assets/js/50.0bcb73b3.js"><link rel="prefetch" href="/assets/js/51.fa080ca6.js"><link rel="prefetch" href="/assets/js/52.3f198418.js"><link rel="prefetch" href="/assets/js/54.3a4bee27.js"><link rel="prefetch" href="/assets/js/55.b49e0271.js"><link rel="prefetch" href="/assets/js/56.ff3e4896.js"><link rel="prefetch" href="/assets/js/57.0ff17afa.js"><link rel="prefetch" href="/assets/js/58.c33ed1fe.js"><link rel="prefetch" href="/assets/js/59.c2001eab.js"><link rel="prefetch" href="/assets/js/6.79c9dcef.js"><link rel="prefetch" href="/assets/js/60.13be17c7.js"><link rel="prefetch" href="/assets/js/61.39b7fd3e.js"><link rel="prefetch" href="/assets/js/62.32c5d296.js"><link rel="prefetch" href="/assets/js/63.5a651a28.js"><link rel="prefetch" href="/assets/js/64.2469d625.js"><link rel="prefetch" href="/assets/js/65.67603a50.js"><link rel="prefetch" href="/assets/js/66.f1ab5ac3.js"><link rel="prefetch" href="/assets/js/67.5482e5da.js"><link rel="prefetch" href="/assets/js/68.7fb92533.js"><link rel="prefetch" href="/assets/js/69.c6d458df.js"><link rel="prefetch" href="/assets/js/7.87672f1d.js"><link rel="prefetch" href="/assets/js/70.f8ba2065.js"><link rel="prefetch" href="/assets/js/71.bc19c0e7.js"><link rel="prefetch" href="/assets/js/72.512b3cdc.js"><link rel="prefetch" href="/assets/js/73.29b2c520.js"><link rel="prefetch" href="/assets/js/74.fa07a28f.js"><link rel="prefetch" href="/assets/js/75.0837c2ca.js"><link rel="prefetch" href="/assets/js/76.77eaebba.js"><link rel="prefetch" href="/assets/js/77.92b9052e.js"><link rel="prefetch" href="/assets/js/78.70eca2ac.js"><link rel="prefetch" href="/assets/js/79.5bcc122f.js"><link rel="prefetch" href="/assets/js/80.843c3016.js"><link rel="prefetch" href="/assets/js/81.0c1dcfae.js"><link rel="prefetch" href="/assets/js/82.05f0ee11.js"><link rel="prefetch" href="/assets/js/83.9a84ac04.js"><link rel="prefetch" href="/assets/js/84.e0787e26.js"><link rel="prefetch" href="/assets/js/85.8715048a.js"><link rel="prefetch" href="/assets/js/86.f8678a9c.js"><link rel="prefetch" href="/assets/js/87.3609bcb9.js"><link rel="prefetch" href="/assets/js/88.1ebf36c8.js"><link rel="prefetch" href="/assets/js/89.243a7ac6.js"><link rel="prefetch" href="/assets/js/9.d6ab9a76.js"><link rel="prefetch" href="/assets/js/90.3d10ece0.js"><link rel="prefetch" href="/assets/js/91.5ec793ca.js"><link rel="prefetch" href="/assets/js/92.0aeffb3a.js"><link rel="prefetch" href="/assets/js/93.0647507c.js"><link rel="prefetch" href="/assets/js/94.8323f4ad.js"><link rel="prefetch" href="/assets/js/95.4589781f.js"><link rel="prefetch" href="/assets/js/96.7e5574b6.js"><link rel="prefetch" href="/assets/js/97.e348cbe3.js"><link rel="prefetch" href="/assets/js/98.5a1d722c.js"><link rel="prefetch" href="/assets/js/99.4dfd3b4f.js"><link rel="prefetch" href="/assets/js/vendors~dplayer.7e61c4d5.js"><link rel="prefetch" href="/assets/js/vendors~leancloud-storage.509774fd.js"><link rel="prefetch" href="/assets/js/vendors~valine.13449d39.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.8a26cf74.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">
+      OctocatHub
+    </span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/1-Preparations/" class="nav-link">
+  准备工作
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><span class="title">Java</span> <span class="arrow down"></span></button> <button type="button" aria-label="Java" class="mobile-dropdown-title"><span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/2-Java/java/" class="nav-link">
+  基础语法
+</a></li><li class="dropdown-item"><!----> <a href="/2-Java/springboot/" class="nav-link">
+  SpringBoot
+</a></li><li class="dropdown-item"><!----> <a href="/2-Java/springcloud/" class="nav-link">
+  SpringCloud
+</a></li><li class="dropdown-item"><!----> <a href="/2-Java/springsecurity/" class="nav-link">
+  SpringSecurity
+</a></li><li class="dropdown-item"><!----> <a href="/2-Java/springdatajpa/" class="nav-link router-link-active">
+  SpringDataJpa
+</a></li><li class="dropdown-item"><!----> <a href="/2-Java/mybatis/" class="nav-link">
+  MyBatis
+</a></li><li class="dropdown-item"><!----> <a href="/2-Java/HelpNeeded.html" class="nav-link">
+  帮助完善
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Linux" class="dropdown-title"><span class="title">Linux</span> <span class="arrow down"></span></button> <button type="button" aria-label="Linux" class="mobile-dropdown-title"><span class="title">Linux</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/3-Linux/" class="nav-link">
+  概要
+</a></li><li class="dropdown-item"><!----> <a href="/3-Linux/Command/" class="nav-link">
+  命令使用
+</a></li><li class="dropdown-item"><!----> <a href="/3-Linux/Shell/" class="nav-link">
+  Shell编程
+</a></li><li class="dropdown-item"><!----> <a href="/3-Linux/Server/" class="nav-link">
+  服务搭建配置
+</a></li><li class="dropdown-item"><!----> <a href="/3-Linux/Docker/" class="nav-link">
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/3-Linux/HelpNeeded.html" class="nav-link">
+  帮助完善
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="SQL" class="dropdown-title"><span class="title">SQL</span> <span class="arrow down"></span></button> <button type="button" aria-label="SQL" class="mobile-dropdown-title"><span class="title">SQL</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/4-SQL/" class="nav-link">
+  概要
+</a></li><li class="dropdown-item"><!----> <a href="/4-SQL/MySQL/" class="nav-link">
+  MySQL
+</a></li><li class="dropdown-item"><!----> <a href="/4-SQL/Redis/" class="nav-link">
+  Redis
+</a></li><li class="dropdown-item"><!----> <a href="/4-Github/HelpNeeded.html" class="nav-link">
+  帮助完善
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Web" class="dropdown-title"><span class="title">Web</span> <span class="arrow down"></span></button> <button type="button" aria-label="Web" class="mobile-dropdown-title"><span class="title">Web</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/5-Web/" class="nav-link">
+  概要
+</a></li><li class="dropdown-item"><!----> <a href="/5-Web/Vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/5-Web/CSS/" class="nav-link">
+  CSS
+</a></li><li class="dropdown-item"><!----> <a href="/5-Web/HelpNeeded.html" class="nav-link">
+  帮助完善
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具" class="dropdown-title"><span class="title">工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="工具" class="mobile-dropdown-title"><span class="title">工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/6-Tool/" class="nav-link">
+  概要
+</a></li><li class="dropdown-item"><!----> <a href="/6-Tool/Git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/6-Tool/SVN/" class="nav-link">
+  SVN
+</a></li><li class="dropdown-item"><!----> <a href="/6-Tool/IDEA/" class="nav-link">
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/6-Tool/HelpNeeded.html" class="nav-link">
+  帮助完善
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="算法与数据结构" class="dropdown-title"><span class="title">算法与数据结构</span> <span class="arrow down"></span></button> <button type="button" aria-label="算法与数据结构" class="mobile-dropdown-title"><span class="title">算法与数据结构</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/7-Algorithm/" class="nav-link">
+  概要
+</a></li><li class="dropdown-item"><!----> <a href="/7-Algorithm/Algorithm/" class="nav-link">
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/7-Algorithm/DataStructure/" class="nav-link">
+  数据结构
+</a></li><li class="dropdown-item"><!----> <a href="/7-Algorithm/HelpNeeded.html" class="nav-link">
+  帮助完善
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Future" class="dropdown-title"><span class="title">Future</span> <span class="arrow down"></span></button> <button type="button" aria-label="Future" class="mobile-dropdown-title"><span class="title">Future</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/8-Future/Interview/" class="nav-link">
+  面试
+</a></li><li class="dropdown-item"><!----> <a href="/8-Future/Plan/" class="nav-link">
+  计划
+</a></li><li class="dropdown-item"><!----> <a href="/8-Future/Experience/" class="nav-link">
+  经验
+</a></li><li class="dropdown-item"><!----> <a href="/8-Future/Project/" class="nav-link">
+  项目
+</a></li></ul></div></div><div class="nav-item"><a href="https://github.com/octocathub/octocathub.github.io/issues/new/choose" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  反馈
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="https://github.com/octocathub/octocathub.github.io" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/1-Preparations/" class="nav-link">
+  准备工作
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><span class="title">Java</span> <span class="arrow down"></span></button> <button type="button" aria-label="Java" class="mobile-dropdown-title"><span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/2-Java/java/" class="nav-link">
+  基础语法
+</a></li><li class="dropdown-item"><!----> <a href="/2-Java/springboot/" class="nav-link">
+  SpringBoot
+</a></li><li class="dropdown-item"><!----> <a href="/2-Java/springcloud/" class="nav-link">
+  SpringCloud
+</a></li><li class="dropdown-item"><!----> <a href="/2-Java/springsecurity/" class="nav-link">
+  SpringSecurity
+</a></li><li class="dropdown-item"><!----> <a href="/2-Java/springdatajpa/" class="nav-link router-link-active">
+  SpringDataJpa
+</a></li><li class="dropdown-item"><!----> <a href="/2-Java/mybatis/" class="nav-link">
+  MyBatis
+</a></li><li class="dropdown-item"><!----> <a href="/2-Java/HelpNeeded.html" class="nav-link">
+  帮助完善
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Linux" class="dropdown-title"><span class="title">Linux</span> <span class="arrow down"></span></button> <button type="button" aria-label="Linux" class="mobile-dropdown-title"><span class="title">Linux</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/3-Linux/" class="nav-link">
+  概要
+</a></li><li class="dropdown-item"><!----> <a href="/3-Linux/Command/" class="nav-link">
+  命令使用
+</a></li><li class="dropdown-item"><!----> <a href="/3-Linux/Shell/" class="nav-link">
+  Shell编程
+</a></li><li class="dropdown-item"><!----> <a href="/3-Linux/Server/" class="nav-link">
+  服务搭建配置
+</a></li><li class="dropdown-item"><!----> <a href="/3-Linux/Docker/" class="nav-link">
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/3-Linux/HelpNeeded.html" class="nav-link">
+  帮助完善
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="SQL" class="dropdown-title"><span class="title">SQL</span> <span class="arrow down"></span></button> <button type="button" aria-label="SQL" class="mobile-dropdown-title"><span class="title">SQL</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/4-SQL/" class="nav-link">
+  概要
+</a></li><li class="dropdown-item"><!----> <a href="/4-SQL/MySQL/" class="nav-link">
+  MySQL
+</a></li><li class="dropdown-item"><!----> <a href="/4-SQL/Redis/" class="nav-link">
+  Redis
+</a></li><li class="dropdown-item"><!----> <a href="/4-Github/HelpNeeded.html" class="nav-link">
+  帮助完善
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Web" class="dropdown-title"><span class="title">Web</span> <span class="arrow down"></span></button> <button type="button" aria-label="Web" class="mobile-dropdown-title"><span class="title">Web</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/5-Web/" class="nav-link">
+  概要
+</a></li><li class="dropdown-item"><!----> <a href="/5-Web/Vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/5-Web/CSS/" class="nav-link">
+  CSS
+</a></li><li class="dropdown-item"><!----> <a href="/5-Web/HelpNeeded.html" class="nav-link">
+  帮助完善
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具" class="dropdown-title"><span class="title">工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="工具" class="mobile-dropdown-title"><span class="title">工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/6-Tool/" class="nav-link">
+  概要
+</a></li><li class="dropdown-item"><!----> <a href="/6-Tool/Git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/6-Tool/SVN/" class="nav-link">
+  SVN
+</a></li><li class="dropdown-item"><!----> <a href="/6-Tool/IDEA/" class="nav-link">
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/6-Tool/HelpNeeded.html" class="nav-link">
+  帮助完善
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="算法与数据结构" class="dropdown-title"><span class="title">算法与数据结构</span> <span class="arrow down"></span></button> <button type="button" aria-label="算法与数据结构" class="mobile-dropdown-title"><span class="title">算法与数据结构</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/7-Algorithm/" class="nav-link">
+  概要
+</a></li><li class="dropdown-item"><!----> <a href="/7-Algorithm/Algorithm/" class="nav-link">
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/7-Algorithm/DataStructure/" class="nav-link">
+  数据结构
+</a></li><li class="dropdown-item"><!----> <a href="/7-Algorithm/HelpNeeded.html" class="nav-link">
+  帮助完善
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Future" class="dropdown-title"><span class="title">Future</span> <span class="arrow down"></span></button> <button type="button" aria-label="Future" class="mobile-dropdown-title"><span class="title">Future</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/8-Future/Interview/" class="nav-link">
+  面试
+</a></li><li class="dropdown-item"><!----> <a href="/8-Future/Plan/" class="nav-link">
+  计划
+</a></li><li class="dropdown-item"><!----> <a href="/8-Future/Experience/" class="nav-link">
+  经验
+</a></li><li class="dropdown-item"><!----> <a href="/8-Future/Project/" class="nav-link">
+  项目
+</a></li></ul></div></div><div class="nav-item"><a href="https://github.com/octocathub/octocathub.github.io/issues/new/choose" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  反馈
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="https://github.com/octocathub/octocathub.github.io" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>springdatajpa</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/2-Java/springdatajpa/" aria-current="page" class="sidebar-link">SpringDataJpa</a></li><li><a href="/2-Java/springdatajpa/one-to-more/" aria-current="page" class="active sidebar-link">使用springdatajpa-一对多操作</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/2-Java/springdatajpa/one-to-more/#多表查询" class="sidebar-link">多表查询</a></li><li class="sidebar-sub-header"><a href="/2-Java/springdatajpa/one-to-more/#在jpa框架中表关系的分析步骤" class="sidebar-link">在JPA框架中表关系的分析步骤</a></li><li class="sidebar-sub-header"><a href="/2-Java/springdatajpa/one-to-more/#jpa中的一对多" class="sidebar-link">JPA中的一对多</a></li><li class="sidebar-sub-header"><a href="/2-Java/springdatajpa/one-to-more/#映射的注解说明" class="sidebar-link">映射的注解说明</a></li><li class="sidebar-sub-header"><a href="/2-Java/springdatajpa/one-to-more/#_3-5一对多的操作" class="sidebar-link">3.5	一对多的操作</a></li></ul></li><li><a href="/2-Java/springdatajpa/more-to-more/" class="sidebar-link">多对多</a></li><li><a href="/2-Java/springdatajpa/multi-table-query/" class="sidebar-link">多表查询</a></li><li><a href="/2-Java/springdatajpa/paging-query/" class="sidebar-link">分页查询</a></li><li><a href="/2-Java/springdatajpa/HelpNeeded.html" class="sidebar-link">/2-Java/springdatajpa/HelpNeeded.html</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-macgs-content content__default"><h1 id="使用springdatajpa-一对多操作"><a href="#使用springdatajpa-一对多操作" class="header-anchor">#</a> 使用springdatajpa-一对多操作</h1> <h2 id="多表查询"><a href="#多表查询" class="header-anchor">#</a> 多表查询 <span class="badge tip" style="vertical-align:top;" data-v-78c888a9>重点,难点</span></h2> <p>数据库中多表之间存在着三种关系，如图所示：</p> <p><img src="" alt=""></p> <p>系统设计的三种实体关系分别为：多对多、一对多和一对一关系。注意：一对多关系可以看为两种：  即一对多，多对一。所以说四种更精确.</p> <p>【Warning】 其实重点在于主外键的关系。</p> <h2 id="在jpa框架中表关系的分析步骤"><a href="#在jpa框架中表关系的分析步骤" class="header-anchor">#</a> 在JPA框架中表关系的分析步骤</h2> <p>在实际开发中，我们数据库的表难免会有相互的关联关系，在操作表的时候就有可能会涉及到多张表的操作。而在这种实现了ORM思想的框架中（如JPA），可以让我们通过操作实体类就实现对数据库表的操作。
+所以重点在于掌握配置实体之间的关联关系。</p> <p>步骤：</p> <ol><li><p>首先确定两张表之间的关系。如果关系确定错了，后面做的所有操作就都不可能正确。</p></li> <li><p>在数据库中实现两张表的关系</p></li> <li><p>在实体类中描述出两个实体的关系</p></li> <li><p>配置出实体类和数据库表的关系映射（重点）</p></li></ol> <h2 id="jpa中的一对多"><a href="#jpa中的一对多" class="header-anchor">#</a> JPA中的一对多</h2> <h3 id="示例分析"><a href="#示例分析" class="header-anchor">#</a> 示例分析</h3> <p>我们采用的示例为客户和联系人。
+客户：指的是一家公司，我们记为A。
+联系人：指的是A公司中的员工。
+在不考虑兼职的情况下，公司和员工的关系即为一对多。</p> <h3 id="表关系建立"><a href="#表关系建立" class="header-anchor">#</a> 表关系建立</h3> <p>在一对多关系中，我们习惯把一的一方称之为主表，把多的一方称之为从表。在数据库中建立一对多的关系，需要使用数据库的外键约束。</p> <p>什么是外键？
+指的是从表中有一列，取值参照主表的主键，这一列就是外键。</p> <p>一对多数据库关系的建立，如下图所示
+<img src="" alt=""></p> <h3 id="实体类关系建立以及映射配置"><a href="#实体类关系建立以及映射配置" class="header-anchor">#</a> 实体类关系建立以及映射配置</h3> <p>在实体类中，由于客户是少的一方，它应该包含多个联系人，所以实体类要体现出客户中有多个联系人的信息，代码如下：</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * 客户的实体类
+ * 明确使用的注解都是JPA规范的
+ * 所以导包都要导入javax.persistence包下的
+ */</span>
+<span class="token annotation punctuation">@Entity</span><span class="token comment">//表示当前类是一个实体类</span>
+<span class="token annotation punctuation">@Table</span><span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">&quot;cst_customer&quot;</span><span class="token punctuation">)</span><span class="token comment">//建立当前实体类和表之间的对应关系</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Customer</span> <span class="token keyword">implements</span> <span class="token class-name">Serializable</span> <span class="token punctuation">{</span>
+	
+	<span class="token annotation punctuation">@Id</span><span class="token comment">//表明当前私有属性是主键</span>
+	<span class="token annotation punctuation">@GeneratedValue</span><span class="token punctuation">(</span>strategy<span class="token operator">=</span><span class="token class-name">GenerationType</span><span class="token punctuation">.</span>IDENTITY<span class="token punctuation">)</span><span class="token comment">//指定主键的生成策略</span>
+	<span class="token annotation punctuation">@Column</span><span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">&quot;cust_id&quot;</span><span class="token punctuation">)</span><span class="token comment">//指定和数据库表中的cust_id列对应</span>
+	<span class="token keyword">private</span> <span class="token class-name">Long</span> custId<span class="token punctuation">;</span>
+	<span class="token annotation punctuation">@Column</span><span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">&quot;cust_name&quot;</span><span class="token punctuation">)</span><span class="token comment">//指定和数据库表中的cust_name列对应</span>
+	<span class="token keyword">private</span> <span class="token class-name">String</span> custName<span class="token punctuation">;</span>
+	<span class="token annotation punctuation">@Column</span><span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">&quot;cust_source&quot;</span><span class="token punctuation">)</span><span class="token comment">//指定和数据库表中的cust_source列对应</span>
+	<span class="token keyword">private</span> <span class="token class-name">String</span> custSource<span class="token punctuation">;</span>
+	<span class="token annotation punctuation">@Column</span><span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">&quot;cust_industry&quot;</span><span class="token punctuation">)</span><span class="token comment">//指定和数据库表中的cust_industry列对应</span>
+	<span class="token keyword">private</span> <span class="token class-name">String</span> custIndustry<span class="token punctuation">;</span>
+	<span class="token annotation punctuation">@Column</span><span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">&quot;cust_level&quot;</span><span class="token punctuation">)</span><span class="token comment">//指定和数据库表中的cust_level列对应</span>
+	<span class="token keyword">private</span> <span class="token class-name">String</span> custLevel<span class="token punctuation">;</span>
+	<span class="token annotation punctuation">@Column</span><span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">&quot;cust_address&quot;</span><span class="token punctuation">)</span><span class="token comment">//指定和数据库表中的cust_address列对应</span>
+	<span class="token keyword">private</span> <span class="token class-name">String</span> custAddress<span class="token punctuation">;</span>
+	<span class="token annotation punctuation">@Column</span><span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">&quot;cust_phone&quot;</span><span class="token punctuation">)</span><span class="token comment">//指定和数据库表中的cust_phone列对应</span>
+	<span class="token keyword">private</span> <span class="token class-name">String</span> custPhone<span class="token punctuation">;</span>
+	
+    <span class="token comment">//配置客户和联系人的一对多关系</span>
+  	<span class="token annotation punctuation">@OneToMany</span><span class="token punctuation">(</span>targetEntity<span class="token operator">=</span><span class="token class-name">LinkMan</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+	<span class="token annotation punctuation">@JoinColumn</span><span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">&quot;lkm_cust_id&quot;</span><span class="token punctuation">,</span>referencedColumnName<span class="token operator">=</span><span class="token string">&quot;cust_id&quot;</span><span class="token punctuation">)</span>
+	<span class="token keyword">private</span> <span class="token class-name">Set</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">LinkMan</span><span class="token punctuation">&gt;</span></span> linkmans <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashSet</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">LinkMan</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	
+	<span class="token keyword">public</span> <span class="token class-name">Long</span> <span class="token function">getCustId</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> custId<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setCustId</span><span class="token punctuation">(</span><span class="token class-name">Long</span> custId<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>custId <span class="token operator">=</span> custId<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getCustName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> custName<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setCustName</span><span class="token punctuation">(</span><span class="token class-name">String</span> custName<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>custName <span class="token operator">=</span> custName<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getCustSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> custSource<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setCustSource</span><span class="token punctuation">(</span><span class="token class-name">String</span> custSource<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>custSource <span class="token operator">=</span> custSource<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getCustIndustry</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> custIndustry<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setCustIndustry</span><span class="token punctuation">(</span><span class="token class-name">String</span> custIndustry<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>custIndustry <span class="token operator">=</span> custIndustry<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getCustLevel</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> custLevel<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setCustLevel</span><span class="token punctuation">(</span><span class="token class-name">String</span> custLevel<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>custLevel <span class="token operator">=</span> custLevel<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getCustAddress</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> custAddress<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setCustAddress</span><span class="token punctuation">(</span><span class="token class-name">String</span> custAddress<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>custAddress <span class="token operator">=</span> custAddress<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getCustPhone</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> custPhone<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setCustPhone</span><span class="token punctuation">(</span><span class="token class-name">String</span> custPhone<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>custPhone <span class="token operator">=</span> custPhone<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token class-name">Set</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">LinkMan</span><span class="token punctuation">&gt;</span></span> <span class="token function">getLinkmans</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> linkmans<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setLinkmans</span><span class="token punctuation">(</span><span class="token class-name">Set</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">LinkMan</span><span class="token punctuation">&gt;</span></span> linkmans<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>linkmans <span class="token operator">=</span> linkmans<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token annotation punctuation">@Override</span>
+	<span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> <span class="token string">&quot;Customer [custId=&quot;</span> <span class="token operator">+</span> custId <span class="token operator">+</span> <span class="token string">&quot;, custName=&quot;</span> <span class="token operator">+</span> custName <span class="token operator">+</span> <span class="token string">&quot;, custSource=&quot;</span> <span class="token operator">+</span> custSource
+				<span class="token operator">+</span> <span class="token string">&quot;, custIndustry=&quot;</span> <span class="token operator">+</span> custIndustry <span class="token operator">+</span> <span class="token string">&quot;, custLevel=&quot;</span> <span class="token operator">+</span> custLevel <span class="token operator">+</span> <span class="token string">&quot;, custAddress=&quot;</span> <span class="token operator">+</span> custAddress
+				<span class="token operator">+</span> <span class="token string">&quot;, custPhone=&quot;</span> <span class="token operator">+</span> custPhone <span class="token operator">+</span> <span class="token string">&quot;]&quot;</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>由于联系人是多的一方，在实体类中要体现出，每个联系人只能对应一个客户，代码如下：</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * 联系人的实体类（数据模型）
+ */</span>
+<span class="token annotation punctuation">@Entity</span>
+<span class="token annotation punctuation">@Table</span><span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">&quot;cst_linkman&quot;</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">LinkMan</span> <span class="token keyword">implements</span> <span class="token class-name">Serializable</span> <span class="token punctuation">{</span>
+	<span class="token annotation punctuation">@Id</span>
+	<span class="token annotation punctuation">@GeneratedValue</span><span class="token punctuation">(</span>strategy<span class="token operator">=</span><span class="token class-name">GenerationType</span><span class="token punctuation">.</span>IDENTITY<span class="token punctuation">)</span>
+	<span class="token annotation punctuation">@Column</span><span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">&quot;lkm_id&quot;</span><span class="token punctuation">)</span>
+	<span class="token keyword">private</span> <span class="token class-name">Long</span> lkmId<span class="token punctuation">;</span>
+	<span class="token annotation punctuation">@Column</span><span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">&quot;lkm_name&quot;</span><span class="token punctuation">)</span>
+	<span class="token keyword">private</span> <span class="token class-name">String</span> lkmName<span class="token punctuation">;</span>
+	<span class="token annotation punctuation">@Column</span><span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">&quot;lkm_gender&quot;</span><span class="token punctuation">)</span>
+	<span class="token keyword">private</span> <span class="token class-name">String</span> lkmGender<span class="token punctuation">;</span>
+	<span class="token annotation punctuation">@Column</span><span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">&quot;lkm_phone&quot;</span><span class="token punctuation">)</span>
+	<span class="token keyword">private</span> <span class="token class-name">String</span> lkmPhone<span class="token punctuation">;</span>
+	<span class="token annotation punctuation">@Column</span><span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">&quot;lkm_mobile&quot;</span><span class="token punctuation">)</span>
+	<span class="token keyword">private</span> <span class="token class-name">String</span> lkmMobile<span class="token punctuation">;</span>
+	<span class="token annotation punctuation">@Column</span><span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">&quot;lkm_email&quot;</span><span class="token punctuation">)</span>
+	<span class="token keyword">private</span> <span class="token class-name">String</span> lkmEmail<span class="token punctuation">;</span>
+	<span class="token annotation punctuation">@Column</span><span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">&quot;lkm_position&quot;</span><span class="token punctuation">)</span>
+	<span class="token keyword">private</span> <span class="token class-name">String</span> lkmPosition<span class="token punctuation">;</span>
+	<span class="token annotation punctuation">@Column</span><span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">&quot;lkm_memo&quot;</span><span class="token punctuation">)</span>
+	<span class="token keyword">private</span> <span class="token class-name">String</span> lkmMemo<span class="token punctuation">;</span>
+
+	<span class="token comment">//多对一关系映射：多个联系人对应客户</span>
+	<span class="token annotation punctuation">@ManyToOne</span><span class="token punctuation">(</span>targetEntity<span class="token operator">=</span><span class="token class-name">Customer</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+	<span class="token annotation punctuation">@JoinColumn</span><span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">&quot;lkm_cust_id&quot;</span><span class="token punctuation">,</span>referencedColumnName<span class="token operator">=</span><span class="token string">&quot;cust_id&quot;</span><span class="token punctuation">)</span>
+	<span class="token keyword">private</span> <span class="token class-name">Customer</span> customer<span class="token punctuation">;</span><span class="token comment">//用它的主键，对应联系人表中的外键</span>
+	
+	<span class="token keyword">public</span> <span class="token class-name">Long</span> <span class="token function">getLkmId</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> lkmId<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setLkmId</span><span class="token punctuation">(</span><span class="token class-name">Long</span> lkmId<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>lkmId <span class="token operator">=</span> lkmId<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getLkmName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> lkmName<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setLkmName</span><span class="token punctuation">(</span><span class="token class-name">String</span> lkmName<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>lkmName <span class="token operator">=</span> lkmName<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getLkmGender</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> lkmGender<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setLkmGender</span><span class="token punctuation">(</span><span class="token class-name">String</span> lkmGender<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>lkmGender <span class="token operator">=</span> lkmGender<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getLkmPhone</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> lkmPhone<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setLkmPhone</span><span class="token punctuation">(</span><span class="token class-name">String</span> lkmPhone<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>lkmPhone <span class="token operator">=</span> lkmPhone<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getLkmMobile</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> lkmMobile<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setLkmMobile</span><span class="token punctuation">(</span><span class="token class-name">String</span> lkmMobile<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>lkmMobile <span class="token operator">=</span> lkmMobile<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getLkmEmail</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> lkmEmail<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setLkmEmail</span><span class="token punctuation">(</span><span class="token class-name">String</span> lkmEmail<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>lkmEmail <span class="token operator">=</span> lkmEmail<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getLkmPosition</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> lkmPosition<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setLkmPosition</span><span class="token punctuation">(</span><span class="token class-name">String</span> lkmPosition<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>lkmPosition <span class="token operator">=</span> lkmPosition<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getLkmMemo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> lkmMemo<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setLkmMemo</span><span class="token punctuation">(</span><span class="token class-name">String</span> lkmMemo<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>lkmMemo <span class="token operator">=</span> lkmMemo<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>	
+	<span class="token keyword">public</span> <span class="token class-name">Customer</span> <span class="token function">getCustomer</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> customer<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setCustomer</span><span class="token punctuation">(</span><span class="token class-name">Customer</span> customer<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>customer <span class="token operator">=</span> customer<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token annotation punctuation">@Override</span>
+	<span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> <span class="token string">&quot;LinkMan [lkmId=&quot;</span> <span class="token operator">+</span> lkmId <span class="token operator">+</span> <span class="token string">&quot;, lkmName=&quot;</span> <span class="token operator">+</span> lkmName <span class="token operator">+</span> <span class="token string">&quot;, lkmGender=&quot;</span> <span class="token operator">+</span> lkmGender <span class="token operator">+</span> <span class="token string">&quot;, lkmPhone=&quot;</span>
+				<span class="token operator">+</span> lkmPhone <span class="token operator">+</span> <span class="token string">&quot;, lkmMobile=&quot;</span> <span class="token operator">+</span> lkmMobile <span class="token operator">+</span> <span class="token string">&quot;, lkmEmail=&quot;</span> <span class="token operator">+</span> lkmEmail <span class="token operator">+</span> <span class="token string">&quot;, lkmPosition=&quot;</span> <span class="token operator">+</span> lkmPosition
+				<span class="token operator">+</span> <span class="token string">&quot;, lkmMemo=&quot;</span> <span class="token operator">+</span> lkmMemo <span class="token operator">+</span> <span class="token string">&quot;]&quot;</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div><h2 id="映射的注解说明"><a href="#映射的注解说明" class="header-anchor">#</a> 映射的注解说明</h2> <ul><li><p>@OneToMany:
+作用：建立一对多的关系映射
+属性：
+targetEntityClass：指定多的多方的类的字节码
+mappedBy：指定从表实体类中引用主表对象的名称。
+cascade：指定要使用的级联操作
+fetch：指定是否采用延迟加载
+orphanRemoval：是否使用孤儿删除</p></li> <li><p>@ManyToOne
+作用：建立多对一的关系
+属性：
+targetEntityClass：指定一的一方实体类字节码
+cascade：指定要使用的级联操作
+fetch：指定是否采用延迟加载
+optional：关联是否可选。如果设置为false，则必须始终存在非空关系。</p></li> <li><p>@JoinColumn
+作用：用于定义主键字段和外键字段的对应关系。
+属性：
+name：指定外键字段的名称
+referencedColumnName：指定引用主表的主键字段名称
+unique：是否唯一。默认值不唯一
+nullable：是否允许为空。默认值允许。
+insertable：是否允许插入。默认值允许。
+updatable：是否允许更新。默认值允许。
+columnDefinition：列的定义信息。</p></li></ul> <h2 id="_3-5一对多的操作"><a href="#_3-5一对多的操作" class="header-anchor">#</a> 3.5	一对多的操作</h2> <h3 id="添加"><a href="#添加" class="header-anchor">#</a> 添加</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token annotation punctuation">@RunWith</span><span class="token punctuation">(</span><span class="token class-name">SpringJUnit4ClassRunner</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@ContextConfiguration</span><span class="token punctuation">(</span>locations<span class="token operator">=</span><span class="token string">&quot;classpath:applicationContext.xml&quot;</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">OneToManyTest</span> <span class="token punctuation">{</span>
+
+	<span class="token annotation punctuation">@Autowired</span>
+	<span class="token keyword">private</span> <span class="token class-name">CustomerDao</span> customerDao<span class="token punctuation">;</span>
+	
+	<span class="token annotation punctuation">@Autowired</span>
+	<span class="token keyword">private</span> <span class="token class-name">LinkManDao</span> linkManDao<span class="token punctuation">;</span>
+	
+	
+	<span class="token comment">/**
+	 * 保存操作
+	 * 需求:
+	 * 	保存一个客户和一个联系人
+	 * 要求：
+	 * 	创建一个客户对象和一个联系人对象
+	 *  建立客户和联系人之间关联关系（双向一对多的关联关系）
+	 *  先保存客户，再保存联系人
+	 * 问题：
+	 *		当我们建立了双向的关联关系之后，先保存主表，再保存从表时：
+	 *		会产生2条insert和1条update.
+	 * 		而实际开发中我们只需要2条insert。
+	 *  
+	 */</span>
+	<span class="token annotation punctuation">@Test</span>
+	<span class="token annotation punctuation">@Transactional</span>  <span class="token comment">//开启事务</span>
+	<span class="token annotation punctuation">@Rollback</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token comment">//设置为不回滚</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testAdd</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token class-name">Customer</span> c <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Customer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		c<span class="token punctuation">.</span><span class="token function">setCustName</span><span class="token punctuation">(</span><span class="token string">&quot;TBD云集中心&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		c<span class="token punctuation">.</span><span class="token function">setCustLevel</span><span class="token punctuation">(</span><span class="token string">&quot;VIP客户&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		c<span class="token punctuation">.</span><span class="token function">setCustSource</span><span class="token punctuation">(</span><span class="token string">&quot;网络&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		c<span class="token punctuation">.</span><span class="token function">setCustIndustry</span><span class="token punctuation">(</span><span class="token string">&quot;商业办公&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		c<span class="token punctuation">.</span><span class="token function">setCustAddress</span><span class="token punctuation">(</span><span class="token string">&quot;昌平区北七家镇&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		c<span class="token punctuation">.</span><span class="token function">setCustPhone</span><span class="token punctuation">(</span><span class="token string">&quot;010-84389340&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		
+		<span class="token class-name">LinkMan</span> l <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkMan</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		l<span class="token punctuation">.</span><span class="token function">setLkmName</span><span class="token punctuation">(</span><span class="token string">&quot;TBD联系人&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		l<span class="token punctuation">.</span><span class="token function">setLkmGender</span><span class="token punctuation">(</span><span class="token string">&quot;male&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		l<span class="token punctuation">.</span><span class="token function">setLkmMobile</span><span class="token punctuation">(</span><span class="token string">&quot;13811111111&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		l<span class="token punctuation">.</span><span class="token function">setLkmPhone</span><span class="token punctuation">(</span><span class="token string">&quot;010-34785348&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		l<span class="token punctuation">.</span><span class="token function">setLkmEmail</span><span class="token punctuation">(</span><span class="token string">&quot;98354834@qq.com&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		l<span class="token punctuation">.</span><span class="token function">setLkmPosition</span><span class="token punctuation">(</span><span class="token string">&quot;老师&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		l<span class="token punctuation">.</span><span class="token function">setLkmMemo</span><span class="token punctuation">(</span><span class="token string">&quot;还行吧&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+		c<span class="token punctuation">.</span><span class="token function">getLinkMans</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		l<span class="token punctuation">.</span><span class="token function">setCustomer</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		customerDao<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		linkManDao<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>通过保存的案例，我们可以发现在设置了双向关系之后，会发送两条insert语句，一条多余的update语句，那我们的解决是思路很简单，就是一的一方放弃维护权。</p> <div class="language-java extra-class"><pre class="language-java"><code>	<span class="token comment">/**
+	 *放弃外键维护权的配置将如下配置改为
+	 */</span>
+    <span class="token comment">//@OneToMany(targetEntity=LinkMan.class)</span>
+<span class="token comment">//@JoinColumn(name=&quot;lkm_cust_id&quot;,referencedColumnName=&quot;cust_id&quot;)	</span>
+<span class="token comment">//设置为</span>
+	<span class="token annotation punctuation">@OneToMany</span><span class="token punctuation">(</span>mappedBy<span class="token operator">=</span><span class="token string">&quot;customer&quot;</span><span class="token punctuation">)</span>
+</code></pre></div><h3 id="删除"><a href="#删除" class="header-anchor">#</a> 删除</h3> <div class="language-java extra-class"><pre class="language-java"><code>	<span class="token annotation punctuation">@Autowired</span>
+	<span class="token keyword">private</span> <span class="token class-name">CustomerDao</span> customerDao<span class="token punctuation">;</span>
+	
+	<span class="token annotation punctuation">@Test</span>
+	<span class="token annotation punctuation">@Transactional</span>
+	<span class="token annotation punctuation">@Rollback</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token comment">//设置为不回滚</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testDelete</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		customerDao<span class="token punctuation">.</span><span class="token function">delete</span><span class="token punctuation">(</span><span class="token number">1l</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p>删除操作的说明如下：</p> <p>删除从表数据：可以随时任意删除。</p> <p>删除主表数据：</p> <ul><li><p>有从表数据
+1、在默认情况下，它会把外键字段置为null，然后删除主表数据。如果在数据库的表                结构上，外键字段有非空约束，默认情况就会报错了。
+2、如果配置了放弃维护关联关系的权利，则不能删除（与外键字段是否允许为null，		没有关系）因为在删除时，它根本不会去更新从表的外键字段了。
+3、如果还想删除，使用级联删除引用</p></li> <li><p>没有从表数据引用：随便删</p></li></ul> <div class="custom-block warning"><p class="custom-block-title">WARNING</p> <p>在实际开发中，级联删除请慎用！(在一对多的情况下)</p></div> <h3 id="级联操作"><a href="#级联操作" class="header-anchor">#</a> 级联操作</h3> <p>级联操作：指操作一个对象同时操作它的关联对象</p> <p>使用方法：只需要在操作主体的注解上配置cascade</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+    * cascade:配置级联操作
+    * 		CascadeType.MERGE	级联更新
+    * 		CascadeType.PERSIST	级联保存：
+    * 		CascadeType.REFRESH 级联刷新：
+    * 		CascadeType.REMOVE	级联删除：
+    * 		CascadeType.ALL		包含所有
+    */</span>
+<span class="token annotation punctuation">@OneToMany</span><span class="token punctuation">(</span>mappedBy<span class="token operator">=</span><span class="token string">&quot;customer&quot;</span><span class="token punctuation">,</span>cascade<span class="token operator">=</span><span class="token class-name">CascadeType</span><span class="token punctuation">.</span>ALL<span class="token punctuation">)</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <div style="float: right"><small class="word-count"><small><span class="octicon octicon-file"></span></small> <span id="word"></span> <small><span class="octicon octicon-clock"></span></small> <span id="time"></span></small> <small id="/2-Java/springdatajpa/one-to-more/" class="leancloud-visitors"><span class="prefix"><small><span class="octicon octicon-eye"></span></small></span> <span class="pv leancloud-visitors-count"></span></small></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/2-Java/springdatajpa/" class="prev router-link-active">
+        SpringDataJpa
+      </a></span> <span class="next"><a href="/2-Java/springdatajpa/more-to-more/">
+        多对多
+      </a>
+      →
+    </span></p></div> <section class="content theme-macgs-content__comment"><div class="warning custom-block"><p class="custom-block-title">
+      关于评论
+    </p> <p>评论前请填好“昵称”、“邮箱”这两栏内容，否则不会收到回复，谢谢！</p></div> <article id="vcomments"></article></section> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/assets/js/app.5dedda2e.js" defer></script><script src="/assets/js/5.cf21ebe8.js" defer></script><script src="/assets/js/53.ea693f17.js" defer></script><script src="/assets/js/8.6ede2873.js" defer></script>
+  </body>
+</html>

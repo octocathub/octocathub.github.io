@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Spring Boot 项目打包 + Shell 脚本部署 | OctocatHub</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/favicon.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/octicons/build/font/octicons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/octicons/build/build.css">
+    <link rel="apple-touch-icon" href="/favicon.png">
+    <meta name="description" content="开源聚合平台">
+    <meta name="theme-color" content="#00ABE9">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="msapplication-TileImage" content="/favicon.png">
+    <meta name="msapplication-TileColor" content="#06BDFF">
+    
+    <link rel="preload" href="/assets/css/0.styles.8a26cf74.css" as="style"><link rel="preload" href="/assets/js/app.5dedda2e.js" as="script"><link rel="preload" href="/assets/js/5.cf21ebe8.js" as="script"><link rel="preload" href="/assets/js/16.c2d49c99.js" as="script"><link rel="prefetch" href="/assets/js/10.5ae6459c.js"><link rel="prefetch" href="/assets/js/100.3e203520.js"><link rel="prefetch" href="/assets/js/101.0c130ed9.js"><link rel="prefetch" href="/assets/js/102.ea30d825.js"><link rel="prefetch" href="/assets/js/103.d3e55935.js"><link rel="prefetch" href="/assets/js/104.214150ac.js"><link rel="prefetch" href="/assets/js/105.cd01d9e5.js"><link rel="prefetch" href="/assets/js/106.755e122a.js"><link rel="prefetch" href="/assets/js/107.03b5cadb.js"><link rel="prefetch" href="/assets/js/108.a3db430c.js"><link rel="prefetch" href="/assets/js/109.e23390e7.js"><link rel="prefetch" href="/assets/js/11.8e6ef6ce.js"><link rel="prefetch" href="/assets/js/110.9e7f2dba.js"><link rel="prefetch" href="/assets/js/111.5b34986f.js"><link rel="prefetch" href="/assets/js/112.456b2790.js"><link rel="prefetch" href="/assets/js/113.ee70ce85.js"><link rel="prefetch" href="/assets/js/114.8bfb4e87.js"><link rel="prefetch" href="/assets/js/115.802992ea.js"><link rel="prefetch" href="/assets/js/116.eba62060.js"><link rel="prefetch" href="/assets/js/117.a1861e9d.js"><link rel="prefetch" href="/assets/js/118.a2538ec4.js"><link rel="prefetch" href="/assets/js/119.5b958bab.js"><link rel="prefetch" href="/assets/js/12.fb4c7ad2.js"><link rel="prefetch" href="/assets/js/120.14230487.js"><link rel="prefetch" href="/assets/js/121.3152bdce.js"><link rel="prefetch" href="/assets/js/122.e063a254.js"><link rel="prefetch" href="/assets/js/123.a4f84dc6.js"><link rel="prefetch" href="/assets/js/124.0a11a7ba.js"><link rel="prefetch" href="/assets/js/125.9d89ee68.js"><link rel="prefetch" href="/assets/js/126.e8170112.js"><link rel="prefetch" href="/assets/js/127.da6afe8c.js"><link rel="prefetch" href="/assets/js/128.c023be3a.js"><link rel="prefetch" href="/assets/js/129.406309e8.js"><link rel="prefetch" href="/assets/js/13.0f6d0f1c.js"><link rel="prefetch" href="/assets/js/130.d7e0f6ee.js"><link rel="prefetch" href="/assets/js/131.d583b2ab.js"><link rel="prefetch" href="/assets/js/132.2cddc99b.js"><link rel="prefetch" href="/assets/js/133.7fad7715.js"><link rel="prefetch" href="/assets/js/134.83b8d5f3.js"><link rel="prefetch" href="/assets/js/135.5fd378dc.js"><link rel="prefetch" href="/assets/js/136.9eab2146.js"><link rel="prefetch" href="/assets/js/137.b8d02573.js"><link rel="prefetch" href="/assets/js/138.ec9d2593.js"><link rel="prefetch" href="/assets/js/139.142a397c.js"><link rel="prefetch" href="/assets/js/14.fa4b2286.js"><link rel="prefetch" href="/assets/js/140.a3b8b8fa.js"><link rel="prefetch" href="/assets/js/141.dfef7511.js"><link rel="prefetch" href="/assets/js/142.f497a6fa.js"><link rel="prefetch" href="/assets/js/143.476e4817.js"><link rel="prefetch" href="/assets/js/144.5bc5c5bf.js"><link rel="prefetch" href="/assets/js/145.985fcd9f.js"><link rel="prefetch" href="/assets/js/146.9969ced2.js"><link rel="prefetch" href="/assets/js/15.39f36e35.js"><link rel="prefetch" href="/assets/js/17.ad9e41fd.js"><link rel="prefetch" href="/assets/js/18.1d69f381.js"><link rel="prefetch" href="/assets/js/19.7dbbdd4a.js"><link rel="prefetch" href="/assets/js/20.776eb5bc.js"><link rel="prefetch" href="/assets/js/21.7a28ec30.js"><link rel="prefetch" href="/assets/js/22.f006e461.js"><link rel="prefetch" href="/assets/js/23.a6f2d133.js"><link rel="prefetch" href="/assets/js/24.636ddd3d.js"><link rel="prefetch" href="/assets/js/25.7ef51238.js"><link rel="prefetch" href="/assets/js/26.81461d46.js"><link rel="prefetch" href="/assets/js/27.aae00c47.js"><link rel="prefetch" href="/assets/js/28.23af6660.js"><link rel="prefetch" href="/assets/js/29.5ece4eb3.js"><link rel="prefetch" href="/assets/js/30.2b4a9ad1.js"><link rel="prefetch" href="/assets/js/31.5f517ad8.js"><link rel="prefetch" href="/assets/js/32.5374f86d.js"><link rel="prefetch" href="/assets/js/33.e1fafc0a.js"><link rel="prefetch" href="/assets/js/34.eb20351c.js"><link rel="prefetch" href="/assets/js/35.063e1ec7.js"><link rel="prefetch" href="/assets/js/36.ab9bb622.js"><link rel="prefetch" href="/assets/js/37.316383ec.js"><link rel="prefetch" href="/assets/js/38.31de6297.js"><link rel="prefetch" href="/assets/js/39.d39c0b5e.js"><link rel="prefetch" href="/assets/js/40.93e5f474.js"><link rel="prefetch" href="/assets/js/41.bc4ed09c.js"><link rel="prefetch" href="/assets/js/42.7905dc4b.js"><link rel="prefetch" href="/assets/js/43.2ff44470.js"><link rel="prefetch" href="/assets/js/44.c597382b.js"><link rel="prefetch" href="/assets/js/45.be541276.js"><link rel="prefetch" href="/assets/js/46.b8d02695.js"><link rel="prefetch" href="/assets/js/47.339c6329.js"><link rel="prefetch" href="/assets/js/48.d8aa071d.js"><link rel="prefetch" href="/assets/js/49.2aed2449.js"><link rel="prefetch" href="/assets/js/50.0bcb73b3.js"><link rel="prefetch" href="/assets/js/51.fa080ca6.js"><link rel="prefetch" href="/assets/js/52.3f198418.js"><link rel="prefetch" href="/assets/js/53.ea693f17.js"><link rel="prefetch" href="/assets/js/54.3a4bee27.js"><link rel="prefetch" href="/assets/js/55.b49e0271.js"><link rel="prefetch" href="/assets/js/56.ff3e4896.js"><link rel="prefetch" href="/assets/js/57.0ff17afa.js"><link rel="prefetch" href="/assets/js/58.c33ed1fe.js"><link rel="prefetch" href="/assets/js/59.c2001eab.js"><link rel="prefetch" href="/assets/js/6.79c9dcef.js"><link rel="prefetch" href="/assets/js/60.13be17c7.js"><link rel="prefetch" href="/assets/js/61.39b7fd3e.js"><link rel="prefetch" href="/assets/js/62.32c5d296.js"><link rel="prefetch" href="/assets/js/63.5a651a28.js"><link rel="prefetch" href="/assets/js/64.2469d625.js"><link rel="prefetch" href="/assets/js/65.67603a50.js"><link rel="prefetch" href="/assets/js/66.f1ab5ac3.js"><link rel="prefetch" href="/assets/js/67.5482e5da.js"><link rel="prefetch" href="/assets/js/68.7fb92533.js"><link rel="prefetch" href="/assets/js/69.c6d458df.js"><link rel="prefetch" href="/assets/js/7.87672f1d.js"><link rel="prefetch" href="/assets/js/70.f8ba2065.js"><link rel="prefetch" href="/assets/js/71.bc19c0e7.js"><link rel="prefetch" href="/assets/js/72.512b3cdc.js"><link rel="prefetch" href="/assets/js/73.29b2c520.js"><link rel="prefetch" href="/assets/js/74.fa07a28f.js"><link rel="prefetch" href="/assets/js/75.0837c2ca.js"><link rel="prefetch" href="/assets/js/76.77eaebba.js"><link rel="prefetch" href="/assets/js/77.92b9052e.js"><link rel="prefetch" href="/assets/js/78.70eca2ac.js"><link rel="prefetch" href="/assets/js/79.5bcc122f.js"><link rel="prefetch" href="/assets/js/8.6ede2873.js"><link rel="prefetch" href="/assets/js/80.843c3016.js"><link rel="prefetch" href="/assets/js/81.0c1dcfae.js"><link rel="prefetch" href="/assets/js/82.05f0ee11.js"><link rel="prefetch" href="/assets/js/83.9a84ac04.js"><link rel="prefetch" href="/assets/js/84.e0787e26.js"><link rel="prefetch" href="/assets/js/85.8715048a.js"><link rel="prefetch" href="/assets/js/86.f8678a9c.js"><link rel="prefetch" href="/assets/js/87.3609bcb9.js"><link rel="prefetch" href="/assets/js/88.1ebf36c8.js"><link rel="prefetch" href="/assets/js/89.243a7ac6.js"><link rel="prefetch" href="/assets/js/9.d6ab9a76.js"><link rel="prefetch" href="/assets/js/90.3d10ece0.js"><link rel="prefetch" href="/assets/js/91.5ec793ca.js"><link rel="prefetch" href="/assets/js/92.0aeffb3a.js"><link rel="prefetch" href="/assets/js/93.0647507c.js"><link rel="prefetch" href="/assets/js/94.8323f4ad.js"><link rel="prefetch" href="/assets/js/95.4589781f.js"><link rel="prefetch" href="/assets/js/96.7e5574b6.js"><link rel="prefetch" href="/assets/js/97.e348cbe3.js"><link rel="prefetch" href="/assets/js/98.5a1d722c.js"><link rel="prefetch" href="/assets/js/99.4dfd3b4f.js"><link rel="prefetch" href="/assets/js/vendors~dplayer.7e61c4d5.js"><link rel="prefetch" href="/assets/js/vendors~leancloud-storage.509774fd.js"><link rel="prefetch" href="/assets/js/vendors~valine.13449d39.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.8a26cf74.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">
+      OctocatHub
+    </span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/1-Preparations/" class="nav-link">
+  准备工作
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><span class="title">Java</span> <span class="arrow down"></span></button> <button type="button" aria-label="Java" class="mobile-dropdown-title"><span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/2-Java/java/" class="nav-link">
+  基础语法
+</a></li><li class="dropdown-item"><!----> <a href="/2-Java/springboot/" class="nav-link router-link-active">
+  SpringBoot
+</a></li><li class="dropdown-item"><!----> <a href="/2-Java/springcloud/" class="nav-link">
+  SpringCloud
+</a></li><li class="dropdown-item"><!----> <a href="/2-Java/springsecurity/" class="nav-link">
+  SpringSecurity
+</a></li><li class="dropdown-item"><!----> <a href="/2-Java/springdatajpa/" class="nav-link">
+  SpringDataJpa
+</a></li><li class="dropdown-item"><!----> <a href="/2-Java/mybatis/" class="nav-link">
+  MyBatis
+</a></li><li class="dropdown-item"><!----> <a href="/2-Java/HelpNeeded.html" class="nav-link">
+  帮助完善
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Linux" class="dropdown-title"><span class="title">Linux</span> <span class="arrow down"></span></button> <button type="button" aria-label="Linux" class="mobile-dropdown-title"><span class="title">Linux</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/3-Linux/" class="nav-link">
+  概要
+</a></li><li class="dropdown-item"><!----> <a href="/3-Linux/Command/" class="nav-link">
+  命令使用
+</a></li><li class="dropdown-item"><!----> <a href="/3-Linux/Shell/" class="nav-link">
+  Shell编程
+</a></li><li class="dropdown-item"><!----> <a href="/3-Linux/Server/" class="nav-link">
+  服务搭建配置
+</a></li><li class="dropdown-item"><!----> <a href="/3-Linux/Docker/" class="nav-link">
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/3-Linux/HelpNeeded.html" class="nav-link">
+  帮助完善
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="SQL" class="dropdown-title"><span class="title">SQL</span> <span class="arrow down"></span></button> <button type="button" aria-label="SQL" class="mobile-dropdown-title"><span class="title">SQL</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/4-SQL/" class="nav-link">
+  概要
+</a></li><li class="dropdown-item"><!----> <a href="/4-SQL/MySQL/" class="nav-link">
+  MySQL
+</a></li><li class="dropdown-item"><!----> <a href="/4-SQL/Redis/" class="nav-link">
+  Redis
+</a></li><li class="dropdown-item"><!----> <a href="/4-Github/HelpNeeded.html" class="nav-link">
+  帮助完善
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Web" class="dropdown-title"><span class="title">Web</span> <span class="arrow down"></span></button> <button type="button" aria-label="Web" class="mobile-dropdown-title"><span class="title">Web</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/5-Web/" class="nav-link">
+  概要
+</a></li><li class="dropdown-item"><!----> <a href="/5-Web/Vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/5-Web/CSS/" class="nav-link">
+  CSS
+</a></li><li class="dropdown-item"><!----> <a href="/5-Web/HelpNeeded.html" class="nav-link">
+  帮助完善
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具" class="dropdown-title"><span class="title">工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="工具" class="mobile-dropdown-title"><span class="title">工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/6-Tool/" class="nav-link">
+  概要
+</a></li><li class="dropdown-item"><!----> <a href="/6-Tool/Git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/6-Tool/SVN/" class="nav-link">
+  SVN
+</a></li><li class="dropdown-item"><!----> <a href="/6-Tool/IDEA/" class="nav-link">
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/6-Tool/HelpNeeded.html" class="nav-link">
+  帮助完善
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="算法与数据结构" class="dropdown-title"><span class="title">算法与数据结构</span> <span class="arrow down"></span></button> <button type="button" aria-label="算法与数据结构" class="mobile-dropdown-title"><span class="title">算法与数据结构</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/7-Algorithm/" class="nav-link">
+  概要
+</a></li><li class="dropdown-item"><!----> <a href="/7-Algorithm/Algorithm/" class="nav-link">
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/7-Algorithm/DataStructure/" class="nav-link">
+  数据结构
+</a></li><li class="dropdown-item"><!----> <a href="/7-Algorithm/HelpNeeded.html" class="nav-link">
+  帮助完善
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Future" class="dropdown-title"><span class="title">Future</span> <span class="arrow down"></span></button> <button type="button" aria-label="Future" class="mobile-dropdown-title"><span class="title">Future</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/8-Future/Interview/" class="nav-link">
+  面试
+</a></li><li class="dropdown-item"><!----> <a href="/8-Future/Plan/" class="nav-link">
+  计划
+</a></li><li class="dropdown-item"><!----> <a href="/8-Future/Experience/" class="nav-link">
+  经验
+</a></li><li class="dropdown-item"><!----> <a href="/8-Future/Project/" class="nav-link">
+  项目
+</a></li></ul></div></div><div class="nav-item"><a href="https://github.com/octocathub/octocathub.github.io/issues/new/choose" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  反馈
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="https://github.com/octocathub/octocathub.github.io" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/1-Preparations/" class="nav-link">
+  准备工作
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><span class="title">Java</span> <span class="arrow down"></span></button> <button type="button" aria-label="Java" class="mobile-dropdown-title"><span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/2-Java/java/" class="nav-link">
+  基础语法
+</a></li><li class="dropdown-item"><!----> <a href="/2-Java/springboot/" class="nav-link router-link-active">
+  SpringBoot
+</a></li><li class="dropdown-item"><!----> <a href="/2-Java/springcloud/" class="nav-link">
+  SpringCloud
+</a></li><li class="dropdown-item"><!----> <a href="/2-Java/springsecurity/" class="nav-link">
+  SpringSecurity
+</a></li><li class="dropdown-item"><!----> <a href="/2-Java/springdatajpa/" class="nav-link">
+  SpringDataJpa
+</a></li><li class="dropdown-item"><!----> <a href="/2-Java/mybatis/" class="nav-link">
+  MyBatis
+</a></li><li class="dropdown-item"><!----> <a href="/2-Java/HelpNeeded.html" class="nav-link">
+  帮助完善
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Linux" class="dropdown-title"><span class="title">Linux</span> <span class="arrow down"></span></button> <button type="button" aria-label="Linux" class="mobile-dropdown-title"><span class="title">Linux</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/3-Linux/" class="nav-link">
+  概要
+</a></li><li class="dropdown-item"><!----> <a href="/3-Linux/Command/" class="nav-link">
+  命令使用
+</a></li><li class="dropdown-item"><!----> <a href="/3-Linux/Shell/" class="nav-link">
+  Shell编程
+</a></li><li class="dropdown-item"><!----> <a href="/3-Linux/Server/" class="nav-link">
+  服务搭建配置
+</a></li><li class="dropdown-item"><!----> <a href="/3-Linux/Docker/" class="nav-link">
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/3-Linux/HelpNeeded.html" class="nav-link">
+  帮助完善
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="SQL" class="dropdown-title"><span class="title">SQL</span> <span class="arrow down"></span></button> <button type="button" aria-label="SQL" class="mobile-dropdown-title"><span class="title">SQL</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/4-SQL/" class="nav-link">
+  概要
+</a></li><li class="dropdown-item"><!----> <a href="/4-SQL/MySQL/" class="nav-link">
+  MySQL
+</a></li><li class="dropdown-item"><!----> <a href="/4-SQL/Redis/" class="nav-link">
+  Redis
+</a></li><li class="dropdown-item"><!----> <a href="/4-Github/HelpNeeded.html" class="nav-link">
+  帮助完善
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Web" class="dropdown-title"><span class="title">Web</span> <span class="arrow down"></span></button> <button type="button" aria-label="Web" class="mobile-dropdown-title"><span class="title">Web</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/5-Web/" class="nav-link">
+  概要
+</a></li><li class="dropdown-item"><!----> <a href="/5-Web/Vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/5-Web/CSS/" class="nav-link">
+  CSS
+</a></li><li class="dropdown-item"><!----> <a href="/5-Web/HelpNeeded.html" class="nav-link">
+  帮助完善
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具" class="dropdown-title"><span class="title">工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="工具" class="mobile-dropdown-title"><span class="title">工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/6-Tool/" class="nav-link">
+  概要
+</a></li><li class="dropdown-item"><!----> <a href="/6-Tool/Git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/6-Tool/SVN/" class="nav-link">
+  SVN
+</a></li><li class="dropdown-item"><!----> <a href="/6-Tool/IDEA/" class="nav-link">
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/6-Tool/HelpNeeded.html" class="nav-link">
+  帮助完善
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="算法与数据结构" class="dropdown-title"><span class="title">算法与数据结构</span> <span class="arrow down"></span></button> <button type="button" aria-label="算法与数据结构" class="mobile-dropdown-title"><span class="title">算法与数据结构</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/7-Algorithm/" class="nav-link">
+  概要
+</a></li><li class="dropdown-item"><!----> <a href="/7-Algorithm/Algorithm/" class="nav-link">
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/7-Algorithm/DataStructure/" class="nav-link">
+  数据结构
+</a></li><li class="dropdown-item"><!----> <a href="/7-Algorithm/HelpNeeded.html" class="nav-link">
+  帮助完善
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Future" class="dropdown-title"><span class="title">Future</span> <span class="arrow down"></span></button> <button type="button" aria-label="Future" class="mobile-dropdown-title"><span class="title">Future</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/8-Future/Interview/" class="nav-link">
+  面试
+</a></li><li class="dropdown-item"><!----> <a href="/8-Future/Plan/" class="nav-link">
+  计划
+</a></li><li class="dropdown-item"><!----> <a href="/8-Future/Experience/" class="nav-link">
+  经验
+</a></li><li class="dropdown-item"><!----> <a href="/8-Future/Project/" class="nav-link">
+  项目
+</a></li></ul></div></div><div class="nav-item"><a href="https://github.com/octocathub/octocathub.github.io/issues/new/choose" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  反馈
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="https://github.com/octocathub/octocathub.github.io" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>springboot</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/2-Java/springboot/" aria-current="page" class="sidebar-link">springboot简介</a></li><li><a href="/2-Java/springboot/interceptor/" class="sidebar-link">拦截器</a></li><li><a href="/2-Java/springboot/deploy.html" class="sidebar-link">Deploying</a></li><li><a href="/2-Java/springboot/package-deployment/" aria-current="page" class="active sidebar-link">Spring Boot 项目打包 + Shell 脚本部署</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/2-Java/springboot/package-deployment/#profiles指定不同环境的配置" class="sidebar-link">profiles指定不同环境的配置</a></li><li class="sidebar-sub-header"><a href="/2-Java/springboot/package-deployment/#maven-assembly-plugin打发布压缩包" class="sidebar-link">maven-assembly-plugin打发布压缩包</a></li><li class="sidebar-sub-header"><a href="/2-Java/springboot/package-deployment/#shenniu-publish-sh程序启动工具" class="sidebar-link">shenniu_publish.sh程序启动工具</a></li></ul></li><li><a href="/2-Java/springboot/directory-structure.html" class="sidebar-link">Directory Structure</a></li><li><a href="/2-Java/springboot/field-validate.html" class="sidebar-link">Springboot中如何优雅的进行字段校验</a></li><li><a href="/2-Java/springboot/custom-annotation.html" class="sidebar-link">自定义注解</a></li><li><a href="/2-Java/springboot/annotation.html" class="sidebar-link">注解</a></li><li><a href="/2-Java/springboot/attribute-definition-injection.html" class="sidebar-link">属性定义与注入</a></li><li><a href="/2-Java/springboot/configurationproperties.html" class="sidebar-link">@ConfigurationProperties注解</a></li><li><a href="/2-Java/springboot/filter.html" class="sidebar-link">过滤器</a></li><li><a href="/2-Java/springboot/project-packag-publish.html" class="sidebar-link">项目打包发布</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-macgs-content content__default"><h1 id="spring-boot-项目打包-shell-脚本部署"><a href="#spring-boot-项目打包-shell-脚本部署" class="header-anchor">#</a> Spring Boot 项目打包 + Shell 脚本部署</h1> <h2 id="profiles指定不同环境的配置"><a href="#profiles指定不同环境的配置" class="header-anchor">#</a> profiles指定不同环境的配置</h2> <p>通常一套程序分为了很多个部署环境：开发，测试，uat，线上 等，我们要想对这些环境区分配置文件，可以通过两种方式：</p> <ul><li>通过application.yml中编码指定 profile.active=uat 方式指定</li> <li>通过mvn中profiles来区分不同环境对应的配置文件夹，人工可以手动在idea勾选生成不同环境的包(推荐)</li></ul> <p>这里我们要讲的是第二种，首先在mvn中配置如下内容：</p> <div class="language-xml extra-class"><pre class="language-xml"><code>1 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>profiles</span><span class="token punctuation">&gt;</span></span>
+ 2 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>profile</span><span class="token punctuation">&gt;</span></span>
+ 3 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>id</span><span class="token punctuation">&gt;</span></span>node<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>id</span><span class="token punctuation">&gt;</span></span>
+ 4 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>properties</span><span class="token punctuation">&gt;</span></span>
+ 5 <span class="token comment">&lt;!--传递给脚本的参数值--&gt;</span>
+ 6 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>activeProfile</span><span class="token punctuation">&gt;</span></span>node<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>activeProfile</span><span class="token punctuation">&gt;</span></span>
+ 7 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>package-name</span><span class="token punctuation">&gt;</span></span>${scripts_packageName}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>package-name</span><span class="token punctuation">&gt;</span></span>
+ 8 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>boot-main</span><span class="token punctuation">&gt;</span></span>${scripts_bootMain}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>boot-main</span><span class="token punctuation">&gt;</span></span>
+ 9 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>properties</span><span class="token punctuation">&gt;</span></span>
+10 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>activation</span><span class="token punctuation">&gt;</span></span>
+11 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>activeByDefault</span><span class="token punctuation">&gt;</span></span>true<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>activeByDefault</span><span class="token punctuation">&gt;</span></span>
+12 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>activation</span><span class="token punctuation">&gt;</span></span>
+13 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>profile</span><span class="token punctuation">&gt;</span></span>
+14 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>profile</span><span class="token punctuation">&gt;</span></span>
+15 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>id</span><span class="token punctuation">&gt;</span></span>node1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>id</span><span class="token punctuation">&gt;</span></span>
+16 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>properties</span><span class="token punctuation">&gt;</span></span>
+17 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>activeProfile</span><span class="token punctuation">&gt;</span></span>node1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>activeProfile</span><span class="token punctuation">&gt;</span></span>
+18 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>package-name</span><span class="token punctuation">&gt;</span></span>${scripts_packageName}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>package-name</span><span class="token punctuation">&gt;</span></span>
+19 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>boot-main</span><span class="token punctuation">&gt;</span></span>${scripts_bootMain}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>boot-main</span><span class="token punctuation">&gt;</span></span>
+20 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>properties</span><span class="token punctuation">&gt;</span></span>
+21 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>profile</span><span class="token punctuation">&gt;</span></span>
+22 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>profile</span><span class="token punctuation">&gt;</span></span>
+23 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>id</span><span class="token punctuation">&gt;</span></span>node2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>id</span><span class="token punctuation">&gt;</span></span>
+24 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>properties</span><span class="token punctuation">&gt;</span></span>
+25 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>activeProfile</span><span class="token punctuation">&gt;</span></span>node2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>activeProfile</span><span class="token punctuation">&gt;</span></span>
+26 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>package-name</span><span class="token punctuation">&gt;</span></span>${scripts_packageName}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>package-name</span><span class="token punctuation">&gt;</span></span>
+27 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>boot-main</span><span class="token punctuation">&gt;</span></span>${scripts_bootMain}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>boot-main</span><span class="token punctuation">&gt;</span></span>
+28 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>properties</span><span class="token punctuation">&gt;</span></span>
+29 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>profile</span><span class="token punctuation">&gt;</span></span>
+30 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>profiles</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>节点粗解：
+id：用来指定不同环境配置文件所在的目录.</p> <p>properties：该节点中的节点是可作为参数传递给其他配置文件，如我这里的package-name节点值就可以在另外的assembly.xml或者shell脚本文件中通过${package-name}获取到.</p> <p>activeByDefault：指定默认环境配置文件夹。</p> <h2 id="maven-assembly-plugin打发布压缩包"><a href="#maven-assembly-plugin打发布压缩包" class="header-anchor">#</a> maven-assembly-plugin打发布压缩包</h2> <p>对于springboot程序打包，可以分为jar和war，这里是jar包；有场景是咋们配置文件或者第三方等依赖包不想放到工程jar中，并且把这些文件压缩成一个zip包，方便上传到linux；此时通过maven-assembly-plugin和maven-jar-plugin就可以做到，mvn的配置如：</p> <div class="language-xml extra-class"><pre class="language-xml"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugin</span><span class="token punctuation">&gt;</span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.apache.maven.plugins<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>maven-jar-plugin<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>2.6<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">&gt;</span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>archive</span><span class="token punctuation">&gt;</span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>addMavenDescriptor</span><span class="token punctuation">&gt;</span></span>false<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>addMavenDescriptor</span><span class="token punctuation">&gt;</span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>manifest</span><span class="token punctuation">&gt;</span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>addClasspath</span><span class="token punctuation">&gt;</span></span>true<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>addClasspath</span><span class="token punctuation">&gt;</span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>classpathPrefix</span><span class="token punctuation">&gt;</span></span>lib/<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>classpathPrefix</span><span class="token punctuation">&gt;</span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mainClass</span><span class="token punctuation">&gt;</span></span>${scripts_bootMain}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mainClass</span><span class="token punctuation">&gt;</span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>manifest</span><span class="token punctuation">&gt;</span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>archive</span><span class="token punctuation">&gt;</span></span>
+ <span class="token comment">&lt;!--打包排除项--&gt;</span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>excludes</span><span class="token punctuation">&gt;</span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>exclude</span><span class="token punctuation">&gt;</span></span>**/*.yml<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>exclude</span><span class="token punctuation">&gt;</span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>exclude</span><span class="token punctuation">&gt;</span></span>**/*.properties<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>exclude</span><span class="token punctuation">&gt;</span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>exclude</span><span class="token punctuation">&gt;</span></span>**/*.xml<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>exclude</span><span class="token punctuation">&gt;</span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>exclude</span><span class="token punctuation">&gt;</span></span>**/*.sh<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>exclude</span><span class="token punctuation">&gt;</span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>excludes</span><span class="token punctuation">&gt;</span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">&gt;</span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>executions</span><span class="token punctuation">&gt;</span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>execution</span><span class="token punctuation">&gt;</span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>id</span><span class="token punctuation">&gt;</span></span>make-a-jar<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>id</span><span class="token punctuation">&gt;</span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>phase</span><span class="token punctuation">&gt;</span></span>compile<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>phase</span><span class="token punctuation">&gt;</span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>goals</span><span class="token punctuation">&gt;</span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>goal</span><span class="token punctuation">&gt;</span></span>jar<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>goal</span><span class="token punctuation">&gt;</span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>goals</span><span class="token punctuation">&gt;</span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>execution</span><span class="token punctuation">&gt;</span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>executions</span><span class="token punctuation">&gt;</span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugin</span><span class="token punctuation">&gt;</span></span>
+
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugin</span><span class="token punctuation">&gt;</span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.apache.maven.plugins<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>maven-assembly-plugin<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>2.4<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
+ <span class="token comment">&lt;!-- The configuration of the plugin --&gt;</span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">&gt;</span></span>
+ <span class="token comment">&lt;!-- Specifies the configuration file of the sembly plugin --&gt;</span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>descriptors</span><span class="token punctuation">&gt;</span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>descriptor</span><span class="token punctuation">&gt;</span></span>${project.basedir}/src/main/assembly/sembly.xml<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>descriptor</span><span class="token punctuation">&gt;</span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>descriptors</span><span class="token punctuation">&gt;</span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">&gt;</span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>executions</span><span class="token punctuation">&gt;</span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>execution</span><span class="token punctuation">&gt;</span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>id</span><span class="token punctuation">&gt;</span></span>make-assembly<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>id</span><span class="token punctuation">&gt;</span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>phase</span><span class="token punctuation">&gt;</span></span>package<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>phase</span><span class="token punctuation">&gt;</span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>goals</span><span class="token punctuation">&gt;</span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>goal</span><span class="token punctuation">&gt;</span></span>single<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>goal</span><span class="token punctuation">&gt;</span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>goals</span><span class="token punctuation">&gt;</span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>execution</span><span class="token punctuation">&gt;</span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>executions</span><span class="token punctuation">&gt;</span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugin</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>值得注意的地方如下几点：</p> <ul><li>mainClass节点：用来指定启动main函数入口类路径，如这里的：com.sm.EurekaServerApplication</li> <li>excludes节点：排除主jar包中配置等一些列后缀文件，因为我们要包这些配置文件放到主包外面</li> <li>descriptor节点：用来指定assembly插件对应的assembly.xml配置文件</li></ul> <p>有了上面mvn配置，我们还需要assembly.xml的配置，这里提取了结合shell脚本发布程序的配置：</p> <div class="language-xml extra-class"><pre class="language-xml"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>assembly</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>http://maven.apache.org/ASSEMBLY/2.0.0<span class="token punctuation">&quot;</span></span> <span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">&quot;</span></span>
+          <span class="token attr-name"><span class="token namespace">xsi:</span>schemaLocation</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>http://maven.apache.org/ASSEMBLY/2.0.0 http://maven.apache.org/xsd/assembly-2.0.0.xsd
+http://maven.apache.org/ASSEMBLY/2.0.0 <span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>id</span><span class="token punctuation">&gt;</span></span>${activeProfile}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>id</span><span class="token punctuation">&gt;</span></span>
+    <span class="token comment">&lt;!--打包成一个用于发布的zip文件--&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>formats</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>format</span><span class="token punctuation">&gt;</span></span>zip<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>format</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>formats</span><span class="token punctuation">&gt;</span></span>
+    <span class="token comment">&lt;!--true：zip中生成一级目录(此处屏蔽，配合脚本需要profiles后缀)--&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>includeBaseDirectory</span><span class="token punctuation">&gt;</span></span>false<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>includeBaseDirectory</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencySets</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencySet</span><span class="token punctuation">&gt;</span></span>
+            <span class="token comment">&lt;!--打包进zip文件的lib目录--&gt;</span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>useProjectArtifact</span><span class="token punctuation">&gt;</span></span>false<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>useProjectArtifact</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>outputDirectory</span><span class="token punctuation">&gt;</span></span>${package-name}-${activeProfile}/lib<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>outputDirectory</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>unpack</span><span class="token punctuation">&gt;</span></span>false<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>unpack</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencySet</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencySets</span><span class="token punctuation">&gt;</span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>fileSets</span><span class="token punctuation">&gt;</span></span>
+        <span class="token comment">&lt;!-- 配置文件打包进zip文件的conf目录 --&gt;</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>fileSet</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>directory</span><span class="token punctuation">&gt;</span></span>${project.basedir}/src/main/profiles/${activeProfile}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>directory</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>outputDirectory</span><span class="token punctuation">&gt;</span></span>${package-name}-${activeProfile}/conf<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>outputDirectory</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>includes</span><span class="token punctuation">&gt;</span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>include</span><span class="token punctuation">&gt;</span></span>**/*<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>include</span><span class="token punctuation">&gt;</span></span>
+                <span class="token comment">&lt;!--&lt;include&gt;*.xml&lt;/include&gt;--&gt;</span>
+                <span class="token comment">&lt;!--&lt;include&gt;*.properties&lt;/include&gt;--&gt;</span>
+                <span class="token comment">&lt;!--&lt;include&gt;*.yml&lt;/include&gt;--&gt;</span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>includes</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>fileSet</span><span class="token punctuation">&gt;</span></span>
+
+        <span class="token comment">&lt;!--启动脚本打包进zip文件--&gt;</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>fileSet</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>directory</span><span class="token punctuation">&gt;</span></span>${project.basedir}/src/main/scripts<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>directory</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>outputDirectory</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>outputDirectory</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>includes</span><span class="token punctuation">&gt;</span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>include</span><span class="token punctuation">&gt;</span></span>**/*<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>include</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>includes</span><span class="token punctuation">&gt;</span></span>
+            <span class="token comment">&lt;!-- 文件文件权限为777 --&gt;</span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>fileMode</span><span class="token punctuation">&gt;</span></span>777<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>fileMode</span><span class="token punctuation">&gt;</span></span>
+            <span class="token comment">&lt;!-- 目录权限为777 --&gt;</span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>directoryMode</span><span class="token punctuation">&gt;</span></span>777<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>directoryMode</span><span class="token punctuation">&gt;</span></span>
+            <span class="token comment">&lt;!--脚本中参数变量为pom中的值 关键--&gt;</span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filtered</span><span class="token punctuation">&gt;</span></span>true<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filtered</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>fileSet</span><span class="token punctuation">&gt;</span></span>
+
+        <span class="token comment">&lt;!-- 项目编译出来的jar打包进zip文件 --&gt;</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>fileSet</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>directory</span><span class="token punctuation">&gt;</span></span>${project.build.directory}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>directory</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>outputDirectory</span><span class="token punctuation">&gt;</span></span>${package-name}-${activeProfile}/<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>outputDirectory</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>includes</span><span class="token punctuation">&gt;</span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>include</span><span class="token punctuation">&gt;</span></span>*.jar<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>include</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>includes</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>fileSet</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>fileSets</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>assembly</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>重点节点介绍：</p> <ul><li>formats节点：把配置文件和jar包等压缩成什么文件格式，这里可以有：zip，tar等</li> <li>fileMode节点：指定scripts目录下脚本文件(这里是：shenniu_publish.sh)在linux上文件权限为777</li> <li>filtered节点：脚本中参数变量为pom的profiles中properties的值(该配置，是把mvn中属性值映射生成到sh文件中，如：${package-name})</li></ul> <p>完成上面配置后，此时我们可以通过idea上勾选切换不同环境来打zip包，如图：
+<img src="data:image/png;base64,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" alt=""></p> <h2 id="shenniu-publish-sh程序启动工具"><a href="#shenniu-publish-sh程序启动工具" class="header-anchor">#</a> shenniu_publish.sh程序启动工具</h2> <p>上面步骤完成了zip格式的发布包，我们再分享下启动程序的shell脚本，该脚本具有的功能如：</p> <ol><li>解压zip+启动jar包</li> <li>启动jar包</li> <li>停止对应jar运行</li> <li>重启jar程序
+目前该shell中封装了两种启动jar命令的方式：</li></ol> <ul><li>java -cp</li> <li>java -jar</li></ul> <p>来看全部的shell代码：</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token shebang important">#!/usr/bin/env bash</span>
+<span class="token comment">#可变参数变量</span>
+<span class="token assign-left variable">languageType</span><span class="token operator">=</span><span class="token string">&quot;javac&quot;</span> <span class="token comment">#支持 java,javac,netcore 发布</span>
+<span class="token comment">#参数值由pom文件传递</span>
+<span class="token assign-left variable">baseZipName</span><span class="token operator">=</span><span class="token string">&quot;<span class="token variable">${package-name}</span>-<span class="token variable">${activeProfile}</span>&quot;</span> <span class="token comment">#压缩包名称 publish-test.zip的publish</span>
+<span class="token assign-left variable">packageName</span><span class="token operator">=</span><span class="token string">&quot;<span class="token variable">${package-name}</span>&quot;</span> <span class="token comment">#命令启动包名 xx.jar的xx</span>
+<span class="token assign-left variable">mainclass</span><span class="token operator">=</span><span class="token string">&quot;<span class="token variable">${boot-main}</span>&quot;</span> <span class="token comment">#java -cp启动时，指定main入口类;命令：java -cp conf;lib\*.jar;${packageName}.jar ${mainclass}</span>
+
+<span class="token comment">#例子</span>
+<span class="token comment"># baseZipName=&quot;publish-test&quot; #压缩包名称 publish-test.zip的publish</span>
+<span class="token comment"># packageName=&quot;publish&quot; #命令启动包名 publish.jar的xx</span>
+
+<span class="token comment">#固定变量</span>
+<span class="token assign-left variable">basePath</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">cd</span> `dirname $0`/<span class="token punctuation">;</span> <span class="token builtin class-name">pwd</span><span class="token variable">)</span></span>
+<span class="token assign-left variable">baseZipPath</span><span class="token operator">=</span><span class="token string">&quot;<span class="token variable">${basePath}</span>/<span class="token variable">${baseZipName}</span>.zip&quot;</span>  <span class="token comment">#压缩包路径</span>
+<span class="token assign-left variable">baseDirPath</span><span class="token operator">=</span><span class="token string">&quot;<span class="token variable">${basePath}</span>&quot;</span> <span class="token comment">#解压部署磁盘路径</span>
+<span class="token assign-left variable">pid</span><span class="token operator">=</span> <span class="token comment">#进程pid</span>
+
+<span class="token comment">#解压</span>
+<span class="token keyword">function</span> <span class="token function-name function">shenniu_unzip</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">&quot;解压---------------------------------------------&quot;</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">&quot;压缩包路径：<span class="token variable">${baseZipPath}</span>&quot;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token operator">!</span> <span class="token variable"><span class="token variable">`</span><span class="token function">find</span> $<span class="token punctuation">{</span>baseZipPath<span class="token punctuation">}</span><span class="token variable">`</span></span> <span class="token punctuation">]</span>
+    <span class="token keyword">then</span>
+        <span class="token builtin class-name">echo</span> <span class="token string">&quot;不存在压缩包：<span class="token variable">${baseZipPath}</span>&quot;</span>
+    <span class="token keyword">else</span>
+        <span class="token builtin class-name">echo</span> <span class="token string">&quot;解压磁盘路径：<span class="token variable">${baseDirPath}</span>/<span class="token variable">${baseZipName}</span>&quot;</span>
+        <span class="token builtin class-name">echo</span> <span class="token string">&quot;开始解压...&quot;</span>
+
+        <span class="token comment">#解压命令</span>
+        <span class="token function">unzip</span> -od <span class="token variable">${baseDirPath}</span>/<span class="token variable">${baseZipName}</span> <span class="token variable">${baseZipPath}</span>
+
+        <span class="token comment">#设置执行权限</span>
+        <span class="token function">chmod</span> +x <span class="token variable">${baseDirPath}</span>/<span class="token variable">${baseZipName}</span>/<span class="token variable">${packageName}</span>
+
+        <span class="token builtin class-name">echo</span> <span class="token string">&quot;解压完成。&quot;</span>
+    <span class="token keyword">fi</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">#检测pid</span>
+<span class="token keyword">function</span> <span class="token function-name function">getPid</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">&quot;检测状态---------------------------------------------&quot;</span>
+    <span class="token assign-left variable">pid</span><span class="token operator">=</span><span class="token variable"><span class="token variable">`</span><span class="token function">ps</span> -ef <span class="token operator">|</span> <span class="token function">grep</span> -n $<span class="token punctuation">{</span>packageName<span class="token punctuation">}</span> <span class="token operator">|</span> <span class="token function">grep</span> -v <span class="token function">grep</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{print <span class="token variable">$2</span>}'</span><span class="token variable">`</span></span>
+    <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">${pid}</span> <span class="token punctuation">]</span>
+    <span class="token keyword">then</span>
+        <span class="token builtin class-name">echo</span> <span class="token string">&quot;运行pid：<span class="token variable">${pid}</span>&quot;</span>
+    <span class="token keyword">else</span>
+        <span class="token builtin class-name">echo</span> <span class="token string">&quot;未运行&quot;</span>
+    <span class="token keyword">fi</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">#启动程序</span>
+<span class="token keyword">function</span> <span class="token function-name function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">#启动前，先停止之前的</span>
+    stop
+    <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">${pid}</span> <span class="token punctuation">]</span>
+    <span class="token keyword">then</span>
+        <span class="token builtin class-name">echo</span> <span class="token string">&quot;停止程序失败，无法启动&quot;</span>
+    <span class="token keyword">else</span>
+        <span class="token builtin class-name">echo</span> <span class="token string">&quot;启动程序---------------------------------------------&quot;</span>
+
+        <span class="token comment">#选择语言类型</span>
+        <span class="token builtin class-name">read</span> -p <span class="token string">&quot;输入程序类型(java,javac,netcore)，下一步按回车键(默认：<span class="token variable">${languageType}</span>)：&quot;</span> read_languageType
+        <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">${read_languageType}</span> <span class="token punctuation">]</span>
+        <span class="token keyword">then</span>
+            <span class="token assign-left variable">languageType</span><span class="token operator">=</span><span class="token variable">${read_languageType}</span>
+        <span class="token keyword">fi</span>
+        <span class="token builtin class-name">echo</span> <span class="token string">&quot;选择程序类型：<span class="token variable">${languageType}</span>&quot;</span>
+
+        <span class="token comment">#进入运行包目录</span>
+        <span class="token builtin class-name">cd</span> <span class="token variable">${baseDirPath}</span>/<span class="token variable">${baseZipName}</span>
+
+        <span class="token comment">#分类启动</span>
+        <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token string">&quot;<span class="token variable">${languageType}</span>&quot;</span> <span class="token operator">==</span> <span class="token string">&quot;javac&quot;</span> <span class="token punctuation">]</span>
+        <span class="token keyword">then</span>
+            <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">${mainclass}</span> <span class="token punctuation">]</span>
+            <span class="token keyword">then</span>
+                <span class="token function">nohup</span> java -cp conf:lib<span class="token punctuation">\</span>*.jar:<span class="token variable">${packageName}</span>.jar <span class="token variable">${mainclass}</span> <span class="token operator">&gt;</span><span class="token variable">${baseDirPath}</span>/<span class="token variable">${packageName}</span>.out <span class="token operator"><span class="token file-descriptor important">2</span>&gt;</span><span class="token file-descriptor important">&amp;1</span> <span class="token operator">&amp;</span>
+               <span class="token comment">#nohup java -cp conf:lib\*.jar:${packageName}.jar ${mainclass} &gt;/dev/null 2&gt;&amp;1 &amp;</span>
+            <span class="token keyword">fi</span>
+        <span class="token keyword">elif</span> <span class="token punctuation">[</span> <span class="token string">&quot;<span class="token variable">${languageType}</span>&quot;</span> <span class="token operator">==</span> <span class="token string">&quot;java&quot;</span> <span class="token punctuation">]</span>
+        <span class="token keyword">then</span>
+            <span class="token function">nohup</span> java -jar <span class="token variable">${baseDirPath}</span>/<span class="token variable">${baseZipName}</span>/<span class="token variable">${packageName}</span>.jar <span class="token operator">&gt;</span>/dev/null <span class="token operator"><span class="token file-descriptor important">2</span>&gt;</span><span class="token file-descriptor important">&amp;1</span> <span class="token operator">&amp;</span>
+            <span class="token comment"># java -jar ${baseDirPath}/${baseZipName}/${packageName}.jar</span>
+        <span class="token keyword">elif</span> <span class="token punctuation">[</span> <span class="token string">&quot;<span class="token variable">${languageType}</span>&quot;</span> <span class="token operator">==</span> <span class="token string">&quot;netcore&quot;</span> <span class="token punctuation">]</span>
+        <span class="token keyword">then</span>
+            <span class="token comment">#nohup dotnet run ${baseDirPath}/${baseZipName}/${packageName} &gt;/dev/null 2&gt;&amp;1 &amp;</span>
+            <span class="token function">nohup</span> <span class="token variable">${baseDirPath}</span>/<span class="token variable">${baseZipName}</span>/<span class="token variable">${packageName}</span> <span class="token operator">&gt;</span>/dev/null <span class="token operator"><span class="token file-descriptor important">2</span>&gt;</span><span class="token file-descriptor important">&amp;1</span> <span class="token operator">&amp;</span>
+        <span class="token keyword">fi</span>
+
+        <span class="token comment">#查询是否有启动进程</span>
+        getPid
+        <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">${pid}</span> <span class="token punctuation">]</span>
+        <span class="token keyword">then</span>
+            <span class="token builtin class-name">echo</span> <span class="token string">&quot;已启动&quot;</span>
+            <span class="token comment">#nohup日志</span>
+            <span class="token function">tail</span> -n <span class="token number">50</span> -f <span class="token variable">${baseDirPath}</span>/<span class="token variable">${packageName}</span>.out
+        <span class="token keyword">else</span>
+            <span class="token builtin class-name">echo</span> <span class="token string">&quot;启动失败&quot;</span>
+        <span class="token keyword">fi</span>
+    <span class="token keyword">fi</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">#停止程序</span>
+<span class="token keyword">function</span> <span class="token function-name function">stop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    getPid
+    <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">${pid}</span> <span class="token punctuation">]</span>
+    <span class="token keyword">then</span>
+        <span class="token builtin class-name">echo</span> <span class="token string">&quot;停止程序---------------------------------------------&quot;</span>
+        <span class="token function">kill</span> -9 <span class="token variable">${pid}</span>
+
+        getPid
+        <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">${pid}</span> <span class="token punctuation">]</span>
+        <span class="token keyword">then</span>
+            <span class="token comment">#stop</span>
+            <span class="token builtin class-name">echo</span> <span class="token string">&quot;停止失败&quot;</span>
+        <span class="token keyword">else</span>
+            <span class="token builtin class-name">echo</span> <span class="token string">&quot;停止成功&quot;</span>
+        <span class="token keyword">fi</span>
+    <span class="token keyword">fi</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">#启动时带参数，根据参数执行</span>
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">${<span class="token operator">#</span>}</span> -ge <span class="token number">1</span> <span class="token punctuation">]</span>
+<span class="token keyword">then</span>
+    <span class="token keyword">case</span> <span class="token variable">${1}</span> <span class="token keyword">in</span>
+        <span class="token string">&quot;start&quot;</span><span class="token punctuation">)</span>
+            start
+        <span class="token punctuation">;</span><span class="token punctuation">;</span>
+        <span class="token string">&quot;restart&quot;</span><span class="token punctuation">)</span>
+            start
+        <span class="token punctuation">;</span><span class="token punctuation">;</span>
+        <span class="token string">&quot;stop&quot;</span><span class="token punctuation">)</span>
+            stop
+        <span class="token punctuation">;</span><span class="token punctuation">;</span>
+        <span class="token string">&quot;unzip&quot;</span><span class="token punctuation">)</span>
+            <span class="token comment">#执行解压</span>
+            shenniu_unzip
+            <span class="token comment">#执行启动</span>
+            start
+        <span class="token punctuation">;</span><span class="token punctuation">;</span>
+        *<span class="token punctuation">)</span>
+            <span class="token builtin class-name">echo</span> <span class="token string">&quot;<span class="token variable">${1}</span>无任何操作&quot;</span>
+        <span class="token punctuation">;</span><span class="token punctuation">;</span>
+    <span class="token keyword">esac</span>
+<span class="token keyword">else</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">&quot;
+    command如下命令：
+    unzip：解压并启动
+    start：启动
+    stop：停止进程
+    restart：重启
+
+    示例命令如：./shenniu_publish start
+    &quot;</span>
+<span class="token keyword">fi</span>
+</code></pre></div><p>正如上面小节说的，shell中的参数 package-name，activeProfile，boot-main 都是由mvn中profiles的properties中提供，是可变的参数，脚本代码本身不需要人工去修改，只需要变的是mvn的参数即可；其实在我们生成zip包的时候，shell中的参数就被替换了，可以看zip中shell文件内容如：
+图片
+把生成的zip上传到linux上，通过命令解压：
+1 unzip -od eureka-server-0.0.1-node eureka-server-0.0.1-node.zip
+其实shell脚本中包含有解压命令，但是我在打包时放在了zip中，所以只能通过手动解压了，当然可以调整；此时进入加压目录如此：
+图片
+注：这里第一次执行./shenniu_publish.sh脚本时候，提示了错误信息；是由于我是在windows上编辑的这个脚本，其空格等和linux上不一样，所以运行会有问题，要解决可以使用vim命令在linux把该文件转成linux格式，如下命令：
+1 vim shenniu_publish.sh
+2 set ff=unix
+3 :wq
+执行完后，再来运行脚本./shenniu_publish.sh，此时有如下提示:
+图片
+此刻我们文件是解压状态，因此只需要start命令启动程序即可：
+图片
+到这里shenniu_publish.sh脚本使用就完成了，只要脚本没有提示错误，基本都能启动jar服务；其他restart和stop命令也如此执行就行：
+图片
+可以去研究下shell代码，希望该脚本能给你带来效率和好的学习思路，下面是测试用例git地址，脚本在eureka-server项目中：https://github.com/shenniubuxing3/springcloud-Finchley.SR2</p> <p><a href="https://www.cnblogs.com/wangrudong003/p/10502043.html" target="_blank" rel="noopener noreferrer">https://www.cnblogs.com/wangrudong003/p/10502043.html<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></div> <footer class="page-edit"><!----> <div style="float: right"><small class="word-count"><small><span class="octicon octicon-file"></span></small> <span id="word"></span> <small><span class="octicon octicon-clock"></span></small> <span id="time"></span></small> <small id="/2-Java/springboot/package-deployment/" class="leancloud-visitors"><span class="prefix"><small><span class="octicon octicon-eye"></span></small></span> <span class="pv leancloud-visitors-count"></span></small></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/2-Java/springboot/deploy.html" class="prev">
+        Deploying
+      </a></span> <span class="next"><a href="/2-Java/springboot/directory-structure.html">
+        Directory Structure
+      </a>
+      →
+    </span></p></div> <section class="content theme-macgs-content__comment"><div class="warning custom-block"><p class="custom-block-title">
+      关于评论
+    </p> <p>评论前请填好“昵称”、“邮箱”这两栏内容，否则不会收到回复，谢谢！</p></div> <article id="vcomments"></article></section> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/assets/js/app.5dedda2e.js" defer></script><script src="/assets/js/5.cf21ebe8.js" defer></script><script src="/assets/js/16.c2d49c99.js" defer></script>
+  </body>
+</html>
