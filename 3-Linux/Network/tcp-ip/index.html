@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>TCP/IP协议 | OctocatHub</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/favicon.png">
+    <script>var _hmt = _hmt || [];
+        (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a7b4f008cf9324361928ee39bc7a5233";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();</script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/octicons/build/font/octicons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/octicons/build/build.css">
+    <link rel="apple-touch-icon" href="/favicon.png">
+    <meta name="description" content="开源聚合平台">
+    <meta name="theme-color" content="#00ABE9">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="msapplication-TileImage" content="/favicon.png">
+    <meta name="msapplication-TileColor" content="#06BDFF">
+    
+    <link rel="preload" href="/assets/css/0.styles.8a26cf74.css" as="style"><link rel="preload" href="/assets/js/app.ddb29397.js" as="script"><link rel="preload" href="/assets/js/5.e007e30a.js" as="script"><link rel="preload" href="/assets/js/6.9fefc1fc.js" as="script"><link rel="prefetch" href="/assets/js/10.f43692cf.js"><link rel="prefetch" href="/assets/js/100.c80e48bf.js"><link rel="prefetch" href="/assets/js/101.d02656a1.js"><link rel="prefetch" href="/assets/js/102.149db5a1.js"><link rel="prefetch" href="/assets/js/103.f649f6eb.js"><link rel="prefetch" href="/assets/js/104.74f0aae0.js"><link rel="prefetch" href="/assets/js/105.8e6c3efe.js"><link rel="prefetch" href="/assets/js/106.0565d233.js"><link rel="prefetch" href="/assets/js/107.4745e37e.js"><link rel="prefetch" href="/assets/js/108.d5906663.js"><link rel="prefetch" href="/assets/js/109.52b59c5c.js"><link rel="prefetch" href="/assets/js/11.b80121f7.js"><link rel="prefetch" href="/assets/js/110.5d5f648a.js"><link rel="prefetch" href="/assets/js/111.011e26d3.js"><link rel="prefetch" href="/assets/js/112.cdc1e3a9.js"><link rel="prefetch" href="/assets/js/113.df0114fc.js"><link rel="prefetch" href="/assets/js/114.546a1473.js"><link rel="prefetch" href="/assets/js/115.25a860ee.js"><link rel="prefetch" href="/assets/js/116.934f5508.js"><link rel="prefetch" href="/assets/js/117.a01be33d.js"><link rel="prefetch" href="/assets/js/118.66618288.js"><link rel="prefetch" href="/assets/js/119.2245123e.js"><link rel="prefetch" href="/assets/js/12.bbcd9f31.js"><link rel="prefetch" href="/assets/js/120.9d2e1124.js"><link rel="prefetch" href="/assets/js/121.333f2449.js"><link rel="prefetch" href="/assets/js/122.3e817d86.js"><link rel="prefetch" href="/assets/js/123.0c92508f.js"><link rel="prefetch" href="/assets/js/124.b35c6621.js"><link rel="prefetch" href="/assets/js/125.a7fb22df.js"><link rel="prefetch" href="/assets/js/126.317b95f4.js"><link rel="prefetch" href="/assets/js/127.697953fb.js"><link rel="prefetch" href="/assets/js/128.ff61697f.js"><link rel="prefetch" href="/assets/js/129.9eed7688.js"><link rel="prefetch" href="/assets/js/13.4bab813d.js"><link rel="prefetch" href="/assets/js/130.e3ffcdbb.js"><link rel="prefetch" href="/assets/js/131.6cfc6285.js"><link rel="prefetch" href="/assets/js/132.497e0397.js"><link rel="prefetch" href="/assets/js/133.c360152b.js"><link rel="prefetch" href="/assets/js/134.213fc4d0.js"><link rel="prefetch" href="/assets/js/135.0afe4c11.js"><link rel="prefetch" href="/assets/js/136.b500a58c.js"><link rel="prefetch" href="/assets/js/137.132a5f6d.js"><link rel="prefetch" href="/assets/js/138.3b673b42.js"><link rel="prefetch" href="/assets/js/139.6f43ba34.js"><link rel="prefetch" href="/assets/js/14.052afaac.js"><link rel="prefetch" href="/assets/js/140.0005f7c0.js"><link rel="prefetch" href="/assets/js/141.c931cdce.js"><link rel="prefetch" href="/assets/js/142.aa66a9db.js"><link rel="prefetch" href="/assets/js/143.4dfa58ff.js"><link rel="prefetch" href="/assets/js/144.de6146a1.js"><link rel="prefetch" href="/assets/js/145.58a6d1f9.js"><link rel="prefetch" href="/assets/js/146.e1878f94.js"><link rel="prefetch" href="/assets/js/147.f8bbb0f1.js"><link rel="prefetch" href="/assets/js/148.4d13d3a8.js"><link rel="prefetch" href="/assets/js/149.e11b61da.js"><link rel="prefetch" href="/assets/js/15.a2ccf31a.js"><link rel="prefetch" href="/assets/js/150.afb33064.js"><link rel="prefetch" href="/assets/js/151.1d9efffc.js"><link rel="prefetch" href="/assets/js/152.6b96a20f.js"><link rel="prefetch" href="/assets/js/153.e27fa230.js"><link rel="prefetch" href="/assets/js/154.579122a4.js"><link rel="prefetch" href="/assets/js/155.e346b721.js"><link rel="prefetch" href="/assets/js/156.4e87343a.js"><link rel="prefetch" href="/assets/js/157.adc20845.js"><link rel="prefetch" href="/assets/js/158.50316935.js"><link rel="prefetch" href="/assets/js/159.32aed59c.js"><link rel="prefetch" href="/assets/js/16.f09cf721.js"><link rel="prefetch" href="/assets/js/160.d93a58ad.js"><link rel="prefetch" href="/assets/js/161.7e38f063.js"><link rel="prefetch" href="/assets/js/162.80105057.js"><link rel="prefetch" href="/assets/js/163.0fa6f88c.js"><link rel="prefetch" href="/assets/js/164.0ade88d4.js"><link rel="prefetch" href="/assets/js/165.e8947c5c.js"><link rel="prefetch" href="/assets/js/166.897f43c7.js"><link rel="prefetch" href="/assets/js/167.abc4e38e.js"><link rel="prefetch" href="/assets/js/168.feca0eed.js"><link rel="prefetch" href="/assets/js/169.0dcea99d.js"><link rel="prefetch" href="/assets/js/17.fd738d61.js"><link rel="prefetch" href="/assets/js/170.7f6bc470.js"><link rel="prefetch" href="/assets/js/171.5760768e.js"><link rel="prefetch" href="/assets/js/172.62782bd7.js"><link rel="prefetch" href="/assets/js/173.b2de5143.js"><link rel="prefetch" href="/assets/js/174.31c5b584.js"><link rel="prefetch" href="/assets/js/175.baf2e4e8.js"><link rel="prefetch" href="/assets/js/176.44abbdba.js"><link rel="prefetch" href="/assets/js/177.a0aa277c.js"><link rel="prefetch" href="/assets/js/178.803b76ed.js"><link rel="prefetch" href="/assets/js/179.7328d80c.js"><link rel="prefetch" href="/assets/js/18.9d93789f.js"><link rel="prefetch" href="/assets/js/180.b120f053.js"><link rel="prefetch" href="/assets/js/181.747565c8.js"><link rel="prefetch" href="/assets/js/182.43bd9d9e.js"><link rel="prefetch" href="/assets/js/183.bb2500b8.js"><link rel="prefetch" href="/assets/js/184.b0026919.js"><link rel="prefetch" href="/assets/js/185.705ed26b.js"><link rel="prefetch" href="/assets/js/186.d31bb670.js"><link rel="prefetch" href="/assets/js/19.35b06160.js"><link rel="prefetch" href="/assets/js/20.29a70fa7.js"><link rel="prefetch" href="/assets/js/21.b6626afb.js"><link rel="prefetch" href="/assets/js/22.ab254775.js"><link rel="prefetch" href="/assets/js/23.fd0f3887.js"><link rel="prefetch" href="/assets/js/24.5d6bec55.js"><link rel="prefetch" href="/assets/js/25.689a4966.js"><link rel="prefetch" href="/assets/js/26.2b5c4c56.js"><link rel="prefetch" href="/assets/js/27.dafa70b7.js"><link rel="prefetch" href="/assets/js/28.9200c1da.js"><link rel="prefetch" href="/assets/js/29.42f99b6c.js"><link rel="prefetch" href="/assets/js/30.dcf58083.js"><link rel="prefetch" href="/assets/js/31.ea5e43a6.js"><link rel="prefetch" href="/assets/js/32.7fea01da.js"><link rel="prefetch" href="/assets/js/33.231377f9.js"><link rel="prefetch" href="/assets/js/34.9fa4c513.js"><link rel="prefetch" href="/assets/js/35.a815cd2a.js"><link rel="prefetch" href="/assets/js/36.af0d2592.js"><link rel="prefetch" href="/assets/js/37.092f9f51.js"><link rel="prefetch" href="/assets/js/38.f93061c3.js"><link rel="prefetch" href="/assets/js/39.04bfb550.js"><link rel="prefetch" href="/assets/js/40.e5aae1ed.js"><link rel="prefetch" href="/assets/js/41.1710166b.js"><link rel="prefetch" href="/assets/js/42.1a06be17.js"><link rel="prefetch" href="/assets/js/43.3fbe3dee.js"><link rel="prefetch" href="/assets/js/44.5b28b5e3.js"><link rel="prefetch" href="/assets/js/45.7b402fd3.js"><link rel="prefetch" href="/assets/js/46.31eccdec.js"><link rel="prefetch" href="/assets/js/47.ed0d61e5.js"><link rel="prefetch" href="/assets/js/48.79128978.js"><link rel="prefetch" href="/assets/js/49.44967dae.js"><link rel="prefetch" href="/assets/js/50.a6fa4b0b.js"><link rel="prefetch" href="/assets/js/51.09df5b17.js"><link rel="prefetch" href="/assets/js/52.d8c1643b.js"><link rel="prefetch" href="/assets/js/53.ac30f6b0.js"><link rel="prefetch" href="/assets/js/54.dcd5d008.js"><link rel="prefetch" href="/assets/js/55.241e9015.js"><link rel="prefetch" href="/assets/js/56.5cdbb57b.js"><link rel="prefetch" href="/assets/js/57.236d9354.js"><link rel="prefetch" href="/assets/js/58.744b5c3c.js"><link rel="prefetch" href="/assets/js/59.470b7f2e.js"><link rel="prefetch" href="/assets/js/60.24d9b9e3.js"><link rel="prefetch" href="/assets/js/61.546a7f72.js"><link rel="prefetch" href="/assets/js/62.b599be23.js"><link rel="prefetch" href="/assets/js/63.b2eebecd.js"><link rel="prefetch" href="/assets/js/64.d86e483a.js"><link rel="prefetch" href="/assets/js/65.0ff6ed9b.js"><link rel="prefetch" href="/assets/js/66.43289d70.js"><link rel="prefetch" href="/assets/js/67.18136669.js"><link rel="prefetch" href="/assets/js/68.c3564766.js"><link rel="prefetch" href="/assets/js/69.98dd5ffa.js"><link rel="prefetch" href="/assets/js/7.98ce0a65.js"><link rel="prefetch" href="/assets/js/70.b8e070a1.js"><link rel="prefetch" href="/assets/js/71.553b17aa.js"><link rel="prefetch" href="/assets/js/72.82f4fc74.js"><link rel="prefetch" href="/assets/js/73.f56744d1.js"><link rel="prefetch" href="/assets/js/74.5aca8858.js"><link rel="prefetch" href="/assets/js/75.5cb1ea1b.js"><link rel="prefetch" href="/assets/js/76.fc7989b0.js"><link rel="prefetch" href="/assets/js/77.e370f36d.js"><link rel="prefetch" href="/assets/js/78.4cdb243e.js"><link rel="prefetch" href="/assets/js/79.1f3592ff.js"><link rel="prefetch" href="/assets/js/8.1dc3b3a9.js"><link rel="prefetch" href="/assets/js/80.e16cc2c4.js"><link rel="prefetch" href="/assets/js/81.c8b4f1dd.js"><link rel="prefetch" href="/assets/js/82.f1bdbf6c.js"><link rel="prefetch" href="/assets/js/83.21333b34.js"><link rel="prefetch" href="/assets/js/84.89a80d6c.js"><link rel="prefetch" href="/assets/js/85.b6a04671.js"><link rel="prefetch" href="/assets/js/86.6fc8a331.js"><link rel="prefetch" href="/assets/js/87.cda886df.js"><link rel="prefetch" href="/assets/js/88.195a0692.js"><link rel="prefetch" href="/assets/js/89.77d90ff1.js"><link rel="prefetch" href="/assets/js/9.ef5a1e61.js"><link rel="prefetch" href="/assets/js/90.a0a176a7.js"><link rel="prefetch" href="/assets/js/91.9069b8fb.js"><link rel="prefetch" href="/assets/js/92.63d97225.js"><link rel="prefetch" href="/assets/js/93.54d02b3d.js"><link rel="prefetch" href="/assets/js/94.b4dceea1.js"><link rel="prefetch" href="/assets/js/95.72c3055c.js"><link rel="prefetch" href="/assets/js/96.fc6479d8.js"><link rel="prefetch" href="/assets/js/97.176c334b.js"><link rel="prefetch" href="/assets/js/98.793c167f.js"><link rel="prefetch" href="/assets/js/99.11a0a391.js"><link rel="prefetch" href="/assets/js/vendors~dplayer.2c33676b.js"><link rel="prefetch" href="/assets/js/vendors~leancloud-storage.7cf402a9.js"><link rel="prefetch" href="/assets/js/vendors~valine.4fa800d6.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.8a26cf74.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">
+      OctocatHub
+    </span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/1-Preparations/" class="nav-link">
+  准备工作
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><span class="title">Java</span> <span class="arrow down"></span></button> <button type="button" aria-label="Java" class="mobile-dropdown-title"><span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/2-Java/java/" class="nav-link">
+  基础语法
+</a></li><li class="dropdown-item"><!----> <a href="/2-Java/springboot/" class="nav-link">
+  SpringBoot
+</a></li><li class="dropdown-item"><!----> <a href="/2-Java/springcloud/" class="nav-link">
+  SpringCloud
+</a></li><li class="dropdown-item"><!----> <a href="/2-Java/springsecurity/" class="nav-link">
+  SpringSecurity
+</a></li><li class="dropdown-item"><!----> <a href="/2-Java/springdatajpa/" class="nav-link">
+  SpringDataJpa
+</a></li><li class="dropdown-item"><!----> <a href="/2-Java/mybatis/" class="nav-link">
+  MyBatis
+</a></li><li class="dropdown-item"><!----> <a href="/2-Java/HelpNeeded.html" class="nav-link">
+  帮助完善
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Linux" class="dropdown-title"><span class="title">Linux</span> <span class="arrow down"></span></button> <button type="button" aria-label="Linux" class="mobile-dropdown-title"><span class="title">Linux</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/3-Linux/" class="nav-link router-link-active">
+  概要
+</a></li><li class="dropdown-item"><!----> <a href="/3-Linux/Command/" class="nav-link">
+  命令使用
+</a></li><li class="dropdown-item"><!----> <a href="/3-Linux/Shell/" class="nav-link">
+  Shell编程
+</a></li><li class="dropdown-item"><!----> <a href="/3-Linux/Server/" class="nav-link">
+  服务搭建配置
+</a></li><li class="dropdown-item"><!----> <a href="/3-Linux/Docker/" class="nav-link">
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/3-Linux/HelpNeeded.html" class="nav-link">
+  帮助完善
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="SQL" class="dropdown-title"><span class="title">SQL</span> <span class="arrow down"></span></button> <button type="button" aria-label="SQL" class="mobile-dropdown-title"><span class="title">SQL</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/4-SQL/" class="nav-link">
+  概要
+</a></li><li class="dropdown-item"><!----> <a href="/4-SQL/MySQL/" class="nav-link">
+  MySQL
+</a></li><li class="dropdown-item"><!----> <a href="/4-SQL/Redis/" class="nav-link">
+  Redis
+</a></li><li class="dropdown-item"><!----> <a href="/4-Github/HelpNeeded.html" class="nav-link">
+  帮助完善
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Web" class="dropdown-title"><span class="title">Web</span> <span class="arrow down"></span></button> <button type="button" aria-label="Web" class="mobile-dropdown-title"><span class="title">Web</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/5-Web/" class="nav-link">
+  概要
+</a></li><li class="dropdown-item"><!----> <a href="/5-Web/Vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/5-Web/CSS/" class="nav-link">
+  CSS
+</a></li><li class="dropdown-item"><!----> <a href="/5-Web/HelpNeeded.html" class="nav-link">
+  帮助完善
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具" class="dropdown-title"><span class="title">工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="工具" class="mobile-dropdown-title"><span class="title">工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/6-Tool/" class="nav-link">
+  概要
+</a></li><li class="dropdown-item"><!----> <a href="/6-Tool/Git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/6-Tool/SVN/" class="nav-link">
+  SVN
+</a></li><li class="dropdown-item"><!----> <a href="/6-Tool/IDEA/" class="nav-link">
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/6-Tool/HelpNeeded.html" class="nav-link">
+  帮助完善
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="算法与数据结构" class="dropdown-title"><span class="title">算法与数据结构</span> <span class="arrow down"></span></button> <button type="button" aria-label="算法与数据结构" class="mobile-dropdown-title"><span class="title">算法与数据结构</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/7-Algorithm/" class="nav-link">
+  概要
+</a></li><li class="dropdown-item"><!----> <a href="/7-Algorithm/Algorithm/" class="nav-link">
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/7-Algorithm/DataStructure/" class="nav-link">
+  数据结构
+</a></li><li class="dropdown-item"><!----> <a href="/7-Algorithm/DesignPattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/7-Algorithm/HelpNeeded.html" class="nav-link">
+  帮助完善
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Future" class="dropdown-title"><span class="title">Future</span> <span class="arrow down"></span></button> <button type="button" aria-label="Future" class="mobile-dropdown-title"><span class="title">Future</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/8-Future/Interview/" class="nav-link">
+  面试
+</a></li><li class="dropdown-item"><!----> <a href="/8-Future/Plan/" class="nav-link">
+  计划
+</a></li><li class="dropdown-item"><!----> <a href="/8-Future/Experience/" class="nav-link">
+  经验
+</a></li><li class="dropdown-item"><!----> <a href="/8-Future/Project/" class="nav-link">
+  项目
+</a></li></ul></div></div><div class="nav-item"><a href="https://github.com/octocathub/octocathub.github.io/issues/new/choose" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  反馈
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="https://github.com/octocathub/octocathub.github.io" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/1-Preparations/" class="nav-link">
+  准备工作
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><span class="title">Java</span> <span class="arrow down"></span></button> <button type="button" aria-label="Java" class="mobile-dropdown-title"><span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/2-Java/java/" class="nav-link">
+  基础语法
+</a></li><li class="dropdown-item"><!----> <a href="/2-Java/springboot/" class="nav-link">
+  SpringBoot
+</a></li><li class="dropdown-item"><!----> <a href="/2-Java/springcloud/" class="nav-link">
+  SpringCloud
+</a></li><li class="dropdown-item"><!----> <a href="/2-Java/springsecurity/" class="nav-link">
+  SpringSecurity
+</a></li><li class="dropdown-item"><!----> <a href="/2-Java/springdatajpa/" class="nav-link">
+  SpringDataJpa
+</a></li><li class="dropdown-item"><!----> <a href="/2-Java/mybatis/" class="nav-link">
+  MyBatis
+</a></li><li class="dropdown-item"><!----> <a href="/2-Java/HelpNeeded.html" class="nav-link">
+  帮助完善
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Linux" class="dropdown-title"><span class="title">Linux</span> <span class="arrow down"></span></button> <button type="button" aria-label="Linux" class="mobile-dropdown-title"><span class="title">Linux</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/3-Linux/" class="nav-link router-link-active">
+  概要
+</a></li><li class="dropdown-item"><!----> <a href="/3-Linux/Command/" class="nav-link">
+  命令使用
+</a></li><li class="dropdown-item"><!----> <a href="/3-Linux/Shell/" class="nav-link">
+  Shell编程
+</a></li><li class="dropdown-item"><!----> <a href="/3-Linux/Server/" class="nav-link">
+  服务搭建配置
+</a></li><li class="dropdown-item"><!----> <a href="/3-Linux/Docker/" class="nav-link">
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/3-Linux/HelpNeeded.html" class="nav-link">
+  帮助完善
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="SQL" class="dropdown-title"><span class="title">SQL</span> <span class="arrow down"></span></button> <button type="button" aria-label="SQL" class="mobile-dropdown-title"><span class="title">SQL</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/4-SQL/" class="nav-link">
+  概要
+</a></li><li class="dropdown-item"><!----> <a href="/4-SQL/MySQL/" class="nav-link">
+  MySQL
+</a></li><li class="dropdown-item"><!----> <a href="/4-SQL/Redis/" class="nav-link">
+  Redis
+</a></li><li class="dropdown-item"><!----> <a href="/4-Github/HelpNeeded.html" class="nav-link">
+  帮助完善
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Web" class="dropdown-title"><span class="title">Web</span> <span class="arrow down"></span></button> <button type="button" aria-label="Web" class="mobile-dropdown-title"><span class="title">Web</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/5-Web/" class="nav-link">
+  概要
+</a></li><li class="dropdown-item"><!----> <a href="/5-Web/Vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/5-Web/CSS/" class="nav-link">
+  CSS
+</a></li><li class="dropdown-item"><!----> <a href="/5-Web/HelpNeeded.html" class="nav-link">
+  帮助完善
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具" class="dropdown-title"><span class="title">工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="工具" class="mobile-dropdown-title"><span class="title">工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/6-Tool/" class="nav-link">
+  概要
+</a></li><li class="dropdown-item"><!----> <a href="/6-Tool/Git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/6-Tool/SVN/" class="nav-link">
+  SVN
+</a></li><li class="dropdown-item"><!----> <a href="/6-Tool/IDEA/" class="nav-link">
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/6-Tool/HelpNeeded.html" class="nav-link">
+  帮助完善
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="算法与数据结构" class="dropdown-title"><span class="title">算法与数据结构</span> <span class="arrow down"></span></button> <button type="button" aria-label="算法与数据结构" class="mobile-dropdown-title"><span class="title">算法与数据结构</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/7-Algorithm/" class="nav-link">
+  概要
+</a></li><li class="dropdown-item"><!----> <a href="/7-Algorithm/Algorithm/" class="nav-link">
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/7-Algorithm/DataStructure/" class="nav-link">
+  数据结构
+</a></li><li class="dropdown-item"><!----> <a href="/7-Algorithm/DesignPattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/7-Algorithm/HelpNeeded.html" class="nav-link">
+  帮助完善
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Future" class="dropdown-title"><span class="title">Future</span> <span class="arrow down"></span></button> <button type="button" aria-label="Future" class="mobile-dropdown-title"><span class="title">Future</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/8-Future/Interview/" class="nav-link">
+  面试
+</a></li><li class="dropdown-item"><!----> <a href="/8-Future/Plan/" class="nav-link">
+  计划
+</a></li><li class="dropdown-item"><!----> <a href="/8-Future/Experience/" class="nav-link">
+  经验
+</a></li><li class="dropdown-item"><!----> <a href="/8-Future/Project/" class="nav-link">
+  项目
+</a></li></ul></div></div><div class="nav-item"><a href="https://github.com/octocathub/octocathub.github.io/issues/new/choose" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  反馈
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="https://github.com/octocathub/octocathub.github.io" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/" aria-current="page" class="sidebar-link">Home</a></li></ul> </aside> <main class="page"> <div class="theme-macgs-content content__default"><h1 id="tcp-ip协议"><a href="#tcp-ip协议" class="header-anchor">#</a> TCP/IP协议</h1> <p><img src="/assets/img/1.9662ecd1.png" alt=""></p> <h2 id="一、-计算机网络体系结构分层"><a href="#一、-计算机网络体系结构分层" class="header-anchor">#</a> 一、 计算机网络体系结构分层</h2> <p><img src="/assets/img/2.6d11f189.png" alt=""> <img src="/assets/img/3.6f64726f.png" alt=""></p> <p>不难看出，TCP/IP 与 OSI 在分层模块上稍有区别。OSI 参考模型注重“通信协议必要的功能是什么”，而 TCP/IP 则更强调“在计算机上实现协议应该开发哪种程序”。</p> <h2 id="二、-tcp-ip-基础"><a href="#二、-tcp-ip-基础" class="header-anchor">#</a> 二、 TCP/IP 基础</h2> <h3 id="_1-tcp-ip-的具体含义"><a href="#_1-tcp-ip-的具体含义" class="header-anchor">#</a> 1. TCP/IP 的具体含义</h3> <p>从字面意义上讲，有人可能会认为 TCP/IP 是指 TCP 和 IP 两种协议。实际生活当中有时也确实就是指这两种协议。然而在很多情况下，它只是利用 IP 进行通信时所必须用到的协议群的统称。具体来说，IP 或 ICMP、TCP 或 UDP、TELNET 或 FTP、以及 HTTP 等都属于 TCP/IP 协议。他们与 TCP 或 IP 的关系紧密，是互联网必不可少的组成部分。TCP/IP 一词泛指这些协议，因此，有时也称 TCP/IP 为网际协议群。
+互联网进行通信时，需要相应的网络协议，TCP/IP 原本就是为使用互联网而开发制定的协议族。因此，互联网的协议就是 TCP/IP，TCP/IP 就是互联网的协议。</p> <p><img src="/assets/img/4.9a1baa73.png" alt=""></p> <h3 id="_2-数据包"><a href="#_2-数据包" class="header-anchor">#</a> 2. 数据包</h3> <p>包、帧、数据包、段、消息
+以上五个术语都用来表述数据的单位，大致区分如下：</p> <ul><li>包可以说是全能性术语；</li> <li>帧用于表示数据链路层中包的单位；</li> <li>数据包是 IP 和 UDP 等网络层以上的分层中包的单位；</li> <li>段则表示 TCP 数据流中的信息；</li> <li>消息是指应用协议中数据的单位。</li></ul> <p>每个分层中，都会对所发送的数据附加一个首部，在这个首部中包含了该层必要的信息，如发送的目标地址以及协议相关信息。通常，为协议提供的信息为包首部，所要发送的内容为数据。在下一层的角度看，从上一层收到的包全部都被认为是本层的数据。</p> <p><img src="/assets/img/5.91211c55.png" alt=""></p> <p>网络中传输的数据包由两部分组成：一部分是协议所要用到的首部，另一部分是上一层传过来的数据。首部的结构由协议的具体规范详细定义。在数据包的首部，明确标明了协议应该如何读取数据。反过来说，看到首部，也就能够了解该协议必要的信息以及所要处理的数据。包首部就像协议的脸。</p> <h3 id="_3-数据处理流程"><a href="#_3-数据处理流程" class="header-anchor">#</a> 3. 数据处理流程</h3> <p>下图以用户 a 向用户 b 发送邮件为例子：
+<img src="/assets/img/6.33a9afaf.png" alt=""></p> <p>① 应用程序处理
+首先应用程序会进行编码处理，这些编码相当于 OSI 的表示层功能；
+编码转化后，邮件不一定马上被发送出去，这种何时建立通信连接何时发送数据的管理功能，相当于 OSI 的会话层功能。
+② TCP 模块的处理
+TCP 根据应用的指示，负责建立连接、发送数据以及断开连接。TCP 提供将应用层发来的数据顺利发送至对端的可靠传输。为了实现这一功能，需要在应用层数据的前端附加一个 TCP 首部。
+③ IP 模块的处理
+IP 将 TCP 传过来的 TCP 首部和 TCP 数据合起来当做自己的数据，并在 TCP 首部的前端加上自己的 IP 首部。IP 包生成后，参考路由控制表决定接受此 IP 包的路由或主机。
+④ 网络接口（以太网驱动）的处理
+从 IP 传过来的 IP 包对于以太网来说就是数据。给这些数据附加上以太网首部并进行发送处理，生成的以太网数据包将通过物理层传输给接收端。
+⑤ 网络接口（以太网驱动）的处理
+主机收到以太网包后，首先从以太网包首部找到 MAC 地址判断是否为发送给自己的包，若不是则丢弃数据。
+如果是发送给自己的包，则从以太网包首部中的类型确定数据类型，再传给相应的模块，如 IP、ARP 等。这里的例子则是 IP 。
+⑥ IP 模块的处理
+IP 模块接收到 数据后也做类似的处理。从包首部中判断此 IP 地址是否与自己的 IP 地址匹配，如果匹配则根据首部的协议类型将数据发送给对应的模块，如 TCP、UDP。这里的例子则是 TCP。
+另外吗，对于有路由器的情况，接收端地址往往不是自己的地址，此时，需要借助路由控制表，在调查应该送往的主机或路由器之后再进行转发数据。
+⑦ TCP 模块的处理
+在 TCP 模块中，首先会计算一下校验和，判断数据是否被破坏。然后检查是否在按照序号接收数据。最后检查端口号，确定具体的应用程序。数据被完整地接收以后，会传给由端口号识别的应用程序。
+⑧ 应用程序的处理
+接收端应用程序会直接接收发送端发送的数据。通过解析数据，展示相应的内容。</p> <h2 id="三、传输层中的-tcp-和-udp"><a href="#三、传输层中的-tcp-和-udp" class="header-anchor">#</a> 三、传输层中的 TCP 和 UDP</h2> <p>TCP/IP 中有两个具有代表性的传输层协议，分别是 TCP 和 UDP。</p> <p>TCP 是面向连接的、可靠的流协议。流就是指不间断的数据结构，当应用程序采用 TCP 发送消息时，虽然可以保证发送的顺序，但还是犹如没有任何间隔的数据流发送给接收端。TCP 为提供可靠性传输，实行“顺序控制”或“重发控制”机制。此外还具备“流控制（流量控制）”、“拥塞控制”、提高网络利用率等众多功能。
+UDP 是不具有可靠性的数据报协议。细微的处理它会交给上层的应用去完成。在 UDP 的情况下，虽然可以确保发送消息的大小，却不能保证消息一定会到达。因此，应用有时会根据自己的需要进行重发处理。
+TCP 和 UDP 的优缺点无法简单地、绝对地去做比较：TCP 用于在传输层有必要实现可靠传输的情况；而在一方面，UDP 主要用于那些对高速传输和实时性有较高要求的通信或广播通信。TCP 和 UDP 应该根据应用的目的按需使用。</p> <h3 id="_1-端口号"><a href="#_1-端口号" class="header-anchor">#</a> 1. 端口号</h3> <p>数据链路和 IP 中的地址，分别指的是 MAC 地址和 IP 地址。前者用来识别同一链路中不同的计算机，后者用来识别 TCP/IP 网络中互连的主机和路由器。在传输层也有这种类似于地址的概念，那就是端口号。端口号用来识别同一台计算机中进行通信的不同应用程序。因此，它也被称为程序地址。</p> <p>1.1 根据端口号识别应用
+一台计算机上同时可以运行多个程序。传输层协议正是利用这些端口号识别本机中正在进行通信的应用程序，并准确地将数据传输。</p> <p><img src="/assets/img/7.3d399efb.png" alt=""></p> <p>1.2 通过 IP 地址、端口号、协议号进行通信识别</p> <p>仅凭目标端口号识别某一个通信是远远不够的。
+<img src="/assets/img/8.e2114206.png" alt=""></p> <p><img src="/assets/img/9.c6fbf619.png" alt=""></p> <p>① 和② 的通信是在两台计算机上进行的。它们的目标端口号相同，都是80。这里可以根据源端口号加以区分。
+③ 和 ① 的目标端口号和源端口号完全相同，但它们各自的源 IP 地址不同。
+此外，当 IP 地址和端口号全都一样时，我们还可以通过协议号来区分（TCP 和 UDP）。</p> <p>1.3 端口号的确定
+标准既定的端口号：这种方法也叫静态方法。它是指每个应用程序都有其指定的端口号。但并不是说可以随意使用任何一个端口号。例如 HTTP、FTP、TELNET 等广为使用的应用协议中所使用的端口号就是固定的。这些端口号被称为知名端口号，分布在 0~1023 之间；除知名端口号之外，还有一些端口号被正式注册，它们分布在 1024~49151 之间，不过这些端口号可用于任何通信用途。
+时序分配法：服务器有必要确定监听端口号，但是接受服务的客户端没必要确定端口号。在这种方法下，客户端应用程序完全可以不用自己设置端口号，而全权交给操作系统进行分配。动态分配的端口号范围在 49152~65535 之间。</p> <p>1.4 端口号与协议
+端口号由其使用的传输层协议决定。因此，不同的传输层协议可以使用相同的端口号。
+此外，那些知名端口号与传输层协议并无关系。只要端口一致都将分配同一种应用程序进行处理。</p> <h3 id="_2-udp"><a href="#_2-udp" class="header-anchor">#</a> 2. UDP</h3> <p>UDP 不提供复杂的控制机制，利用 IP 提供面向无连接的通信服务。
+并且它是将应用程序发来的数据在收到的那一刻，立即按照原样发送到网络上的一种机制。即使是出现网络拥堵的情况，UDP 也无法进行流量控制等避免网络拥塞行为。
+此外，传输途中出现丢包，UDP 也不负责重发。
+甚至当包的到达顺序出现乱序时也没有纠正的功能。
+如果需要以上的细节控制，不得不交由采用 UDP 的应用程序去处理。
+UDP 常用于一下几个方面：1.包总量较少的通信（DNS、SNMP等）；2.视频、音频等多媒体通信（即时通信）；3.限定于 LAN 等特定网络中的应用通信；4.广播通信（广播、多播）。</p> <h3 id="_3-tcp"><a href="#_3-tcp" class="header-anchor">#</a> 3. TCP</h3> <ul><li>TCP 与 UDP 的区别相当大。它充分地实现了数据传输时各种控制功能，可以进行丢包时的重发控制，还可以对次序乱掉的分包进行顺序控制。而这些在 UDP 中都没有。</li> <li>此外，TCP 作为一种面向有连接的协议，只有在确认通信对端存在时才会发送数据，从而可以控制通信流量的浪费。</li> <li>根据 TCP 的这些机制，在 IP 这种无连接的网络上也能够实现高可靠性的通信（ 主要通过检验和、序列号、确认应答、重发控制、连接管理以及窗口控制等机制实现）。</li></ul> <p>3.1 三次握手（重点）
+TCP 提供面向有连接的通信传输。面向有连接是指在数据通信开始之前先做好两端之间的准备工作。</p> <p>所谓三次握手是指建立一个 TCP 连接时需要客户端和服务器端总共发送三个包以确认连接的建立。在socket编程中，这一过程由客户端执行connect来触发。</p> <p>下面来看看三次握手的流程图：
+<img src="/assets/img/10.32f11b16.png" alt=""></p> <ul><li>第一次握手：客户端将标志位SYN置为1，随机产生一个值seq=J，并将该数据包发送给服务器端，客户端进入SYN_SENT状态，等待服务器端确认。</li> <li>第二次握手：服务器端收到数据包后由标志位SYN=1知道客户端请求建立连接，服务器端将标志位SYN和ACK都置为1，ack=J+1，随机产生一个值seq=K，并将该数据包发送给客户端以确认连接请求，服务器端进入SYN_RCVD状态。</li> <li>第三次握手：客户端收到确认后，检查ack是否为J+1，ACK是否为1，如果正确则将标志位ACK置为1，ack=K+1，并将该数据包发送给服务器端，服务器端检查ack是否为K+1，ACK是否为1，如果正确则连接建立成功，客户端和服务器端进入ESTABLISHED状态，完成三次握手，随后客户端与服务器端之间可以开始传输数据了。</li></ul> <p>3.2 四次挥手（重点）
+四次挥手即终止TCP连接，就是指断开一个TCP连接时，需要客户端和服务端总共发送4个包以确认连接的断开。在socket编程中，这一过程由客户端或服务端任一方执行close来触发。
+由于TCP连接是全双工的，因此，每个方向都必须要单独进行关闭，这一原则是当一方完成数据发送任务后，发送一个FIN来终止这一方向的连接，收到一个FIN只是意味着这一方向上没有数据流动了，即不会再收到数据了，但是在这个TCP连接上仍然能够发送数据，直到这一方向也发送了FIN。首先进行关闭的一方将执行主动关闭，而另一方则执行被动关闭。
+下面来看看四次挥手的流程图：
+<img src="/assets/img/11.51fd5273.png" alt=""></p> <ul><li><p>中断连接端可以是客户端，也可以是服务器端。</p></li> <li><p>第一次挥手：客户端发送一个FIN=M，用来关闭客户端到服务器端的数据传送，客户端进入FIN_WAIT_1状态。意思是说&quot;我客户端没有数据要发给你了&quot;，但是如果你服务器端还有数据没有发送完成，则不必急着关闭连接，可以继续发送数据。</p></li> <li><p>第二次挥手：服务器端收到FIN后，先发送ack=M+1，告诉客户端，你的请求我收到了，但是我还没准备好，请继续你等我的消息。这个时候客户端就进入FIN_WAIT_2 状态，继续等待服务器端的FIN报文。</p></li> <li><p>第三次挥手：当服务器端确定数据已发送完成，则向客户端发送FIN=N报文，告诉客户端，好了，我这边数据发完了，准备好关闭连接了。服务器端进入LAST_ACK状态。</p></li> <li><p>第四次挥手：客户端收到FIN=N报文后，就知道可以关闭连接了，但是他还是不相信网络，怕服务器端不知道要关闭，所以发送ack=N+1后进入TIME_WAIT状态，如果Server端没有收到ACK则可以重传。服务器端收到ACK后，就知道可以断开连接了。客户端等待了2MSL后依然没有收到回复，则证明服务器端已正常关闭，那好，我客户端也可以关闭连接了。最终完成了四次握手。</p></li></ul> <p>上面是一方主动关闭，另一方被动关闭的情况，实际中还会出现同时发起主动关闭的情况，
+具体流程如下图：
+<img src="/assets/img/12.c29a9e71.png" alt=""></p> <p>3.3 通过序列号与确认应答提高可靠性</p> <ul><li><p>在 TCP 中，当发送端的数据到达接收主机时，接收端主机会返回一个已收到消息的通知。这个消息叫做确认应答（ACK）。当发送端将数据发出之后会等待对端的确认应答。如果有确认应答，说明数据已经成功到达对端。反之，则数据丢失的可能性很大。</p></li> <li><p>在一定时间内没有等待到确认应答，发送端就可以认为数据已经丢失，并进行重发。由此，即使产生了丢包，仍然能够保证数据能够到达对端，实现可靠传输。</p></li> <li><p>未收到确认应答并不意味着数据一定丢失。也有可能是数据对方已经收到，只是返回的确认应答在途中丢失。这种情况也会导致发送端误以为数据没有到达目的地而重发数据。</p></li> <li><p>此外，也有可能因为一些其他原因导致确认应答延迟到达，在源主机重发数据以后才到达的情况也屡见不鲜。此时，源主机只要按照机制重发数据即可。</p></li> <li><p>对于目标主机来说，反复收到相同的数据是不可取的。为了对上层应用提供可靠的传输，目标主机必须放弃重复的数据包。为此我们引入了序列号。</p></li> <li><p>序列号是按照顺序给发送数据的每一个字节（8位字节）都标上号码的编号。接收端查询接收数据 TCP 首部中的序列号和数据的长度，将自己下一步应该接收的序列号作为确认应答返送回去。通过序列号和确认应答号，TCP 能够识别是否已经接收数据，又能够判断是否需要接收，从而实现可靠传输。</p></li></ul> <p><img src="/assets/img/13.54534a7e.png" alt=""></p> <p>3.4 重发超时的确定
+重发超时是指在重发数据之前，等待确认应答到来的那个特定时间间隔。如果超过这个时间仍未收到确认应答，发送端将进行数据重发。最理想的是，找到一个最小时间，它能保证“确认应答一定能在这个时间内返回”。
+TCP 要求不论处在何种网络环境下都要提供高性能通信，并且无论网络拥堵情况发生何种变化，都必须保持这一特性。为此，它在每次发包时都会计算往返时间及其偏差。将这个往返时间和偏差时间相加，重发超时的时间就是比这个总和要稍大一点的值。
+在 BSD 的 Unix 以及 Windows 系统中，超时都以0.5秒为单位进行控制，因此重发超时都是0.5秒的整数倍。不过，最初其重发超时的默认值一般设置为6秒左右。
+数据被重发之后若还是收不到确认应答，则进行再次发送。此时，等待确认应答的时间将会以2倍、4倍的指数函数延长。
+此外，数据也不会被无限、反复地重发。达到一定重发次数之后，如果仍没有任何确认应答返回，就会判断为网络或对端主机发生了异常，强制关闭连接。并且通知应用通信异常强行终止。</p> <p>3.5 以段为单位发送数据
+在建立 TCP 连接的同时，也可以确定发送数据包的单位，我们也可以称其为“最大消息长度”（MSS）。最理想的情况是，最大消息长度正好是 IP 中不会被分片处理的最大数据长度。
+TCP 在传送大量数据时，是以 MSS 的大小将数据进行分割发送。进行重发时也是以 MSS 为单位。
+MSS 在三次握手的时候，在两端主机之间被计算得出。两端的主机在发出建立连接的请求时，会在 TCP 首部中写入 MSS 选项，告诉对方自己的接口能够适应的 MSS 的大小。然后会在两者之间选择一个较小的值投入使用。</p> <p>3.6 利用窗口控制提高速度
+TCP 以1个段为单位，每发送一个段进行一次确认应答的处理。这样的传输方式有一个缺点，就是包的往返时间越长通信性能就越低。
+为解决这个问题，TCP 引入了窗口这个概念。确认应答不再是以每个分段，而是以更大的单位进行确认，转发时间将会被大幅地缩短。也就是说，发送端主机，在发送了一个段以后不必要一直等待确认应答，而是继续发送。如下图所示：
+<img src="/assets/img/14.417d4b1d.png" alt=""></p> <p>窗口大小就是指无需等待确认应答而可以继续发送数据的最大值。上图中窗口大小为4个段。这个机制实现了使用大量的缓冲区，通过对多个段同时进行确认应答的功能。</p> <p>3.7 滑动窗口控制</p></div> <footer class="page-edit"><!----> <div style="float: right"><small class="word-count"><small><span class="octicon octicon-file"></span></small> <span id="word"></span> <small><span class="octicon octicon-clock"></span></small> <span id="time"></span></small> <small id="/3-Linux/Network/tcp-ip/" class="leancloud-visitors"><span class="prefix"><small><span class="octicon octicon-eye"></span></small></span> <span class="pv leancloud-visitors-count"></span></small></div></footer> <!----> <section class="content theme-macgs-content__comment"><div class="warning custom-block"><p class="custom-block-title">
+      关于评论
+    </p> <p>评论前请填好“昵称”、“邮箱”这两栏内容，否则不会收到回复，谢谢！</p></div> <article id="vcomments"></article></section> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/assets/js/app.ddb29397.js" defer></script><script src="/assets/js/5.e007e30a.js" defer></script><script src="/assets/js/6.9fefc1fc.js" defer></script>
+  </body>
+</html>
