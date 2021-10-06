@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Mysql数据库中的各种锁 | OctocatHub</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/favicon.png">
+    <script>var _hmt = _hmt || [];
+        (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a7b4f008cf9324361928ee39bc7a5233";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();</script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/octicons/build/font/octicons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/octicons/build/build.css">
+    <link rel="apple-touch-icon" href="/favicon.png">
+    <meta name="description" content="开源聚合平台">
+    <meta name="theme-color" content="#00ABE9">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="msapplication-TileImage" content="/favicon.png">
+    <meta name="msapplication-TileColor" content="#06BDFF">
+    
+    <link rel="preload" href="/assets/css/0.styles.02681b3a.css" as="style"><link rel="preload" href="/assets/js/app.94d3cfbd.js" as="script"><link rel="preload" href="/assets/js/5.bb784bd0.js" as="script"><link rel="preload" href="/assets/js/179.3b93dfb3.js" as="script"><link rel="prefetch" href="/assets/js/10.f67b648e.js"><link rel="prefetch" href="/assets/js/100.60951ab4.js"><link rel="prefetch" href="/assets/js/101.47b9c263.js"><link rel="prefetch" href="/assets/js/102.bd1ead4e.js"><link rel="prefetch" href="/assets/js/103.8133d563.js"><link rel="prefetch" href="/assets/js/104.5fb14b4e.js"><link rel="prefetch" href="/assets/js/105.20d07c80.js"><link rel="prefetch" href="/assets/js/106.e8407950.js"><link rel="prefetch" href="/assets/js/107.e6065cb5.js"><link rel="prefetch" href="/assets/js/108.2a0c84fd.js"><link rel="prefetch" href="/assets/js/109.4c9d0ae8.js"><link rel="prefetch" href="/assets/js/11.b6d713fa.js"><link rel="prefetch" href="/assets/js/110.0b5148cd.js"><link rel="prefetch" href="/assets/js/111.fe9cda12.js"><link rel="prefetch" href="/assets/js/112.60805d41.js"><link rel="prefetch" href="/assets/js/113.9affdeb5.js"><link rel="prefetch" href="/assets/js/114.e5c2760a.js"><link rel="prefetch" href="/assets/js/115.0e7f9eb0.js"><link rel="prefetch" href="/assets/js/116.012fd029.js"><link rel="prefetch" href="/assets/js/117.614f398b.js"><link rel="prefetch" href="/assets/js/118.148f5a0e.js"><link rel="prefetch" href="/assets/js/119.71cbe36b.js"><link rel="prefetch" href="/assets/js/12.5a06fc81.js"><link rel="prefetch" href="/assets/js/120.4a8bb725.js"><link rel="prefetch" href="/assets/js/121.a3fdd3a6.js"><link rel="prefetch" href="/assets/js/122.653d747b.js"><link rel="prefetch" href="/assets/js/123.99ead3b4.js"><link rel="prefetch" href="/assets/js/124.b216fd0c.js"><link rel="prefetch" href="/assets/js/125.23571983.js"><link rel="prefetch" href="/assets/js/126.120fa9b2.js"><link rel="prefetch" href="/assets/js/127.94eba239.js"><link rel="prefetch" href="/assets/js/128.4373a87e.js"><link rel="prefetch" href="/assets/js/129.06d8d892.js"><link rel="prefetch" href="/assets/js/13.4e478621.js"><link rel="prefetch" href="/assets/js/130.06d772b3.js"><link rel="prefetch" href="/assets/js/131.7a069b39.js"><link rel="prefetch" href="/assets/js/132.d7522a3b.js"><link rel="prefetch" href="/assets/js/133.acac6d5c.js"><link rel="prefetch" href="/assets/js/134.95720a8b.js"><link rel="prefetch" href="/assets/js/135.8aa05654.js"><link rel="prefetch" href="/assets/js/136.d4fc7815.js"><link rel="prefetch" href="/assets/js/137.5a7ee812.js"><link rel="prefetch" href="/assets/js/138.90a4a8f7.js"><link rel="prefetch" href="/assets/js/139.55ded2d3.js"><link rel="prefetch" href="/assets/js/14.fa838c74.js"><link rel="prefetch" href="/assets/js/140.9e0d7599.js"><link rel="prefetch" href="/assets/js/141.c64d2b38.js"><link rel="prefetch" href="/assets/js/142.d3ba938b.js"><link rel="prefetch" href="/assets/js/143.c5813f2d.js"><link rel="prefetch" href="/assets/js/144.bbba181b.js"><link rel="prefetch" href="/assets/js/145.d85b783c.js"><link rel="prefetch" href="/assets/js/146.fb248cba.js"><link rel="prefetch" href="/assets/js/147.427c640b.js"><link rel="prefetch" href="/assets/js/148.0ef517a3.js"><link rel="prefetch" href="/assets/js/149.43040f64.js"><link rel="prefetch" href="/assets/js/15.cd29b0cf.js"><link rel="prefetch" href="/assets/js/150.a4dda856.js"><link rel="prefetch" href="/assets/js/151.874817ce.js"><link rel="prefetch" href="/assets/js/152.8f8ea096.js"><link rel="prefetch" href="/assets/js/153.420ddf8b.js"><link rel="prefetch" href="/assets/js/154.e85f048a.js"><link rel="prefetch" href="/assets/js/155.83fb76da.js"><link rel="prefetch" href="/assets/js/156.c93c80a1.js"><link rel="prefetch" href="/assets/js/157.de9894e0.js"><link rel="prefetch" href="/assets/js/158.aaadf684.js"><link rel="prefetch" href="/assets/js/159.b6135a96.js"><link rel="prefetch" href="/assets/js/16.d03f5d3a.js"><link rel="prefetch" href="/assets/js/160.fa819076.js"><link rel="prefetch" href="/assets/js/161.655bd455.js"><link rel="prefetch" href="/assets/js/162.70f9999b.js"><link rel="prefetch" href="/assets/js/163.7f673d7c.js"><link rel="prefetch" href="/assets/js/164.b59b3941.js"><link rel="prefetch" href="/assets/js/165.6aad4059.js"><link rel="prefetch" href="/assets/js/166.c6f5a23d.js"><link rel="prefetch" href="/assets/js/167.e460637a.js"><link rel="prefetch" href="/assets/js/168.240fbaf6.js"><link rel="prefetch" href="/assets/js/169.0debfb61.js"><link rel="prefetch" href="/assets/js/17.999ac8a0.js"><link rel="prefetch" href="/assets/js/170.796c65ee.js"><link rel="prefetch" href="/assets/js/171.653609fb.js"><link rel="prefetch" href="/assets/js/172.30f5f431.js"><link rel="prefetch" href="/assets/js/173.5b339782.js"><link rel="prefetch" href="/assets/js/174.223efdd4.js"><link rel="prefetch" href="/assets/js/175.24ca303c.js"><link rel="prefetch" href="/assets/js/176.45d9f01b.js"><link rel="prefetch" href="/assets/js/177.97980122.js"><link rel="prefetch" href="/assets/js/178.d600107b.js"><link rel="prefetch" href="/assets/js/18.39ab9a79.js"><link rel="prefetch" href="/assets/js/180.13911fd4.js"><link rel="prefetch" href="/assets/js/181.a8ce4138.js"><link rel="prefetch" href="/assets/js/182.a127017d.js"><link rel="prefetch" href="/assets/js/183.7061bf18.js"><link rel="prefetch" href="/assets/js/184.faa4d586.js"><link rel="prefetch" href="/assets/js/185.43f40d60.js"><link rel="prefetch" href="/assets/js/186.4e89b380.js"><link rel="prefetch" href="/assets/js/187.7bf4abde.js"><link rel="prefetch" href="/assets/js/188.9c2933e7.js"><link rel="prefetch" href="/assets/js/189.f7bc709f.js"><link rel="prefetch" href="/assets/js/19.67fcdda1.js"><link rel="prefetch" href="/assets/js/190.5e167eaa.js"><link rel="prefetch" href="/assets/js/191.c3739592.js"><link rel="prefetch" href="/assets/js/192.4b3b2464.js"><link rel="prefetch" href="/assets/js/193.b2d8e9c3.js"><link rel="prefetch" href="/assets/js/194.94595bad.js"><link rel="prefetch" href="/assets/js/195.a67f4497.js"><link rel="prefetch" href="/assets/js/196.6d095e6f.js"><link rel="prefetch" href="/assets/js/197.ac9e7411.js"><link rel="prefetch" href="/assets/js/198.3e4e7a70.js"><link rel="prefetch" href="/assets/js/199.79a13356.js"><link rel="prefetch" href="/assets/js/20.58164c50.js"><link rel="prefetch" href="/assets/js/200.b4f6053e.js"><link rel="prefetch" href="/assets/js/201.3d20f723.js"><link rel="prefetch" href="/assets/js/202.81d344be.js"><link rel="prefetch" href="/assets/js/203.e8405606.js"><link rel="prefetch" href="/assets/js/204.9b757340.js"><link rel="prefetch" href="/assets/js/205.a9aca8a5.js"><link rel="prefetch" href="/assets/js/206.d4526de2.js"><link rel="prefetch" href="/assets/js/207.4683a432.js"><link rel="prefetch" href="/assets/js/208.e81cdba8.js"><link rel="prefetch" href="/assets/js/209.401bb4c2.js"><link rel="prefetch" href="/assets/js/21.11a3fd51.js"><link rel="prefetch" href="/assets/js/210.dcf3123b.js"><link rel="prefetch" href="/assets/js/211.ff7e7f2b.js"><link rel="prefetch" href="/assets/js/212.41a0723b.js"><link rel="prefetch" href="/assets/js/213.4a90e204.js"><link rel="prefetch" href="/assets/js/214.11fca0f5.js"><link rel="prefetch" href="/assets/js/215.da1e1606.js"><link rel="prefetch" href="/assets/js/216.2cce710e.js"><link rel="prefetch" href="/assets/js/217.4b246c66.js"><link rel="prefetch" href="/assets/js/218.dc48eeb6.js"><link rel="prefetch" href="/assets/js/219.0375388e.js"><link rel="prefetch" href="/assets/js/22.b956d971.js"><link rel="prefetch" href="/assets/js/220.3065549b.js"><link rel="prefetch" href="/assets/js/221.a01a98e9.js"><link rel="prefetch" href="/assets/js/222.d15820eb.js"><link rel="prefetch" href="/assets/js/223.df66654a.js"><link rel="prefetch" href="/assets/js/224.49b2a1cf.js"><link rel="prefetch" href="/assets/js/225.45b7fcb1.js"><link rel="prefetch" href="/assets/js/226.9b2863ec.js"><link rel="prefetch" href="/assets/js/227.691f2d65.js"><link rel="prefetch" href="/assets/js/228.2299397c.js"><link rel="prefetch" href="/assets/js/229.c5a2462c.js"><link rel="prefetch" href="/assets/js/23.173b76cd.js"><link rel="prefetch" href="/assets/js/230.f951dbeb.js"><link rel="prefetch" href="/assets/js/231.6ce7d924.js"><link rel="prefetch" href="/assets/js/232.29fbc290.js"><link rel="prefetch" href="/assets/js/233.2d84f186.js"><link rel="prefetch" href="/assets/js/234.b99c0f3b.js"><link rel="prefetch" href="/assets/js/235.63960d2a.js"><link rel="prefetch" href="/assets/js/236.417b0053.js"><link rel="prefetch" href="/assets/js/237.35cdd8d9.js"><link rel="prefetch" href="/assets/js/238.c1cad311.js"><link rel="prefetch" href="/assets/js/239.5c27f730.js"><link rel="prefetch" href="/assets/js/24.6e779ca8.js"><link rel="prefetch" href="/assets/js/240.b70ae6b2.js"><link rel="prefetch" href="/assets/js/241.2fea5e4c.js"><link rel="prefetch" href="/assets/js/25.69cd1906.js"><link rel="prefetch" href="/assets/js/26.d1f46246.js"><link rel="prefetch" href="/assets/js/27.e50d9f60.js"><link rel="prefetch" href="/assets/js/28.3ec82b88.js"><link rel="prefetch" href="/assets/js/29.fb21b740.js"><link rel="prefetch" href="/assets/js/30.7fd35db1.js"><link rel="prefetch" href="/assets/js/31.772efd5d.js"><link rel="prefetch" href="/assets/js/32.abacd0d8.js"><link rel="prefetch" href="/assets/js/33.024f0efc.js"><link rel="prefetch" href="/assets/js/34.1892b472.js"><link rel="prefetch" href="/assets/js/35.6dd3b975.js"><link rel="prefetch" href="/assets/js/36.be731c39.js"><link rel="prefetch" href="/assets/js/37.d48ad9ce.js"><link rel="prefetch" href="/assets/js/38.c7a40b4f.js"><link rel="prefetch" href="/assets/js/39.57f151b8.js"><link rel="prefetch" href="/assets/js/40.86681e2c.js"><link rel="prefetch" href="/assets/js/41.e50e9b96.js"><link rel="prefetch" href="/assets/js/42.34d2bdcf.js"><link rel="prefetch" href="/assets/js/43.5ce0cf40.js"><link rel="prefetch" href="/assets/js/44.6485a1ee.js"><link rel="prefetch" href="/assets/js/45.baff779d.js"><link rel="prefetch" href="/assets/js/46.f9170a3c.js"><link rel="prefetch" href="/assets/js/47.605869ba.js"><link rel="prefetch" href="/assets/js/48.43dbc608.js"><link rel="prefetch" href="/assets/js/49.3f954c07.js"><link rel="prefetch" href="/assets/js/50.8e5d38b5.js"><link rel="prefetch" href="/assets/js/51.2a2456da.js"><link rel="prefetch" href="/assets/js/52.cfa0b6d6.js"><link rel="prefetch" href="/assets/js/53.3eb77bf9.js"><link rel="prefetch" href="/assets/js/54.1d53b48c.js"><link rel="prefetch" href="/assets/js/55.ed337950.js"><link rel="prefetch" href="/assets/js/56.46556d7e.js"><link rel="prefetch" href="/assets/js/57.2db583a8.js"><link rel="prefetch" href="/assets/js/58.8b67cc18.js"><link rel="prefetch" href="/assets/js/59.3e26aaf8.js"><link rel="prefetch" href="/assets/js/6.329d4918.js"><link rel="prefetch" href="/assets/js/60.8dbe27f7.js"><link rel="prefetch" href="/assets/js/61.d0de4f07.js"><link rel="prefetch" href="/assets/js/62.e7762ed0.js"><link rel="prefetch" href="/assets/js/63.92318364.js"><link rel="prefetch" href="/assets/js/64.0186585c.js"><link rel="prefetch" href="/assets/js/65.d7eeaaa9.js"><link rel="prefetch" href="/assets/js/66.2a197651.js"><link rel="prefetch" href="/assets/js/67.58e6cf59.js"><link rel="prefetch" href="/assets/js/68.b0e1a832.js"><link rel="prefetch" href="/assets/js/69.af8d57c8.js"><link rel="prefetch" href="/assets/js/7.8c14f9f6.js"><link rel="prefetch" href="/assets/js/70.01cb06dd.js"><link rel="prefetch" href="/assets/js/71.56e753b4.js"><link rel="prefetch" href="/assets/js/72.a31aa240.js"><link rel="prefetch" href="/assets/js/73.e19cca11.js"><link rel="prefetch" href="/assets/js/74.2d4b2ea1.js"><link rel="prefetch" href="/assets/js/75.dbf48fac.js"><link rel="prefetch" href="/assets/js/76.dab9a44d.js"><link rel="prefetch" href="/assets/js/77.90c270f9.js"><link rel="prefetch" href="/assets/js/78.8a1d09d1.js"><link rel="prefetch" href="/assets/js/79.0a7c287b.js"><link rel="prefetch" href="/assets/js/8.5a36095a.js"><link rel="prefetch" href="/assets/js/80.83bb212b.js"><link rel="prefetch" href="/assets/js/81.702241ca.js"><link rel="prefetch" href="/assets/js/82.1beee503.js"><link rel="prefetch" href="/assets/js/83.db050ed4.js"><link rel="prefetch" href="/assets/js/84.2108573f.js"><link rel="prefetch" href="/assets/js/85.66367595.js"><link rel="prefetch" href="/assets/js/86.731c7c82.js"><link rel="prefetch" href="/assets/js/87.c078f2ca.js"><link rel="prefetch" href="/assets/js/88.3c5b4cff.js"><link rel="prefetch" href="/assets/js/89.cd0a295e.js"><link rel="prefetch" href="/assets/js/9.3ee8c4e9.js"><link rel="prefetch" href="/assets/js/90.23f30566.js"><link rel="prefetch" href="/assets/js/91.b7f939ff.js"><link rel="prefetch" href="/assets/js/92.a24f4489.js"><link rel="prefetch" href="/assets/js/93.85e3a2d9.js"><link rel="prefetch" href="/assets/js/94.8a751127.js"><link rel="prefetch" href="/assets/js/95.47d689d0.js"><link rel="prefetch" href="/assets/js/96.c196d00d.js"><link rel="prefetch" href="/assets/js/97.3c7920bf.js"><link rel="prefetch" href="/assets/js/98.dacea55c.js"><link rel="prefetch" href="/assets/js/99.41513f78.js"><link rel="prefetch" href="/assets/js/vendors~dplayer.82a3a0bc.js"><link rel="prefetch" href="/assets/js/vendors~leancloud-storage.d57f160f.js"><link rel="prefetch" href="/assets/js/vendors~valine.c647e2c7.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.02681b3a.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">
+      OctocatHub
+    </span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/1-Preparations/" class="nav-link">
+  准备工作
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><span class="title">Java</span> <span class="arrow down"></span></button> <button type="button" aria-label="Java" class="mobile-dropdown-title"><span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/2-Java/java/" class="nav-link">
+  基础语法
+</a></li><li class="dropdown-item"><!----> <a href="/2-Java/springboot/" class="nav-link">
+  SpringBoot
+</a></li><li class="dropdown-item"><!----> <a href="/2-Java/springcloud/" class="nav-link">
+  SpringCloud
+</a></li><li class="dropdown-item"><!----> <a href="/2-Java/springsecurity/" class="nav-link">
+  SpringSecurity
+</a></li><li class="dropdown-item"><!----> <a href="/2-Java/springdatajpa/" class="nav-link">
+  SpringDataJpa
+</a></li><li class="dropdown-item"><!----> <a href="/2-Java/mybatis/" class="nav-link">
+  MyBatis
+</a></li><li class="dropdown-item"><!----> <a href="/2-Java/Thread/" class="nav-link">
+  多线程
+</a></li><li class="dropdown-item"><!----> <a href="/2-Java/MQ/" class="nav-link">
+  消息队列
+</a></li><li class="dropdown-item"><!----> <a href="/2-Java/HelpNeeded.html" class="nav-link">
+  帮助完善
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Linux" class="dropdown-title"><span class="title">Linux</span> <span class="arrow down"></span></button> <button type="button" aria-label="Linux" class="mobile-dropdown-title"><span class="title">Linux</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/3-Linux/" class="nav-link">
+  概要
+</a></li><li class="dropdown-item"><!----> <a href="/3-Linux/Command/" class="nav-link">
+  命令使用
+</a></li><li class="dropdown-item"><!----> <a href="/3-Linux/Shell/" class="nav-link">
+  Shell编程
+</a></li><li class="dropdown-item"><!----> <a href="/3-Linux/Server/" class="nav-link">
+  服务搭建配置
+</a></li><li class="dropdown-item"><!----> <a href="/3-Linux/Docker/" class="nav-link">
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/3-Linux/Network/" class="nav-link">
+  网络
+</a></li><li class="dropdown-item"><!----> <a href="/3-Linux/HelpNeeded.html" class="nav-link">
+  帮助完善
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="SQL" class="dropdown-title"><span class="title">SQL</span> <span class="arrow down"></span></button> <button type="button" aria-label="SQL" class="mobile-dropdown-title"><span class="title">SQL</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/4-SQL/" class="nav-link router-link-active">
+  概要
+</a></li><li class="dropdown-item"><!----> <a href="/4-SQL/MySQL/" class="nav-link router-link-active">
+  MySQL
+</a></li><li class="dropdown-item"><!----> <a href="/4-SQL/Redis/" class="nav-link">
+  Redis
+</a></li><li class="dropdown-item"><!----> <a href="/4-Github/HelpNeeded.html" class="nav-link">
+  帮助完善
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Web" class="dropdown-title"><span class="title">Web</span> <span class="arrow down"></span></button> <button type="button" aria-label="Web" class="mobile-dropdown-title"><span class="title">Web</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/5-Web/" class="nav-link">
+  概要
+</a></li><li class="dropdown-item"><!----> <a href="/5-Web/Vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/5-Web/CSS/" class="nav-link">
+  CSS
+</a></li><li class="dropdown-item"><!----> <a href="/5-Web/HelpNeeded.html" class="nav-link">
+  帮助完善
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具" class="dropdown-title"><span class="title">工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="工具" class="mobile-dropdown-title"><span class="title">工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/6-Tool/" class="nav-link">
+  概要
+</a></li><li class="dropdown-item"><!----> <a href="/6-Tool/Git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/6-Tool/SVN/" class="nav-link">
+  SVN
+</a></li><li class="dropdown-item"><!----> <a href="/6-Tool/IDEA/" class="nav-link">
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/6-Tool/HelpNeeded.html" class="nav-link">
+  帮助完善
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="算法与数据结构" class="dropdown-title"><span class="title">算法与数据结构</span> <span class="arrow down"></span></button> <button type="button" aria-label="算法与数据结构" class="mobile-dropdown-title"><span class="title">算法与数据结构</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/7-Algorithm/" class="nav-link">
+  概要
+</a></li><li class="dropdown-item"><!----> <a href="/7-Algorithm/Algorithm/" class="nav-link">
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/7-Algorithm/DataStructure/" class="nav-link">
+  数据结构
+</a></li><li class="dropdown-item"><!----> <a href="/7-Algorithm/DesignPattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/7-Algorithm/HelpNeeded.html" class="nav-link">
+  帮助完善
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Future" class="dropdown-title"><span class="title">Future</span> <span class="arrow down"></span></button> <button type="button" aria-label="Future" class="mobile-dropdown-title"><span class="title">Future</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/8-Future/Interview/" class="nav-link">
+  面试
+</a></li><li class="dropdown-item"><!----> <a href="/8-Future/Plan/" class="nav-link">
+  计划
+</a></li><li class="dropdown-item"><!----> <a href="/8-Future/Experience/" class="nav-link">
+  经验
+</a></li><li class="dropdown-item"><!----> <a href="/8-Future/Project/" class="nav-link">
+  项目
+</a></li></ul></div></div><div class="nav-item"><a href="https://github.com/octocathub/octocathub.github.io/issues/new/choose" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  反馈
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="https://github.com/octocathub/octocathub.github.io" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/1-Preparations/" class="nav-link">
+  准备工作
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><span class="title">Java</span> <span class="arrow down"></span></button> <button type="button" aria-label="Java" class="mobile-dropdown-title"><span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/2-Java/java/" class="nav-link">
+  基础语法
+</a></li><li class="dropdown-item"><!----> <a href="/2-Java/springboot/" class="nav-link">
+  SpringBoot
+</a></li><li class="dropdown-item"><!----> <a href="/2-Java/springcloud/" class="nav-link">
+  SpringCloud
+</a></li><li class="dropdown-item"><!----> <a href="/2-Java/springsecurity/" class="nav-link">
+  SpringSecurity
+</a></li><li class="dropdown-item"><!----> <a href="/2-Java/springdatajpa/" class="nav-link">
+  SpringDataJpa
+</a></li><li class="dropdown-item"><!----> <a href="/2-Java/mybatis/" class="nav-link">
+  MyBatis
+</a></li><li class="dropdown-item"><!----> <a href="/2-Java/Thread/" class="nav-link">
+  多线程
+</a></li><li class="dropdown-item"><!----> <a href="/2-Java/MQ/" class="nav-link">
+  消息队列
+</a></li><li class="dropdown-item"><!----> <a href="/2-Java/HelpNeeded.html" class="nav-link">
+  帮助完善
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Linux" class="dropdown-title"><span class="title">Linux</span> <span class="arrow down"></span></button> <button type="button" aria-label="Linux" class="mobile-dropdown-title"><span class="title">Linux</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/3-Linux/" class="nav-link">
+  概要
+</a></li><li class="dropdown-item"><!----> <a href="/3-Linux/Command/" class="nav-link">
+  命令使用
+</a></li><li class="dropdown-item"><!----> <a href="/3-Linux/Shell/" class="nav-link">
+  Shell编程
+</a></li><li class="dropdown-item"><!----> <a href="/3-Linux/Server/" class="nav-link">
+  服务搭建配置
+</a></li><li class="dropdown-item"><!----> <a href="/3-Linux/Docker/" class="nav-link">
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/3-Linux/Network/" class="nav-link">
+  网络
+</a></li><li class="dropdown-item"><!----> <a href="/3-Linux/HelpNeeded.html" class="nav-link">
+  帮助完善
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="SQL" class="dropdown-title"><span class="title">SQL</span> <span class="arrow down"></span></button> <button type="button" aria-label="SQL" class="mobile-dropdown-title"><span class="title">SQL</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/4-SQL/" class="nav-link router-link-active">
+  概要
+</a></li><li class="dropdown-item"><!----> <a href="/4-SQL/MySQL/" class="nav-link router-link-active">
+  MySQL
+</a></li><li class="dropdown-item"><!----> <a href="/4-SQL/Redis/" class="nav-link">
+  Redis
+</a></li><li class="dropdown-item"><!----> <a href="/4-Github/HelpNeeded.html" class="nav-link">
+  帮助完善
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Web" class="dropdown-title"><span class="title">Web</span> <span class="arrow down"></span></button> <button type="button" aria-label="Web" class="mobile-dropdown-title"><span class="title">Web</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/5-Web/" class="nav-link">
+  概要
+</a></li><li class="dropdown-item"><!----> <a href="/5-Web/Vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/5-Web/CSS/" class="nav-link">
+  CSS
+</a></li><li class="dropdown-item"><!----> <a href="/5-Web/HelpNeeded.html" class="nav-link">
+  帮助完善
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具" class="dropdown-title"><span class="title">工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="工具" class="mobile-dropdown-title"><span class="title">工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/6-Tool/" class="nav-link">
+  概要
+</a></li><li class="dropdown-item"><!----> <a href="/6-Tool/Git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/6-Tool/SVN/" class="nav-link">
+  SVN
+</a></li><li class="dropdown-item"><!----> <a href="/6-Tool/IDEA/" class="nav-link">
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/6-Tool/HelpNeeded.html" class="nav-link">
+  帮助完善
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="算法与数据结构" class="dropdown-title"><span class="title">算法与数据结构</span> <span class="arrow down"></span></button> <button type="button" aria-label="算法与数据结构" class="mobile-dropdown-title"><span class="title">算法与数据结构</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/7-Algorithm/" class="nav-link">
+  概要
+</a></li><li class="dropdown-item"><!----> <a href="/7-Algorithm/Algorithm/" class="nav-link">
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/7-Algorithm/DataStructure/" class="nav-link">
+  数据结构
+</a></li><li class="dropdown-item"><!----> <a href="/7-Algorithm/DesignPattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/7-Algorithm/HelpNeeded.html" class="nav-link">
+  帮助完善
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Future" class="dropdown-title"><span class="title">Future</span> <span class="arrow down"></span></button> <button type="button" aria-label="Future" class="mobile-dropdown-title"><span class="title">Future</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/8-Future/Interview/" class="nav-link">
+  面试
+</a></li><li class="dropdown-item"><!----> <a href="/8-Future/Plan/" class="nav-link">
+  计划
+</a></li><li class="dropdown-item"><!----> <a href="/8-Future/Experience/" class="nav-link">
+  经验
+</a></li><li class="dropdown-item"><!----> <a href="/8-Future/Project/" class="nav-link">
+  项目
+</a></li></ul></div></div><div class="nav-item"><a href="https://github.com/octocathub/octocathub.github.io/issues/new/choose" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  反馈
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="https://github.com/octocathub/octocathub.github.io" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>MySQL</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/4-SQL/MySQL/" aria-current="page" class="sidebar-link">MySQL</a></li><li><a href="/4-SQL/MySQL/mysql-lock/" aria-current="page" class="active sidebar-link">Mysql数据库中的各种锁</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/4-SQL/MySQL/mysql-lock/#概述" class="sidebar-link">概述</a></li><li class="sidebar-sub-header"><a href="/4-SQL/MySQL/mysql-lock/#如何加表锁" class="sidebar-link">如何加表锁</a></li><li class="sidebar-sub-header"><a href="/4-SQL/MySQL/mysql-lock/#并发锁" class="sidebar-link">并发锁</a></li><li class="sidebar-sub-header"><a href="/4-SQL/MySQL/mysql-lock/#myisam的锁调度" class="sidebar-link">MyISAM的锁调度</a></li><li class="sidebar-sub-header"><a href="/4-SQL/MySQL/mysql-lock/#innodb锁问题" class="sidebar-link">InnoDB锁问题</a></li><li class="sidebar-sub-header"><a href="/4-SQL/MySQL/mysql-lock/#innodb的行锁模式及加锁方法" class="sidebar-link">InnoDB的行锁模式及加锁方法</a></li></ul></li><li><a href="/4-SQL/MySQL/parsing-order/" class="sidebar-link">MySQL 架构总览-&gt;查询执行流程-&gt;SQL 解析顺序</a></li><li><a href="/4-SQL/MySQL/command.html" class="sidebar-link">基础命令</a></li><li><a href="/4-SQL/MySQL/crud.html" class="sidebar-link">增删改查</a></li><li><a href="/4-SQL/MySQL/delete-table.html" class="sidebar-link">删除表</a></li><li><a href="/4-SQL/MySQL/essence-collection.html" class="sidebar-link">精华sql收集</a></li><li><a href="/4-SQL/MySQL/foreign-key.html" class="sidebar-link">外键</a></li><li><a href="/4-SQL/MySQL/group.html" class="sidebar-link">分组</a></li><li><a href="/4-SQL/MySQL/is-exists.html" class="sidebar-link">SQL 查找是否&quot;存在&quot;</a></li><li><a href="/4-SQL/MySQL/lock.html" class="sidebar-link">数据库锁</a></li><li><a href="/4-SQL/MySQL/log.html" class="sidebar-link">mysql日志管理</a></li><li><a href="/4-SQL/MySQL/open-audit.html" class="sidebar-link">MySQL开启审计功能</a></li><li><a href="/4-SQL/MySQL/optimization.html" class="sidebar-link">MySQL调优</a></li><li><a href="/4-SQL/MySQL/parsing-order.html" class="sidebar-link">MySQL 架构总览-&gt;查询执行流程-&gt;SQL 解析顺序</a></li><li><a href="/4-SQL/MySQL/password-policy.html" class="sidebar-link">密码策略</a></li><li><a href="/4-SQL/MySQL/primary-key.html" class="sidebar-link">主键</a></li><li><a href="/4-SQL/MySQL/service-failed-start.html" class="sidebar-link">MYSQL服务无法启动解决办法</a></li><li><a href="/4-SQL/MySQL/sql-index.html" class="sidebar-link">索引</a></li><li><a href="/4-SQL/MySQL/sql-mode.html" class="sidebar-link">sql-mode</a></li><li><a href="/4-SQL/MySQL/sql-optimization.html" class="sidebar-link">sql优化</a></li><li><a href="/4-SQL/MySQL/stored-procedure.html" class="sidebar-link">存储过程</a></li><li><a href="/4-SQL/MySQL/transaction.html" class="sidebar-link">数据库事务</a></li><li><a href="/4-SQL/MySQL/tuning.html" class="sidebar-link">MySQL调优</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-macgs-content content__default"><h1 id="mysql数据库中的各种锁"><a href="#mysql数据库中的各种锁" class="header-anchor">#</a> Mysql数据库中的各种锁</h1> <p><a href="https://blog.csdn.net/qq_35642036/article/details/89554721/" target="_blank" rel="noopener noreferrer">https://blog.csdn.net/qq_35642036/article/details/89554721/<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h2 id="概述"><a href="#概述" class="header-anchor">#</a> 概述</h2> <p>相对其他数据库而言，MySQL的锁机制比较简单，其最显著的特点是不同的存储引擎支持不同的锁机制。</p> <p>MySQL大致可归纳为以下3种锁：</p> <p>表级锁：开销小，加锁快；不会出现死锁；锁定粒度大，发生锁冲突的概率最高，并发度最低。
+行级锁：开销大，加锁慢；会出现死锁；锁定粒度最小，发生锁冲突的概率最低，并发度也最高。
+页面锁：开销和加锁时间界于表锁和行锁之间；会出现死锁；锁定粒度界于表锁和行锁之间，并发度一般</p> <p>在使用MyIsam时，我们只可以使用表级锁，而MySQL的表级锁有两种模式：</p> <p>表共享锁（Table Read Lock）和表独占写锁（Table Write Lock），他们在工作时表现如下：</p> <p>对某一个表的读操作，不会阻塞其他用户对同一表请求，但会阻塞对同一表的写请求；
+对MyISAM的写操作，则会阻塞其他用户对同一表的读和写操作；
+MyISAM表的读操作和写操作之间，以及写操作之间是串行的。
+当一个线程获得对一个表的写锁后，只有持有锁的线程可以对表进行更新操作。其他线程的读、写操作都会等待，直到锁被释放为止。</p> <h2 id="如何加表锁"><a href="#如何加表锁" class="header-anchor">#</a> 如何加表锁</h2> <p>MyISAM在执行查询语句（SELECT）前，会自动给涉及的所有表加读锁，在执行更新操作（UPDATE、DELETE、INSERT等）前，会自动给涉及的表加写锁，这个过程并不需要用户干预，因此用户一般不需要直接用LOCK TABLE命令给MyISAM表显式加锁。</p> <p>给MyISAM表显式加锁，一般是为了一定程度模拟事务操作，实现对某一时间点多个表的一致性读取。例如，有一个订单表orders，其中记录有订单的总金额total，同时还有一个订单明细表order_detail，其中记录有订单每一产品的金额小计subtotal，假设我们需要检查这两个表的金额合计是否相等，可能就需要执行如下两条SQL：</p> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">SELECT</span> <span class="token function">SUM</span><span class="token punctuation">(</span>total<span class="token punctuation">)</span> <span class="token keyword">FROM</span> orders<span class="token punctuation">;</span>
+
+<span class="token keyword">SELECT</span> <span class="token function">SUM</span><span class="token punctuation">(</span>subtotal<span class="token punctuation">)</span> <span class="token keyword">FROM</span> order_detail<span class="token punctuation">;</span>
+</code></pre></div><p>这时，如果不先给这两个表加锁，就可能产生错误的结果，因为第一条语句执行过程中，order_detail表可能已经发生了改变。因此，正确的方法应该是：</p> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">LOCK</span> <span class="token keyword">tables</span> orders <span class="token keyword">read</span> <span class="token keyword">local</span><span class="token punctuation">,</span>order_detail <span class="token keyword">read</span> <span class="token keyword">local</span><span class="token punctuation">;</span>
+<span class="token keyword">SELECT</span> <span class="token function">SUM</span><span class="token punctuation">(</span>total<span class="token punctuation">)</span> <span class="token keyword">FROM</span> orders<span class="token punctuation">;</span>
+<span class="token keyword">SELECT</span> <span class="token function">SUM</span><span class="token punctuation">(</span>subtotal<span class="token punctuation">)</span> <span class="token keyword">FROM</span> order_detail<span class="token punctuation">;</span>
+<span class="token keyword">Unlock</span> <span class="token keyword">tables</span><span class="token punctuation">;</span>
+</code></pre></div><p>要特别说明以下两点内容。</p> <ul><li><p>上面的例子在LOCK TABLES时加了‘local’选项，其作用就是在满足MyISAM表并发插入条件的情况下，允许其他用户在表尾插入记录</p></li> <li><p>在用LOCKTABLES给表显式加表锁时，必须同时取得所有涉及的表的锁。也就是说，在执行LOCK TABLES后，只能访问显式加锁的这些表，而不能访问未加锁的表；同时，如果加的是读锁，那么只能执行查询操作，而不能执行更新操作。其实，在自动加锁的情况下也基本如此，MySQL会一次性获得SQL语句所需要的全部锁。这也正是MyISAM表不会出现死锁（Deadlock Free）的原因。另外，MySQL支持锁升级，即在条件满足时，允许从表共享锁升级为表独占锁。</p></li></ul> <p>一个session使用LOCK TABLE 命令给表film_text加了读锁，这个session可以查询锁定表中的记录，但更新或访问其他表都会提示错误；同时，另外一个session可以查询表中的记录，但更新就会出现锁等待。</p> <p>当使用LOCK TABLE时，不仅需要一次锁定用到的所有表，而且，同一个表在SQL语句中出现多少次，就要通过与SQL语句中相同的别名锁多少次，否则也会出错！</p> <h2 id="并发锁"><a href="#并发锁" class="header-anchor">#</a> 并发锁</h2> <p>在一定条件下，MyISAM也支持查询和操作的并发进行。</p> <div class="language- extra-class"><pre><code>MyISAM存储引擎有一个系统变量concurrent_insert，专门用以控制其并发插入的行为，其值分别可以为0、1或2。
+</code></pre></div><p>当concurrent_insert设置为0时，不允许并发插入。
+当concurrent_insert设置为1时，如果MyISAM允许在一个读表的同时，另一个进程从表尾插入记录。这也是MySQL的默认设置。
+当concurrent_insert设置为2时，无论MyISAM表中有没有空洞，都允许在表尾插入记录，都允许在表尾并发插入记录。
+可以利用MyISAM存储引擎的并发插入特性，来解决应用中对同一表查询和插入锁争用。例如，将concurrent_insert系统变量为2，总是允许并发插入；同时，通过定期在系统空闲时段执行OPTIONMIZE TABLE语句来整理空间碎片，收集因删除记录而产生的中间空洞。</p> <h2 id="myisam的锁调度"><a href="#myisam的锁调度" class="header-anchor">#</a> MyISAM的锁调度</h2> <p>前面讲过，MyISAM存储引擎的读和写锁是互斥，读操作是串行的。那么，一个进程请求某个MyISAM表的读锁，同时另一个进程也请求同一表的写锁，MySQL如何处理呢？答案是写进程先获得锁。不仅如此，即使读进程先请求先到锁等待队列，写请求后到，写锁也会插到读请求之前！这是因为MySQL认为写请求一般比读请求重要。这也正是MyISAM表不太适合于有大量更新操作和查询操作应用的原因，因为，大量的更新操作会造成查询操作很难获得读锁，从而可能永远阻塞。这种情况有时可能会变得非常糟糕！幸好我们可以通过一些设置来调节MyISAM的调度行为。</p> <p>通过指定启动参数low-priority-updates，使MyISAM引擎默认给予读请求以优先的权利。
+通过执行命令SET LOW_PRIORITY_UPDATES=1，使该连接发出的更新请求优先级降低。
+通过指定INSERT、UPDATE、DELETE语句的LOW_PRIORITY属性，降低该语句的优先级。
+虽然上面3种方法都是要么更新优先，要么查询优先的方法，但还是可以用其来解决查询相对重要的应用（如用户登录系统）中，读锁等待严重的问题。</p> <p>另外，MySQL也提供了一种折中的办法来调节读写冲突，即给系统参数max_write_lock_count设置一个合适的值，当一个表的读锁达到这个值后，MySQL变暂时将写请求的优先级降低，给读进程一定获得锁的机会。</p> <p>上面已经讨论了写优先调度机制和解决办法。这里还要强调一点：一些需要长时间运行的查询操作，也会使写进程“饿死”！因此，应用中应尽量避免出现长时间运行的查询操作，不要总想用一条SELECT语句来解决问题。因为这种看似巧妙的SQL语句，往往比较复杂，执行时间较长，在可能的情况下可以通过使用中间表等措施对SQL语句做一定的“分解”，使每一步查询都能在较短时间完成，从而减少锁冲突。如果复杂查询不可避免，应尽量安排在数据库空闲时段执行，比如一些定期统计可以安排在夜间执行。</p> <h2 id="innodb锁问题"><a href="#innodb锁问题" class="header-anchor">#</a> InnoDB锁问题</h2> <p>InnoDB与MyISAM的最大不同有两点：一是支持事务（TRANSACTION）；二是采用了行级锁。</p> <p>行级锁和表级锁本来就有许多不同之处，另外，事务的引入也带来了一些新问题。</p> <h3 id="_1-事务-transaction-及其acid属性"><a href="#_1-事务-transaction-及其acid属性" class="header-anchor">#</a> 1.事务（Transaction）及其ACID属性</h3> <div class="language- extra-class"><pre><code>事务是由一组SQL语句组成的逻辑处理单元，事务具有4属性，通常称为事务的ACID属性。
+</code></pre></div><p>原子性（Actomicity）：事务是一个原子操作单元，其对数据的修改，要么全都执行，要么全都不执行。
+一致性（Consistent）：在事务开始和完成时，数据都必须保持一致状态。这意味着所有相关的数据规则都必须应用于事务的修改，以操持完整性；事务结束时，所有的内部数据结构（如B树索引或双向链表）也都必须是正确的。
+隔离性（Isolation）：数据库系统提供一定的隔离机制，保证事务在不受外部并发操作影响的“独立”环境执行。这意味着事务处理过程中的中间状态对外部是不可见的，反之亦然。
+持久性（Durable）：事务完成之后，它对于数据的修改是永久性的，即使出现系统故障也能够保持。</p> <h3 id="_2-并发事务带来的问题"><a href="#_2-并发事务带来的问题" class="header-anchor">#</a> 2.并发事务带来的问题</h3> <p>相对于串行处理来说，并发事务处理能大大增加数据库资源的利用率，提高数据库系统的事务吞吐量，从而可以支持可以支持更多的用户。但并发事务处理也会带来一些问题，主要包括以下几种情况。</p> <ul><li><p>更新丢失（Lost Update）：当两个或多个事务选择同一行，然后基于最初选定的值更新该行时，由于每个事务都不知道其他事务的存在，就会发生丢失更新问题——最后的更新覆盖了其他事务所做的更新。例如，两个编辑人员制作了同一文档的电子副本。每个编辑人员独立地更改其副本，然后保存更改后的副本，这样就覆盖了原始文档。最后保存其更改保存其更改副本的编辑人员覆盖另一个编辑人员所做的修改。如果在一个编辑人员完成并提交事务之前，另一个编辑人员不能访问同一文件，则可避免此问题</p></li> <li><p>脏读（Dirty Reads）：一个事务正在对一条记录做修改，在这个事务并提交前，这条记录的数据就处于不一致状态；这时，另一个事务也来读取同一条记录，如果不加控制，第二个事务读取了这些“脏”的数据，并据此做进一步的处理，就会产生未提交的数据依赖关系。这种现象被形象地叫做“脏读”。</p></li> <li><p>不可重复读（Non-Repeatable Reads）：一个事务在读取某些数据已经发生了改变、或某些记录已经被删除了！这种现象叫做“不可重复读”。</p></li> <li><p>幻读（Phantom Reads）：一个事务按相同的查询条件重新读取以前检索过的数据，却发现其他事务插入了满足其查询条件的新数据，这种现象就称为“幻读”。</p></li></ul> <h2 id="innodb的行锁模式及加锁方法"><a href="#innodb的行锁模式及加锁方法" class="header-anchor">#</a> InnoDB的行锁模式及加锁方法</h2> <p>InnoDB实现了以下两种类型的行锁。</p> <ul><li><p>共享锁（s）：允许一个事务去读一行，阻止其他事务获得相同数据集的排他锁。xxx lock in share mode</p></li> <li><p>排他锁（Ｘ）：允许获取排他锁的事务更新数据，阻止其他事务取得相同的数据集共享读锁和排他写锁。xxx for update
+另外，为了允许行锁和表锁共存，实现多粒度锁机制，InnoDB还有两种内部使用的意向锁（Intention Locks），这两种意向锁都是表锁。</p></li></ul> <p>意向共享锁（IS）：事务打算给数据行共享锁，事务在给一个数据行加共享锁前必须先取得该表的IS锁。</p> <p>意向排他锁（IX）：事务打算给数据行加排他锁，事务在给一个数据行加排他锁前必须先取得该表的IX锁。</p></div> <footer class="page-edit"><!----> <div style="float: right"><small class="word-count"><small><span class="octicon octicon-file"></span></small> <span id="word"></span> <small><span class="octicon octicon-clock"></span></small> <span id="time"></span></small> <small id="/4-SQL/MySQL/mysql-lock/" class="leancloud-visitors"><span class="prefix"><small><span class="octicon octicon-eye"></span></small></span> <span class="pv leancloud-visitors-count"></span></small></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/4-SQL/MySQL/" class="prev router-link-active">
+        MySQL
+      </a></span> <span class="next"><a href="/4-SQL/MySQL/parsing-order/">
+        MySQL 架构总览-&gt;查询执行流程-&gt;SQL 解析顺序
+      </a>
+      →
+    </span></p></div> <section class="content theme-macgs-content__comment"><div class="warning custom-block"><p class="custom-block-title">
+      关于评论
+    </p> <p>评论前请填好“昵称”、“邮箱”这两栏内容，否则不会收到回复，谢谢！</p></div> <article id="vcomments"></article></section> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/assets/js/app.94d3cfbd.js" defer></script><script src="/assets/js/5.bb784bd0.js" defer></script><script src="/assets/js/179.3b93dfb3.js" defer></script>
+  </body>
+</html>
